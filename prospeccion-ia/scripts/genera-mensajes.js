@@ -72,6 +72,14 @@ function mensajeAutomatizacion(lead, remitente) {
   return `Hola, buen día 👋 Soy ${remitente}.\n\nVi que ${nombreLimpio(lead.empresa)} está activo en ${red} 👏 Buena presencia. Pero muchos estudios pierden consultas porque no alcanzan a responder a tiempo cada mensaje.\n\nArmamos un asistente con IA que responde, agenda citas y capta clientes 24/7 desde su WhatsApp y redes. ¿Le muestro en 5 min cómo funcionaría para ${nombreLimpio(lead.empresa)}?` + OPT_OUT_LINE;
 }
 
+// Llama a scoreLead con la forma correcta de opts. Antes se pasaba posicional
+// (lead, ciudad, cp) pero la firma es scoreLead(lead, {modo,ciudad,cpPrefijo}),
+// así que el filtro por ciudad/CP se ignoraba y se generaban mensajes a leads
+// de otra ciudad.
+function scoreParaMensajes(lead, ciudad, cp) {
+  return scoreLead(lead, { modo: "dolor", ciudad, cpPrefijo: cp });
+}
+
 function main() {
   const a = args();
   if (!a.entrada) { console.error("uso: node genera-mensajes.js <prospeccion.json> --ciudad <C> [--cp-prefijo 20] [--rubro contadores] [--remitente \"...\"]"); process.exit(1); }
@@ -81,7 +89,7 @@ function main() {
   const saltados = { descalificado: 0, prioridad_baja: 0, sin_celular: 0 };
 
   for (const lead of data.leads || []) {
-    const s = scoreLead(lead, a.ciudad, a.cp);
+    const s = scoreParaMensajes(lead, a.ciudad, a.cp);
     if (s.descalificado) { saltados.descalificado++; continue; }
     if (s.prioridad === "1-2-baja") { saltados.prioridad_baja++; continue; }
     const cel = celular(lead.telefono);
@@ -130,6 +138,6 @@ function main() {
   if (w.nivel !== "optimo") console.log(`   👉 Esperá a la próxima ventana óptima: ${w.proxima}`);
 }
 
-module.exports = { mensajeAuditoria, mensajeAutomatizacion, celular, OPT_OUT_LINE };
+module.exports = { mensajeAuditoria, mensajeAutomatizacion, scoreParaMensajes, celular, OPT_OUT_LINE };
 
 if (require.main === module) main();
