@@ -24,7 +24,7 @@ const PAIS = "51"; // Perú
 const OPT_OUT_LINE = "\n\nSi prefieres que no te contacte, respóndeme *BAJA* y no te escribo más. 🙏";
 
 function args() {
-  const a = { entrada: null, ciudad: null, cp: null, rubro: "su servicio", remitente: "Jerson Ancajima - Marketing Digital", salida: null };
+  const a = { entrada: null, ciudad: null, cp: null, rubro: "su servicio", remitente: "Jerson Ancajima - Marketing Digital", salida: null, optOut: null, consentidos: null };
   const v = process.argv.slice(2);
   for (let i = 0; i < v.length; i++) {
     if (v[i] === "--ciudad") a.ciudad = v[++i];
@@ -32,6 +32,8 @@ function args() {
     else if (v[i] === "--rubro") a.rubro = v[++i];
     else if (v[i] === "--remitente") a.remitente = v[++i];
     else if (v[i] === "--salida") a.salida = v[++i];
+    else if (v[i] === "--opt-out") a.optOut = v[++i];           // JSON con números que pidieron BAJA
+    else if (v[i] === "--solo-consentidos") a.consentidos = v[++i]; // JSON opt-in: solo generar para estos
     else a.entrada = v[i];
   }
   return a;
@@ -44,6 +46,30 @@ function celular(tel) {
   if (d.length === 9 && d.startsWith("9")) return PAIS + d;
   if (d.length === 11 && d.startsWith(PAIS + "9")) return d;
   return null; // fijo u otro → WhatsApp no aplica
+}
+
+// --- Guard de consentimiento / opt-out (cumplimiento opt-in) ---
+function normNum(n) { return String(n || "").replace(/\D/g, ""); }
+
+// ¿Se puede GENERAR mensaje para este celular?
+// exclusion = Set de opt-out (BAJA) — siempre manda. consentidos = Set de opt-in;
+// si se pasa, solo pasan los que consintieron. Ambos opcionales.
+function puedeGenerar(cel, { exclusion, consentidos } = {}) {
+  const k = normNum(cel);
+  if (exclusion && exclusion.has(k)) return false;
+  if (consentidos && !consentidos.has(k)) return false;
+  return true;
+}
+
+// Carga un Set de números normalizados desde JSON: array, {numeros:[]} o
+// {consentimientos:[{numero}]} (compatible con opt-out.json / opt-in.json).
+function cargaSet(path) {
+  if (!path || !fs.existsSync(path)) return null;
+  try {
+    const d = JSON.parse(fs.readFileSync(path, "utf8"));
+    const arr = Array.isArray(d) ? d : (d.numeros || d.consentimientos || []);
+    return new Set(arr.map((x) => normNum(typeof x === "string" ? x : x && x.numero)));
+  } catch { return null; }
 }
 
 // Limpia nombres de ficha Google con keywords ("Empresa | Estudio Contable - Piura").
@@ -85,8 +111,10 @@ function main() {
   if (!a.entrada) { console.error("uso: node genera-mensajes.js <prospeccion.json> --ciudad <C> [--cp-prefijo 20] [--rubro contadores] [--remitente \"...\"]"); process.exit(1); }
 
   const data = JSON.parse(fs.readFileSync(a.entrada, "utf8"));
+  const exclusion = cargaSet(a.optOut);
+  const consentidos = cargaSet(a.consentidos);
   const items = [];
-  const saltados = { descalificado: 0, prioridad_baja: 0, sin_celular: 0 };
+  const saltados = { descalificado: 0, prioridad_baja: 0, sin_celular: 0, bloqueado: 0 };
 
   for (const lead of data.leads || []) {
     const s = scoreParaMensajes(lead, a.ciudad, a.cp);
@@ -94,6 +122,8 @@ function main() {
     if (s.prioridad === "1-2-baja") { saltados.prioridad_baja++; continue; }
     const cel = celular(lead.telefono);
     if (!cel) { saltados.sin_celular++; continue; }
+    // Guard duro: respeta opt-out (BAJA) y, si se exige, solo consentidos.
+    if (!puedeGenerar(cel, { exclusion, consentidos })) { saltados.bloqueado++; continue; }
 
     const msg = s.oferta === "Automatización IA"
       ? mensajeAutomatizacion(lead, a.remitente)
@@ -138,6 +168,6 @@ function main() {
   if (w.nivel !== "optimo") console.log(`   👉 Esperá a la próxima ventana óptima: ${w.proxima}`);
 }
 
-module.exports = { mensajeAuditoria, mensajeAutomatizacion, scoreParaMensajes, celular, OPT_OUT_LINE };
+module.exports = { mensajeAuditoria, mensajeAutomatizacion, scoreParaMensajes, puedeGenerar, normNum, celular, OPT_OUT_LINE };
 
 if (require.main === module) main();
