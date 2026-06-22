@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Auditoría Web — {{CLIENTE}} · Kunda</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  /* ---- Paleta Kunda ---- */
+  :root{
+    --teal:#1E8A7B;        /* primario */
+    --teal-deep:#0E3B36;   /* fondo oscuro */
+    --bosque:#0A2723;      /* "negro" de marca */
+    --coral:#E8714C;       /* CTA / chispa */
+    --crema:#F2EFE6;       /* fondo claro */
+    --menta:#5DCAA5;       /* realce sobre oscuro */
+    --arena:#E3DBCB;       /* separadores */
+    --ok:#1E8A7B; --warn:#E8A24C; --bad:#E8714C;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    font-family:'Inter',sans-serif;
+    color:var(--bosque);
+    background:var(--crema);
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+  .page{max-width:820px;margin:0 auto;padding:48px 56px}
+  h1,h2,h3,.kicker{font-family:'Space Grotesk',sans-serif;letter-spacing:-0.02em}
+
+  /* ---- Header / portada ---- */
+  .cover{
+    background:var(--bosque);
+    color:var(--crema);
+    border-radius:20px;
+    padding:48px 44px;
+    position:relative;
+    overflow:hidden;
+  }
+  .cover::after{ /* onda orgánica firma */
+    content:"";position:absolute;right:-60px;bottom:-80px;
+    width:280px;height:280px;border-radius:50%;
+    background:radial-gradient(circle,var(--teal) 0%,transparent 70%);
+    opacity:.5;
+  }
+  .brandmark{display:flex;align-items:center;gap:8px;font-family:'Space Grotesk';font-weight:700;font-size:20px}
+  .brandmark .dot{width:9px;height:9px;border-radius:50%;background:var(--teal);display:inline-block}
+  .cover .kicker{color:var(--menta);font-size:13px;text-transform:uppercase;letter-spacing:.12em;font-weight:500;margin:28px 0 10px}
+  .cover h1{font-size:40px;font-weight:700;line-height:1.05;max-width:14ch}
+  .cover .meta{margin-top:24px;font-size:14px;color:var(--arena);display:flex;gap:24px;flex-wrap:wrap}
+  .cover .meta b{color:var(--crema);font-weight:600}
+
+  /* ---- Scores ---- */
+  .scores{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:28px 0}
+  .score{background:#fff;border-radius:16px;padding:20px 16px;text-align:center;border:1px solid var(--arena)}
+  .score .num{font-family:'Space Grotesk';font-weight:700;font-size:38px;line-height:1}
+  .score .lbl{font-size:12px;color:#6b6b63;margin-top:8px;text-transform:uppercase;letter-spacing:.06em}
+  .ring{--p:0;width:64px;height:64px;border-radius:50%;margin:0 auto 8px;
+    background:conic-gradient(var(--c) calc(var(--p)*1%),var(--arena) 0);
+    display:grid;place-items:center}
+  .ring span{width:50px;height:50px;border-radius:50%;background:#fff;display:grid;place-items:center;
+    font-family:'Space Grotesk';font-weight:700;font-size:18px}
+
+  /* ---- Core Web Vitals ---- */
+  .cwv{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:0 0 8px}
+  .vital{background:var(--teal-deep);color:var(--crema);border-radius:16px;padding:18px 18px}
+  .vital .vname{font-family:'Space Grotesk';font-weight:700;font-size:13px;letter-spacing:.04em;color:var(--menta)}
+  .vital .vval{font-family:'Space Grotesk';font-weight:700;font-size:30px;margin:6px 0 2px}
+  .vital .vdesc{font-size:12px;color:var(--arena)}
+  .vital .vstate{display:inline-block;margin-top:10px;font-size:11px;font-weight:600;padding:3px 9px;border-radius:999px}
+  .vstate.bueno{background:#173f37;color:var(--menta)}
+  .vstate.mejorable{background:#3a3214;color:#E8C879}
+  .vstate.malo{background:#3f201a;color:#F0A089}
+  .cwv-note{font-size:12px;color:#8a8a80;margin-bottom:8px}
+
+  /* ---- Secciones ---- */
+  section{margin-top:40px}
+  .kicker-line{color:var(--teal);font-size:13px;text-transform:uppercase;letter-spacing:.12em;font-weight:500;margin-bottom:6px}
+  h2{font-size:26px;font-weight:700;margin-bottom:6px}
+  .lead{color:#4a4a44;font-size:15px;margin-bottom:18px;max-width:62ch}
+
+  /* ---- Tabla de páginas ---- */
+  .ptable{width:100%;border-collapse:collapse;font-size:13.5px;margin-top:8px}
+  .ptable th{text-align:left;font-family:'Space Grotesk';font-weight:500;color:#6b6b63;
+    font-size:12px;text-transform:uppercase;letter-spacing:.06em;padding:8px 10px;border-bottom:2px solid var(--arena)}
+  .ptable td{padding:10px;border-bottom:1px solid var(--arena)}
+  .ptable td.pg{font-weight:600;color:var(--bosque)}
+  .ptable .sc{font-family:'Space Grotesk';font-weight:700;text-align:center;width:64px}
+  .sc.g{color:#1E8A7B}.sc.a{color:#c08518}.sc.r{color:#d1502e}
+
+  /* ---- Hallazgos ---- */
+  .finding{background:#fff;border-radius:14px;border:1px solid var(--arena);padding:18px 20px;margin-bottom:12px;
+    border-left:4px solid var(--arena)}
+  .finding.p-alta{border-left-color:var(--coral)}
+  .finding.p-media{border-left-color:var(--warn)}
+  .finding.p-baja{border-left-color:var(--menta)}
+  .finding .top{display:flex;align-items:center;gap:10px;margin-bottom:6px}
+  .badge{font-size:11px;font-weight:600;padding:3px 9px;border-radius:999px;text-transform:uppercase;letter-spacing:.05em}
+  .badge.alta{background:#fbe3da;color:#b8442a}
+  .badge.media{background:#f7ecd6;color:#9a6a1e}
+  .badge.baja{background:#dff2ea;color:#1E8A7B}
+  .finding h3{font-size:16px;font-weight:600;font-family:'Inter'}
+  .finding p{font-size:14px;color:#4a4a44;margin-top:4px}
+  .finding code{background:var(--crema);padding:2px 6px;border-radius:5px;font-size:12.5px;color:var(--bosque)}
+  .fix{margin-top:10px;font-size:13.5px;background:var(--crema);border-radius:10px;padding:10px 12px}
+  .fix b{color:var(--teal)}
+
+  /* ---- CTA final ---- */
+  .cta{background:var(--teal-deep);color:var(--crema);border-radius:20px;padding:40px 44px;margin-top:48px;position:relative;overflow:hidden}
+  .cta::after{content:"";position:absolute;left:-40px;top:-60px;width:200px;height:200px;border-radius:50%;
+    background:radial-gradient(circle,var(--coral) 0%,transparent 70%);opacity:.4}
+  .cta h2{color:var(--crema)}
+  .cta p{color:var(--arena);margin:10px 0 22px;max-width:54ch;position:relative}
+  .btn{display:inline-block;background:var(--coral);color:#fff;font-family:'Space Grotesk';font-weight:700;
+    padding:14px 28px;border-radius:999px;text-decoration:none;font-size:15px;position:relative}
+
+  footer{margin-top:32px;text-align:center;color:#8a8a80;font-size:12.5px}
+  footer .brandmark{justify-content:center;color:var(--bosque);margin-bottom:8px}
+
+  @media print{body{background:#fff}.page{padding:0}}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- PORTADA -->
+  <div class="cover">
+    <div class="brandmark"><span class="dot"></span>kunda</div>
+    <div class="kicker">Auditoría web</div>
+    <h1>{{CLIENTE}}</h1>
+    <div class="meta">
+      <span><b>URL</b><br>{{URL}}</span>
+      <span><b>Fecha</b><br>{{FECHA}}</span>
+      <span><b>Dispositivo</b><br>{{DISPOSITIVO}}</span>
+    </div>
+  </div>
+
+  <!-- SCORES -->
+  <div class="scores">
+    <div class="score"><div class="ring" style="--p:{{S_PERF}};--c:{{C_PERF}}"><span>{{S_PERF}}</span></div><div class="lbl">Performance</div></div>
+    <div class="score"><div class="ring" style="--p:{{S_SEO}};--c:{{C_SEO}}"><span>{{S_SEO}}</span></div><div class="lbl">SEO</div></div>
+    <div class="score"><div class="ring" style="--p:{{S_A11Y}};--c:{{C_A11Y}}"><span>{{S_A11Y}}</span></div><div class="lbl">Accesibilidad</div></div>
+    <div class="score"><div class="ring" style="--p:{{S_BP}};--c:{{C_BP}}"><span>{{S_BP}}</span></div><div class="lbl">Buenas prácticas</div></div>
+  </div>
+
+  <!-- CORE WEB VITALS -->
+  <section style="margin-top:28px">
+    <div class="kicker-line">Velocidad real (Core Web Vitals)</div>
+    <h2 style="margin-bottom:12px">Cómo carga para el usuario</h2>
+    <div class="cwv">{{WEBVITALS}}</div>
+    <p class="cwv-note">Métricas de laboratorio medidas con Chrome DevTools. Son las que Google usa para rankear y las que decide si tu visitante se queda o se va.</p>
+  </section>
+
+  <!-- RESUMEN -->
+  <section>
+    <div class="kicker-line">En una frase</div>
+    <h2>Lo más importante</h2>
+    <p class="lead">{{RESUMEN}}</p>
+  </section>
+
+  <!-- PÁGINAS AUDITADAS -->
+  {{PAGINAS_SECTION}}
+
+  <!-- HALLAZGOS -->
+  <section>
+    <div class="kicker-line">Qué encontramos</div>
+    <h2>Hallazgos priorizados</h2>
+    <p class="lead">Ordenados por impacto. Empieza por los <b>rojos</b>: son los que más te cuestan clientes.</p>
+    {{HALLAZGOS}}
+  </section>
+
+  <!-- CTA -->
+  <div class="cta">
+    <h2>¿Lo arreglamos?</h2>
+    <p>Kunda no solo te muestra los problemas — los corrige. Implementamos los fixes, medimos el antes y después, y dejamos tu web lista para crecer.</p>
+    <a class="btn" href="{{CTA_LINK}}">Hablemos →</a>
+  </div>
+
+  <footer>
+    <div class="brandmark"><span class="dot"></span>kunda</div>
+    La energía que hace crecer tu negocio. · {{CONTACTO}}
+  </footer>
+
+</div>
+</body>
+</html>
