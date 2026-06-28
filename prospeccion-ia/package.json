@@ -9,7 +9,8 @@
     "test": "node --test",
     "procesar": "node bin/procesar.js",
     "seguir": "node bin/seguir.js",
-    "metricas": "node bin/metricas.js"
+    "metricas": "node bin/metricas.js",
+    "prospectar": "node bin/prospectar.js"
   },
   "dependencies": {
     "csv-parser": "^3.0.0",
