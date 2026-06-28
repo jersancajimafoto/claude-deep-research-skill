@@ -107,6 +107,7 @@ Cadena modular, probada con `node:test`. Total suite del proyecto: **51 pruebas,
 | Baja | Snapshot de métricas → tabla Métricas | ✅ Hecho (`bin/metricas.js`), 1 snapshot en vivo |
 | Alta | Puente prospección → CRM en un comando | ✅ Hecho (`bin/prospectar.js`), Places probado en vivo |
 | Alta | Soporte Firecrawl/scrapers (con email) en el puente | ✅ Hecho — `--from <json>`, mapeo de campos flexible |
+| Baja | Re-scoring de Leads (recalcula desde datos actuales) | ✅ Hecho (`bin/rescore.js`), mantenimiento de consistencia |
 | Baja | Vista/tablero de conversión en Airtable Interfaces | ✅ Hecho — `pbdBGJ2DAs4Kwyndm`, publicado |
 | — | Cargar `AIRTABLE_API_KEY` real (PAT) | ✅ Hecho — inserción y seguimiento operando en vivo |
 

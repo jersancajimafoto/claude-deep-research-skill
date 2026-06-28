@@ -10,7 +10,8 @@
     "procesar": "node bin/procesar.js",
     "seguir": "node bin/seguir.js",
     "metricas": "node bin/metricas.js",
-    "prospectar": "node bin/prospectar.js"
+    "prospectar": "node bin/prospectar.js",
+    "rescore": "node bin/rescore.js"
   },
   "dependencies": {
     "csv-parser": "^3.0.0",
