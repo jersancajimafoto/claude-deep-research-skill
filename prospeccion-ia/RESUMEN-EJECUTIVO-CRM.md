@@ -104,6 +104,7 @@ Cadena modular, probada con `node:test`. Total suite del proyecto: **51 pruebas,
 | Media | Crear tablas reales en Airtable (Leads / Toques / Métricas) vía MCP | ✅ Hecho — base `app9XFFqPvRTFemz2` |
 | Media | Orquestador end-to-end: archivo → ingesta → scoring → Airtable | ✅ Hecho (`bin/procesar.js`), probado en vivo |
 | Media | CLI de seguimiento: recordatorios + registrar toques | ✅ Hecho (`bin/seguir.js`), probado en vivo |
+| Baja | Snapshot de métricas → tabla Métricas | ✅ Hecho (`bin/metricas.js`), 1 snapshot en vivo |
 | Baja | Vista/tablero de conversión en Airtable Interfaces | ✅ Hecho — `pbdBGJ2DAs4Kwyndm`, publicado |
 | — | Cargar `AIRTABLE_API_KEY` real (PAT) | ✅ Hecho — inserción y seguimiento operando en vivo |
 
