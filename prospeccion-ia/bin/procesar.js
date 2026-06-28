@@ -65,7 +65,7 @@ async function main() {
     };
   });
   const calificados = leads.map((l) => ({ ...l, ...scoreLead(l), estado: "Nuevo" }));
-  const payloads = calificados.map((l) => construirPayload(l, l));
+  const payloads = calificados.map((l) => construirPayload(l, l, { Estado: l.estado }));
   const porCat = calificados.reduce((a, l) => ((a[l.categoria] = (a[l.categoria] || 0) + 1), a), {});
   console.log(`[2/4] Scoring: ${JSON.stringify(porCat)}`);
 
