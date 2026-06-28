@@ -7,7 +7,8 @@
   "main": "services/ingesta/index.js",
   "scripts": {
     "test": "node --test",
-    "procesar": "node bin/procesar.js"
+    "procesar": "node bin/procesar.js",
+    "seguir": "node bin/seguir.js"
   },
   "dependencies": {
     "csv-parser": "^3.0.0",

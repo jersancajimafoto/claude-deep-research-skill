@@ -102,9 +102,10 @@ Cadena modular, probada con `node:test`. Total suite del proyecto: **51 pruebas,
 | Alta | Lógica de seguimiento (toques, próximo contacto, recordatorios) | ✅ Hecho (`seguimientoService`) |
 | Alta | Métricas de conversión | ✅ Hecho (`metricasService`) |
 | Media | Crear tablas reales en Airtable (Leads / Toques / Métricas) vía MCP | ✅ Hecho — base `app9XFFqPvRTFemz2` |
-| Media | Orquestador end-to-end: archivo → ingesta → scoring → Airtable | ✅ Hecho (`bin/procesar.js`) |
+| Media | Orquestador end-to-end: archivo → ingesta → scoring → Airtable | ✅ Hecho (`bin/procesar.js`), probado en vivo |
+| Media | CLI de seguimiento: recordatorios + registrar toques | ✅ Hecho (`bin/seguir.js`), probado en vivo |
 | Baja | Vista/tablero de conversión en Airtable Interfaces | ⏳ Pendiente |
-| — | Cargar `AIRTABLE_API_KEY` real (PAT) para inserción en vivo | ⏳ Pendiente (tú) |
+| — | Cargar `AIRTABLE_API_KEY` real (PAT) | ✅ Hecho — inserción y seguimiento operando en vivo |
 
 ### Airtable — base del pipeline
 - **Base:** `CRM Kunda Leads — Pipeline` (`app9XFFqPvRTFemz2`).

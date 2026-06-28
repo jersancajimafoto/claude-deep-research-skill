@@ -120,3 +120,50 @@ test("insertarLeads exige array", () => {
   const svc = crearAirtableService({ ...CFG_BASE, fetchImpl: fakeFetchOk([]) });
   assert.rejects(() => svc.insertarLeads("no-array"), TypeError);
 });
+
+// ---------- listar / obtener / actualizar (nuevos) ----------
+
+test("listar sigue paginación (offset) y agrega registros", async () => {
+  let llamada = 0;
+  const fetchPaginado = async (url) => {
+    llamada++;
+    if (llamada === 1) return { ok: true, status: 200, json: async () => ({ records: [{ id: "r1", fields: {} }], offset: "off1" }) };
+    return { ok: true, status: 200, json: async () => ({ records: [{ id: "r2", fields: {} }] }) };
+  };
+  const svc = crearAirtableService({ ...CFG_BASE, fetchImpl: fetchPaginado });
+  const recs = await svc.listar("Leads", { fields: ["Nombre"], pageSize: 1 });
+  assert.deepEqual(recs.map((r) => r.id), ["r1", "r2"]);
+  assert.equal(llamada, 2);
+});
+
+test("listar usa GET con Bearer y propaga filtro/fields en la URL", async () => {
+  let capturada;
+  const fetchSpy = async (url, opts) => {
+    capturada = { url, method: opts.method, auth: opts.headers.Authorization };
+    return { ok: true, status: 200, json: async () => ({ records: [] }) };
+  };
+  const svc = crearAirtableService({ ...CFG_BASE, fetchImpl: fetchSpy });
+  await svc.listar("Leads", { filterByFormula: "{Estado}='Nuevo'", fields: ["Nombre", "Estado"] });
+  assert.equal(capturada.method, "GET");
+  assert.equal(capturada.auth, "Bearer key_test_ficticia");
+  assert.match(capturada.url, /filterByFormula=/);
+  assert.match(capturada.url, /fields%5B%5D=Nombre/); // fields[]=Nombre
+});
+
+test("obtener devuelve null en 404", async () => {
+  const svc = crearAirtableService({ ...CFG_BASE, fetchImpl: async () => ({ ok: false, status: 404, json: async () => ({}) }) });
+  assert.equal(await svc.obtener("Leads", "recX"), null);
+});
+
+test("actualizar hace PATCH en lotes y reporta actualizados", async () => {
+  const reg = [];
+  const svc = crearAirtableService({ ...CFG_BASE, fetchImpl: (url, opts) => {
+    const body = JSON.parse(opts.body);
+    reg.push(opts.method);
+    return Promise.resolve({ ok: true, status: 200, json: async () => ({ records: body.records.map((r) => ({ id: r.id })) }) });
+  } });
+  const r = await svc.actualizar("Leads", [{ id: "rec1", fields: { Estado: "Ganado" } }]);
+  assert.equal(r.actualizados, 1);
+  assert.equal(r.fallidos, 0);
+  assert.equal(reg[0], "PATCH");
+});
