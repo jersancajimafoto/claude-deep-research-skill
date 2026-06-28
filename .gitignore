@@ -10,6 +10,12 @@ venv/
 ENV/
 env/
 
+# Secrets / API keys (NUNCA versionar)
+.env
+*.env
+!*.env.example
+prospeccion-ia/.env
+
 # IDE
 .vscode/
 .idea/
@@ -21,9 +27,18 @@ env/
 .DS_Store
 Thumbs.db
 
-# Research output (kept local)
+# Research output (kept local). Nota: salida/*.json (con PII de leads) queda local.
 *.json
 !schemas/*.json
+# Manifiestos de Node SÍ se versionan (reproducibilidad), pese a *.json
+!package.json
+!package-lock.json
+!**/package.json
+!**/package-lock.json
+
+# Node
+node_modules/
+prospeccion-ia/uploads/
 
 # Test output
 .pytest_cache/
@@ -32,3 +47,6 @@ htmlcov/
 
 # Cloned external skills/repos (kept local)
 andrej-karpathy-skills/
+
+# graphify knowledge graph output
+graphify-out/

@@ -1,0 +1,16 @@
+{
+  "name": "prospeccion-ia-ingesta",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Servicio modular de ingesta de leads (CSV/XLSX) listo para Airtable",
+  "type": "commonjs",
+  "main": "services/ingesta/index.js",
+  "scripts": {
+    "test": "node --test"
+  },
+  "dependencies": {
+    "csv-parser": "^3.0.0",
+    "multer": "^2.2.0",
+    "xlsx": "file:vendor/xlsx-0.20.3.tgz"
+  }
+}
