@@ -104,11 +104,11 @@ Cadena modular, probada con `node:test`. Total suite del proyecto: **51 pruebas,
 | Media | Crear tablas reales en Airtable (Leads / Toques / Métricas) vía MCP | ✅ Hecho — base `app9XFFqPvRTFemz2` |
 | Media | Orquestador end-to-end: archivo → ingesta → scoring → Airtable | ✅ Hecho (`bin/procesar.js`), probado en vivo |
 | Media | CLI de seguimiento: recordatorios + registrar toques | ✅ Hecho (`bin/seguir.js`), probado en vivo |
-| Baja | Vista/tablero de conversión en Airtable Interfaces | ⏳ Pendiente |
+| Baja | Vista/tablero de conversión en Airtable Interfaces | ✅ Hecho — `pbdBGJ2DAs4Kwyndm`, publicado |
 | — | Cargar `AIRTABLE_API_KEY` real (PAT) | ✅ Hecho — inserción y seguimiento operando en vivo |
 
 ### Airtable — base del pipeline
 - **Base:** `CRM Kunda Leads — Pipeline` (`app9XFFqPvRTFemz2`).
 - **Tablas:** `Leads` (`tbl46vQOqEcuUN1Dd`), `Toques de seguimiento` (`tblZwgAMWohE3MSVu`, enlazada a Leads), `Métricas` (`tblmcH48p8Gxbqi39`).
 - Campos alineados 1:1 con los payloads de los servicios. `.env.example` ya apunta `AIRTABLE_BASE_ID` a esta base.
-- Falta solo cargar un **Personal Access Token** (`AIRTABLE_API_KEY`, scope `data.records:write`) en `.env` para insertar en vivo.
+- **Tablero (Interfaces):** `Tablero CRM Kunda Leads` (`pbdBGJ2DAs4Kwyndm`), página "Embudo y Conversión" publicada. Elementos: total de leads, score promedio, donut por estado (embudo), donut por categoría, barras por origen, score promedio por categoría; filtros por estado/categoría/origen.
