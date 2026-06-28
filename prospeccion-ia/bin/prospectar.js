@@ -8,8 +8,13 @@
  *   node bin/prospectar.js --rubro "estudios contables" --ciudad "Trujillo" [--paginas 2] [--max 40] [--dry]
  *   node bin/prospectar.js --query "dentistas en Piura, Perú" [--dry]
  *   node bin/prospectar.js --from salida/archivo.json [--dry]   # sin gastar API: usa un JSON ya prospectado
+ *   node bin/prospectar.js --from leads-firecrawl.json --origen firecrawl   # leads de Firecrawl (con email)
  *
  *     --dry   no escribe en Airtable; muestra el resumen y un ejemplo.
+ *
+ * --from acepta cualquier JSON ({leads:[...]} o array) de Places, Firecrawl o
+ * cualquier scraper: el mapeo de campos es flexible (empresa/name/company,
+ * telefono/phone/whatsapp, correo/email/mail).
  *
  * Credenciales SOLO por entorno (.env). Nunca se imprimen.
  */
@@ -66,14 +71,27 @@ function leerProspeccion(file) {
   return Array.isArray(data) ? data : data.leads || [];
 }
 
-// Lead Places crudo -> lead limpio del CRM.
+// Busca el primer valor no vacío entre varias claves candidatas (case-insensitive).
+// Permite consumir salidas de Places, Firecrawl o cualquier scraper con otras claves.
+function pick(obj, claves) {
+  if (!obj || typeof obj !== "object") return undefined;
+  const lower = {};
+  for (const k of Object.keys(obj)) lower[k.toLowerCase()] = obj[k];
+  for (const c of claves) {
+    const v = lower[c];
+    if (v != null && String(v).trim() !== "") return v;
+  }
+  return undefined;
+}
+
+// Lead crudo (Places / Firecrawl / genérico) -> lead limpio del CRM.
 function aLimpio(p, origen) {
-  const nombre = normalizaNombre(p.empresa || p.nombre || "");
+  const nombre = normalizaNombre(pick(p, ["empresa", "nombre", "name", "company", "business", "razon_social", "razonsocial"]) || "");
   return {
     nombre,
-    telefono: normalizaTelefono(p.telefono),     // E.164 o null
-    correo: normalizaCorreo(p.email || p.correo), // Places normalmente no trae email
-    empresa: nombre || "",                        // es un negocio identificado
+    telefono: normalizaTelefono(pick(p, ["telefono", "tel", "phone", "whatsapp", "celular", "movil", "wa"])), // E.164 o null
+    correo: normalizaCorreo(pick(p, ["correo", "email", "mail", "correo_electronico", "e-mail"])),            // Firecrawl sí suele traer email
+    empresa: nombre || "",                                                                                     // negocio identificado
     origen,
   };
 }
