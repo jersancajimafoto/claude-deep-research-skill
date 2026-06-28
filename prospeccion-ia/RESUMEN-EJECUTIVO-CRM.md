@@ -101,6 +101,13 @@ Cadena modular, probada con `node:test`. Total suite del proyecto: **51 pruebas,
 | Alta | Integración Airtable a nivel de código | ✅ Hecho (`airtableService`) |
 | Alta | Lógica de seguimiento (toques, próximo contacto, recordatorios) | ✅ Hecho (`seguimientoService`) |
 | Alta | Métricas de conversión | ✅ Hecho (`metricasService`) |
-| Media | Crear tablas reales en Airtable (Leads / Toques / Métricas) vía MCP | ⏳ Pendiente (infra) |
-| Media | Orquestador end-to-end: archivo → ingesta → scoring → Airtable | ⏳ Pendiente |
+| Media | Crear tablas reales en Airtable (Leads / Toques / Métricas) vía MCP | ✅ Hecho — base `app9XFFqPvRTFemz2` |
+| Media | Orquestador end-to-end: archivo → ingesta → scoring → Airtable | ✅ Hecho (`bin/procesar.js`) |
 | Baja | Vista/tablero de conversión en Airtable Interfaces | ⏳ Pendiente |
+| — | Cargar `AIRTABLE_API_KEY` real (PAT) para inserción en vivo | ⏳ Pendiente (tú) |
+
+### Airtable — base del pipeline
+- **Base:** `CRM Kunda Leads — Pipeline` (`app9XFFqPvRTFemz2`).
+- **Tablas:** `Leads` (`tbl46vQOqEcuUN1Dd`), `Toques de seguimiento` (`tblZwgAMWohE3MSVu`, enlazada a Leads), `Métricas` (`tblmcH48p8Gxbqi39`).
+- Campos alineados 1:1 con los payloads de los servicios. `.env.example` ya apunta `AIRTABLE_BASE_ID` a esta base.
+- Falta solo cargar un **Personal Access Token** (`AIRTABLE_API_KEY`, scope `data.records:write`) en `.env` para insertar en vivo.

@@ -6,7 +6,8 @@
   "type": "commonjs",
   "main": "services/ingesta/index.js",
   "scripts": {
-    "test": "node --test"
+    "test": "node --test",
+    "procesar": "node bin/procesar.js"
   },
   "dependencies": {
     "csv-parser": "^3.0.0",
