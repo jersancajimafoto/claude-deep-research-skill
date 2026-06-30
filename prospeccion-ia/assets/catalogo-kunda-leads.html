@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Kunda Leads — Catálogo Comercial</title>
+<meta name="hz:slide-selector" content=".page">
+<meta name="hz:canvas-width" content="794">
+<meta name="hz:canvas-height" content="1123">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --teal:#1E8A7B; --teal-deep:#0E3B36; --bosque:#0A2723;
+    --coral:#E8714C; --crema:#F2EFE6; --menta:#5DCAA5; --arena:#E3DBCB;
+    --tinta:#10312C; --muted:#436159;
+  }
+  @page{ size:A4; margin:0; }
+  *{ margin:0; padding:0; box-sizing:border-box; }
+  html,body{ background:#cfd6d2; }
+  body{ font-family:'Inter',sans-serif; color:var(--tinta); -webkit-font-smoothing:antialiased; line-height:1.55; }
+
+  .page{ position:relative; width:210mm; height:297mm; overflow:hidden; background:var(--crema); page-break-after:always; padding:24mm 22mm; }
+  .page:last-child{ page-break-after:auto; }
+
+  .display{ font-family:'Space Grotesk',sans-serif; font-weight:700; letter-spacing:-.025em; line-height:1.02; }
+  h1,h2,h3{ font-family:'Space Grotesk',sans-serif; letter-spacing:-.02em; line-height:1.08; }
+  .eyebrow{ font-size:9.5pt; font-weight:600; letter-spacing:.16em; text-transform:uppercase; color:var(--teal); }
+  h2{ font-size:24pt; font-weight:600; margin-top:7mm; }
+  .lead{ font-size:12pt; color:var(--muted); max-width:56ch; margin-top:5mm; }
+
+  .firma{ font-family:'Space Grotesk'; font-weight:700; font-size:12pt; color:var(--teal-deep); }
+  .firma .dot{ color:var(--coral); }
+  .topbar{ position:absolute; top:11mm; left:22mm; right:22mm; display:flex; justify-content:space-between; align-items:center; }
+  .pagenum{ font-size:8.5pt; color:#8aa39b; letter-spacing:.12em; font-weight:600; }
+
+  /* PORTADA */
+  .cover{ background:var(--bosque); color:var(--crema); padding:0; }
+  .cover .inner{ position:absolute; inset:0; padding:26mm 22mm; display:flex; flex-direction:column; }
+  .cover::after{ content:""; position:absolute; right:-70mm; top:-70mm; width:170mm; height:170mm; border-radius:50%; background:radial-gradient(circle,rgba(93,202,165,.20),transparent 70%); }
+  .cover::before{ content:""; position:absolute; left:-40mm; bottom:-60mm; width:150mm; height:150mm; border-radius:50%; background:radial-gradient(circle,rgba(232,113,76,.16),transparent 70%); }
+  .cover .firma{ color:var(--crema); font-size:15pt; }
+  .cover .top{ display:flex; justify-content:space-between; align-items:center; }
+  .cover .eyebrow{ color:var(--menta); }
+  .cover h1{ font-family:'Space Grotesk'; font-weight:700; font-size:52pt; letter-spacing:-.03em; margin-top:auto; }
+  .cover h1 em{ color:var(--menta); font-style:normal; }
+  .cover .sub{ font-size:15pt; color:#cfe3dc; max-width:30ch; margin-top:8mm; line-height:1.35; }
+  .cover .foot{ margin-top:auto; display:flex; justify-content:space-between; align-items:flex-end; font-size:10pt; color:#9fc0b7; }
+  .cover .foot b{ color:var(--crema); font-family:'Space Grotesk'; }
+  .cover .tag{ font-size:9pt; letter-spacing:.2em; text-transform:uppercase; color:var(--menta); }
+
+  /* stats / cards */
+  .stats{ display:grid; grid-template-columns:repeat(3,1fr); gap:6mm; margin-top:11mm; }
+  .stat{ background:#fff; border:1px solid var(--arena); border-radius:5mm; padding:7mm 6mm; }
+  .stat .n{ font-family:'Space Grotesk'; font-weight:700; font-size:22pt; color:var(--coral); line-height:1; }
+  .stat .t{ font-size:9.5pt; color:var(--muted); margin-top:3mm; }
+  .foot-note{ font-size:8pt; color:#8aa39b; margin-top:5mm; }
+
+  .pasos{ margin-top:10mm; display:flex; flex-direction:column; gap:4.5mm; }
+  .paso{ display:flex; gap:6mm; align-items:flex-start; background:#fff; border:1px solid var(--arena); border-radius:4mm; padding:5.5mm 7mm; }
+  .paso .nn{ flex:none; width:11mm; height:11mm; border-radius:3mm; background:var(--teal); color:#fff; font-family:'Space Grotesk'; font-weight:700; font-size:14pt; display:flex; align-items:center; justify-content:center; }
+  .paso h3{ font-size:13pt; font-weight:600; }
+  .paso p{ font-size:10pt; color:var(--muted); margin-top:1.5mm; }
+
+  .segs{ margin-top:9mm; display:flex; flex-direction:column; gap:4.5mm; }
+  .seg{ border:1px solid var(--arena); border-radius:4mm; padding:5.5mm 7mm; background:#fff; position:relative; overflow:hidden; }
+  .seg::before{ content:""; position:absolute; left:0; top:0; bottom:0; width:3mm; background:var(--teal); }
+  .seg h3{ font-size:13pt; font-weight:600; color:var(--teal-deep); }
+  .seg .role{ font-size:8.5pt; letter-spacing:.1em; text-transform:uppercase; color:var(--coral); font-weight:600; }
+  .seg .pain{ font-size:9.5pt; color:var(--muted); margin-top:2mm; }
+  .seg .win{ font-size:9.5pt; color:#234; margin-top:2mm; }
+  .seg .win b{ color:var(--teal-deep); }
+
+  .feat{ margin-top:9mm; display:grid; grid-template-columns:1fr 1fr; gap:5mm 7mm; }
+  .f{ display:flex; gap:4mm; align-items:flex-start; }
+  .f .ic{ flex:none; width:9mm; height:9mm; border-radius:50%; background:var(--menta); display:flex; align-items:center; justify-content:center; }
+  .f .ic svg{ width:5mm; height:5mm; }
+  .f h4{ font-size:11pt; font-weight:600; }
+  .f p{ font-size:9pt; color:var(--muted); margin-top:1mm; }
+
+  .panel{ margin-top:9mm; background:var(--teal-deep); color:var(--crema); border-radius:5mm; padding:8mm; display:flex; gap:8mm; }
+  .panel .big{ font-family:'Space Grotesk'; font-weight:700; font-size:28pt; color:var(--menta); line-height:1; flex:none; }
+  .panel p{ font-size:10pt; color:#cfe3dc; }
+  .panel h3{ font-size:13pt; margin-bottom:2mm; }
+
+  /* PRUEBA: caso + quote */
+  .caso{ margin-top:9mm; background:#fff; border:1px solid var(--arena); border-radius:5mm; padding:7mm; }
+  .caso .k{ font-size:8.5pt; letter-spacing:.12em; text-transform:uppercase; color:var(--teal); font-weight:600; }
+  .caso h3{ font-size:14pt; font-weight:600; margin-top:1mm; }
+  .caso p{ font-size:10pt; color:var(--muted); margin-top:2mm; }
+  .quote{ margin-top:8mm; border-left:4px solid var(--coral); background:rgba(232,113,76,.06); border-radius:0 4mm 4mm 0; padding:6mm 7mm; }
+  .quote .q{ font-family:'Space Grotesk'; font-size:13pt; color:var(--teal-deep); font-weight:500; }
+  .quote .ph{ font-size:8.5pt; color:#a08; color:#b08763; margin-top:3mm; font-style:italic; }
+
+  /* tablero mock */
+  .dash{ margin-top:9mm; background:#fff; border:1px solid var(--arena); border-radius:5mm; overflow:hidden; }
+  .dash .bar{ background:var(--teal-deep); color:var(--crema); padding:4mm 6mm; display:flex; justify-content:space-between; align-items:center; }
+  .dash .bar .t{ font-family:'Space Grotesk'; font-weight:600; font-size:11pt; }
+  .dash .bar .e{ font-size:8pt; color:var(--menta); letter-spacing:.1em; text-transform:uppercase; }
+  .dash .body{ padding:6mm; }
+  .dnums{ display:grid; grid-template-columns:repeat(3,1fr); gap:5mm; margin-bottom:6mm; }
+  .dnum{ background:var(--crema); border-radius:3mm; padding:4mm; text-align:center; }
+  .dnum .v{ font-family:'Space Grotesk'; font-weight:700; font-size:18pt; color:var(--teal-deep); }
+  .dnum .l{ font-size:8pt; color:var(--muted); margin-top:1mm; }
+  .dfun{ display:flex; flex-direction:column; gap:2mm; }
+  .dfun .s{ color:#fff; font-size:9pt; font-weight:600; font-family:'Space Grotesk'; padding:2.5mm 4mm; border-radius:2mm; }
+
+  /* tablero branded con datos reales (donuts) */
+  .dashcard{ margin-top:8mm; background:#fff; border:1px solid var(--arena); border-radius:5mm; overflow:hidden; }
+  .dashcard .bar{ background:var(--teal-deep); color:var(--crema); padding:5mm 6mm; display:flex; justify-content:space-between; align-items:center; }
+  .dashcard .bar .t{ font-family:'Space Grotesk'; font-weight:600; font-size:12pt; }
+  .dashcard .bar .e{ font-size:8pt; color:var(--menta); letter-spacing:.1em; text-transform:uppercase; }
+  .dashcard .pad{ padding:6mm; }
+  .dn3{ display:grid; grid-template-columns:repeat(3,1fr); gap:5mm; margin-bottom:7mm; }
+  .dnt{ background:var(--crema); border-radius:3mm; padding:5mm; }
+  .dnt .l{ font-size:8.5pt; color:var(--muted); }
+  .dnt .v{ font-family:'Space Grotesk'; font-weight:700; font-size:23pt; color:var(--teal-deep); line-height:1; margin-top:2mm; }
+  .donuts{ display:grid; grid-template-columns:repeat(3,1fr); gap:5mm; }
+  .dcell .ct{ font-size:9.5pt; font-weight:600; color:var(--teal-deep); margin-bottom:3mm; font-family:'Space Grotesk'; text-align:center; }
+  .donut{ width:33mm; height:33mm; border-radius:50%; margin:0 auto; position:relative; }
+  .donut::after{ content:""; position:absolute; inset:32%; background:#fff; border-radius:50%; }
+  .legend{ margin-top:4mm; display:flex; flex-direction:column; gap:1.4mm; padding-left:7mm; }
+  .lg{ font-size:8pt; color:var(--muted); display:flex; align-items:center; gap:2mm; }
+  .lg .d{ width:2.6mm; height:2.6mm; border-radius:50%; flex:none; }
+  .cap{ margin-top:5mm; font-size:8.5pt; color:#8aa39b; }
+
+  /* comparativa */
+  .ctable{ margin-top:9mm; width:100%; border-collapse:collapse; font-size:9.5pt; }
+  .ctable th,.ctable td{ padding:4mm 3mm; text-align:center; border-bottom:1px solid var(--arena); }
+  .ctable th{ font-family:'Space Grotesk'; font-weight:600; font-size:9pt; }
+  .ctable thead th{ background:var(--bosque); color:var(--crema); }
+  .ctable thead th.k{ background:var(--teal); }
+  .ctable td:first-child,.ctable th:first-child{ text-align:left; font-weight:600; color:var(--teal-deep); }
+  .ctable td.k{ background:rgba(30,138,123,.08); font-weight:600; color:var(--teal-deep); }
+  .ctable .yes{ color:var(--teal); font-weight:700; }
+  .ctable .no{ color:#b06; color:#bd6b54; }
+  .ctable .mid{ color:#8aa39b; }
+
+  /* ROI */
+  .roi{ margin-top:10mm; display:flex; gap:7mm; align-items:stretch; }
+  .roi .col{ flex:1; background:#fff; border:1px solid var(--arena); border-radius:5mm; padding:7mm; }
+  .roi .col.win{ background:var(--teal-deep); color:var(--crema); border-color:var(--teal-deep); }
+  .roi .k{ font-size:8.5pt; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); font-weight:600; }
+  .roi .win .k{ color:var(--menta); }
+  .roi .v{ font-family:'Space Grotesk'; font-weight:700; font-size:26pt; color:var(--teal-deep); margin-top:2mm; }
+  .roi .win .v{ color:var(--menta); }
+  .roi .d{ font-size:9pt; color:var(--muted); margin-top:2mm; }
+  .roi .win .d{ color:#cfe3dc; }
+
+  /* FAQ */
+  .faq{ margin-top:9mm; display:flex; flex-direction:column; gap:4mm; }
+  .qa{ background:#fff; border:1px solid var(--arena); border-radius:4mm; padding:5.5mm 7mm; }
+  .qa .q{ font-family:'Space Grotesk'; font-weight:600; font-size:11.5pt; color:var(--teal-deep); }
+  .qa .a{ font-size:9.5pt; color:var(--muted); margin-top:1.5mm; }
+
+  /* embudo */
+  .funnel{ margin-top:9mm; display:flex; flex-direction:column; align-items:center; gap:3mm; }
+  .fstage{ color:#fff; font-family:'Space Grotesk'; font-weight:600; font-size:11pt; padding:5mm 0; border-radius:2.5mm; text-align:center; }
+
+  /* planes */
+  .planes{ margin-top:9mm; display:grid; grid-template-columns:repeat(3,1fr); gap:5mm; }
+  .plan{ border:1px solid var(--arena); border-radius:5mm; padding:7mm 6mm; background:#fff; display:flex; flex-direction:column; }
+  .plan.dest{ background:var(--teal-deep); color:var(--crema); border-color:var(--teal-deep); }
+  .plan .pn{ font-family:'Space Grotesk'; font-weight:600; font-size:13pt; }
+  .plan .pt{ font-size:8.5pt; letter-spacing:.08em; text-transform:uppercase; color:var(--coral); font-weight:600; margin-bottom:3mm; }
+  .plan.dest .pt{ color:var(--menta); }
+  .plan ul{ list-style:none; margin-top:4mm; display:flex; flex-direction:column; gap:2.5mm; }
+  .plan li{ font-size:9pt; color:var(--muted); padding-left:6mm; position:relative; }
+  .plan.dest li{ color:#cfe3dc; }
+  .plan li::before{ content:"✓"; position:absolute; left:0; color:var(--teal); font-weight:700; }
+  .plan.dest li::before{ color:var(--menta); }
+  .plan .pf{ margin-top:auto; padding-top:5mm; font-size:9pt; color:#8aa39b; }
+  .plan .price{ font-family:'Space Grotesk'; font-weight:700; font-size:17pt; color:var(--teal-deep); margin:3mm 0 0; line-height:1; }
+  .plan.dest .price{ color:var(--menta); }
+  .plan .per{ font-size:8pt; color:#8aa39b; margin-top:1mm; }
+  .plan.dest .per{ color:#bcd6ce; }
+  .garantia{ margin-top:5mm; display:flex; align-items:center; gap:5mm; border:1.5px dashed var(--teal); border-radius:4mm; padding:5mm 7mm; background:rgba(30,138,123,.05); }
+  .garantia .gk{ font-family:'Space Grotesk'; font-weight:700; font-size:10.5pt; color:var(--teal-deep); flex:none; }
+  .garantia .gt{ font-size:9.5pt; color:var(--muted); }
+  .cupos{ margin-top:6mm; display:inline-flex; align-items:center; gap:3mm; font-size:9pt; font-weight:600; color:var(--coral); background:rgba(232,113,76,.1); padding:3mm 6mm; border-radius:100px; }
+
+  /* cierre */
+  .close{ background:var(--bosque); color:var(--crema); }
+  .close .firma{ color:var(--crema); }
+  .close h2{ color:#fff; font-size:29pt; max-width:18ch; }
+  .close .lead{ color:#cfe3dc; }
+  .offer{ margin-top:8mm; background:rgba(93,202,165,.12); border:1px solid rgba(93,202,165,.3); border-radius:4mm; padding:5mm 7mm; }
+  .offer .k{ font-size:8.5pt; letter-spacing:.1em; text-transform:uppercase; color:var(--menta); font-weight:600; }
+  .offer .t{ font-family:'Space Grotesk'; font-weight:600; font-size:13pt; color:#fff; margin-top:1mm; }
+  .offer .d{ font-size:9.5pt; color:#cfe3dc; margin-top:1mm; }
+  .cta{ margin-top:7mm; display:inline-block; background:var(--coral); color:#fff; font-family:'Space Grotesk'; font-weight:600; font-size:12pt; padding:5mm 11mm; border-radius:100px; }
+  .founder{ margin-top:10mm; border-top:1px solid rgba(255,255,255,.15); padding-top:7mm; display:flex; gap:6mm; align-items:flex-start; }
+  .founder .av{ flex:none; width:18mm; height:18mm; border-radius:50%; background:var(--teal); display:flex; align-items:center; justify-content:center; font-family:'Space Grotesk'; font-weight:700; font-size:16pt; color:#fff; }
+  .founder .nm{ font-family:'Space Grotesk'; font-weight:600; font-size:13pt; color:#fff; }
+  .founder .rl{ font-size:9pt; color:var(--menta); letter-spacing:.05em; }
+  .founder p{ font-size:9.5pt; color:#cfe3dc; margin-top:2mm; max-width:50ch; }
+  .contact{ margin-top:9mm; display:flex; gap:8mm; font-size:9.5pt; color:#cfe3dc; }
+  .contact b{ font-family:'Space Grotesk'; display:block; font-size:8pt; letter-spacing:.12em; text-transform:uppercase; color:var(--menta); margin-bottom:1mm; }
+</style>
+</head>
+<body>
+
+<!-- 1 PORTADA -->
+<section class="page cover" data-canvas-width="794" data-canvas-height="1123">
+  <div class="inner">
+    <div class="top">
+      <span class="firma">•kunda<span class="dot">.</span></span>
+      <span class="eyebrow">Catálogo comercial</span>
+    </div>
+    <h1>Kunda <em>Leads</em></h1>
+    <p class="sub">El sistema que llena tu CRM de clientes de alto ticket — sin perseguir a quien no puede pagarte.</p>
+    <div class="foot">
+      <div>Creado por <b>Jers Ancajima</b><br><span class="tag">Agencia Kunda</span></div>
+      <div class="tag">Captación · Calificación · Cierre</div>
+    </div>
+  </div>
+</section>
+
+<!-- 2 PROBLEMA -->
+<section class="page" data-canvas-width="794" data-canvas-height="1123">
+  <div class="topbar"><span class="firma">•kunda<span class="dot">.</span></span><span class="pagenum">02 — EL PROBLEMA</span></div>
+  <p class="eyebrow">El problema</p>
+  <h2>No te faltan clientes.<br>Te faltan los que <span style="color:var(--coral)">sí pueden pagar</span>.</h2>
+  <p class="lead">Persigues contactos que regatean, que no responden, que nunca cierran. Cada semana se va en búsqueda manual, sin orden y sin un sistema que se repita. Mientras tanto, el cliente que sí valía tu servicio se fue con otro.</p>
+  <div class="stats">
+    <div class="stat"><div class="n">6–12 h*</div><div class="t">por semana perdidas prospectando a mano</div></div>
+    <div class="stat"><div class="n">Sin sistema</div><div class="t">cada gestión depende de la memoria de alguien</div></div>
+    <div class="stat"><div class="n">Se enfrían</div><div class="t">leads sin seguimiento que terminan con la competencia</div></div>
+  </div>
+  <p class="foot-note">*Estimación de tiempo en prospección manual B2B.</p>
+  <div class="panel" style="margin-top:12mm;">
+    <div class="big">“</div>
+    <div><h3>El costo invisible</h3><p>Vender alto ticket exige tiempo y foco. Cada hora gastada filtrando curiosos es una hora que no estás cerrando al cliente correcto. El problema no es la falta de gente: es la falta de un sistema que separe a quién sí de quién no.</p></div>
+  </div>
+</section>
+
+<!-- 3 SOLUCIÓN -->
+<section class="page" data-canvas-width="794" data-canvas-height="1123">
+  <div class="topbar"><span class="firma">•kunda<span class="dot">.</span></span><span class="pagenum">03 — LA SOLUCIÓN</span></div>
+  <p class="eyebrow">La solución</p>
+  <h2>Un sistema que <span style="color:var(--teal)">capta, filtra y te entrega</span> clientes de alto ticket.</h2>
+  <p class="lead">Tú defines a quién le vendes. El sistema sale a buscarlos, los califica con un puntaje del 1 al 100, y te los entrega en tu CRM —con su contacto, su prioridad y el mensaje para escribirles. Sin listas que armar a mano, sin perder a nadie en el camino.</p>
+  <div class="feat">
+    <div class="f"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#0A2723" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/></svg></div><div><h4>Encuentra a los correctos</h4><p>Empresas y decisores de tu rubro y tu zona, desde cero.</p></div></div>
+    <div class="f"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#0A2723" stroke-width="2"><path d="M3 5h18M6 12h12M10 19h4"/></svg></div><div><h4>Califica con IA</h4><p>Un puntaje del 1 al 100 ordena a quién contactar primero.</p></div></div>
+    <div class="f"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#0A2723" stroke-width="2"><rect x="3" y="4" width="18" height="4" rx="1"/><rect x="3" y="10" width="18" height="4" rx="1"/><rect x="3" y="16" width="18" height="4" rx="1"/></svg></div><div><h4>Todo en tu CRM</h4><p>Tu equipo lo ve, lo usa y lo gestiona en un solo lugar.</p></div></div>
+    <div class="f"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#0A2723" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div><div><h4>Seguimiento incluido</h4><p>Te dice a quién escribir y registra cada conversación.</p></div></div>
+  </div>
+  <div class="panel">
+    <div class="big">↗</div>
+    <div><h3>Pensado para alto ticket</h3><p>No es para vender barato a muchos. Es para llegar a pocos, los correctos: clientes con capacidad de pagar tu servicio o producto premium, y gestionarlos hasta el cierre.</p></div>
+  </div>
+</section>
+
+<!-- 4 CÓMO FUNCIONA -->
+<section class="page" data-canvas-width="794" data-canvas-height="1123">
+  <div class="topbar"><span class="firma">•kunda<span class="dot">.</span></span><span class="pagenum">04 — EL PROCESO</span></div>
+  <p class="eyebrow">El proceso, paso a paso</p>
+  <h2>Del desconocido al cliente cerrado.</h2>
+  <p class="lead">Todo el recorrido vive dentro del sistema. Así trabaja, paso a paso:</p>
+  <div class="pasos">
+    <div class="paso"><div class="nn">1</div><div><h3>Captar</h3><p>Busca empresas y decisores de tu rubro y ciudad, y los trae con su contacto.</p></div></div>
+    <div class="paso"><div class="nn">2</div><div><h3>Calificar</h3><p>Cada prospecto recibe un puntaje y una categoría —Alta, Media, Baja— según qué tan buen cliente es.</p></div></div>
+    <div class="paso"><div class="nn">3</div><div><h3>Cargar</h3><p>Los leads limpios entran a tu CRM, sin duplicados y listos para contactar por WhatsApp.</p></div></div>
+    <div class="paso"><div class="nn">4</div><div><h3>Recontactar</h3><p>Te dice a quién escribir cada día y registra cada toque, sin que nadie se enfríe.</p></div></div>
+    <div class="paso"><div class="nn">5</div><div><h3>Medir</h3><p>Ves tu embudo y tu conversión en vivo: cuántos entran, cuántos avanzan, cuántos cierran.</p></div></div>
+  </div>
+</section>
+
+<!-- 5 PRUEBA -->
+<section class="page" data-canvas-width="794" data-canvas-height="1123">
+  <div class="topbar"><span class="firma">•kunda<span class="dot">.</span></span><span class="pagenum">05 — EN LA PRÁCTICA</span></div>
+  <p class="eyebrow">En la práctica</p>
+  <h2>Probado en campo, con clientes reales.</h2>
+  <p class="lead">El sistema no es una promesa: ya opera con clientes. Esto es lo que entrega.</p>
+  <div class="stats">
+    <div class="stat"><div class="n">192</div><div class="t">inversionistas de alto ticket cargados al CRM de un solo cliente</div></div>
+    <div class="stat"><div class="n">Minutos</div><div class="t">lo que prospectar a mano tomaba horas</div></div>
+    <div class="stat"><div class="n">1–100</div><div class="t">puntaje de prioridad en cada lead, automático</div></div>
+  </div>
+  <div class="caso">
+    <div class="k">Primer cliente · Oro Azul</div>
+    <h3>Proyecto de inversión — captación de inversionistas</h3>
+    <p>Prospectamos, calificamos y cargamos <b>192 inversionistas de alto patrimonio</b> a su propio CRM, segmentados y priorizados por puntaje, listos para contactar. De una lista dispersa a un pipeline ordenado y medible.</p>
+    <p style="margin-top:3mm; color:#7d978f; font-size:9pt;">También probado en servicios profesionales (rubro contable, norte del Perú): prospección + scoring + seguimiento por WhatsApp.</p>
+  </div>
+</section>
+
+<!-- 6 PARA QUIÉN -->
+<section class="page" data-canvas-width="794" data-canvas-height="1123">
+  <div class="topbar"><span class="firma">•kunda<span class="dot">.</span></span><span class="pagenum">06 — PARA QUIÉN ES</span></div>
+  <p class="eyebrow">Para quién es</p>
+  <h2>Hecho para quien vende alto ticket.</h2>
+  <p class="lead">Tres perfiles, un mismo objetivo: llegar a clientes que sí pueden pagar lo que vale tu servicio.</p>
+  <div class="segs">
+    <div class="seg">
+      <span class="role">Dueños de negocio</span>
+      <h3>Llena tu agenda sin dejar de operar.</h3>
+      <p class="pain">Hoy prospectas en los ratos libres —o no prospectas. El crecimiento depende de tu tiempo, que ya no alcanza.</p>
+      <p class="win"><b>Con Kunda Leads:</b> un flujo constante de clientes potenciales calificados, listos para que cierres, sin robarte horas de operación.</p>
+    </div>
+    <div class="seg">
+      <span class="role">Empresas</span>
+      <h3>Un motor de demanda predecible.</h3>
+      <p class="pain">El equipo comercial improvisa: cada vendedor busca como puede y nada queda registrado ni se repite.</p>
+      <p class="win"><b>Con Kunda Leads:</b> un sistema central que alimenta a todo el equipo con leads cualificados y deja cada gestión medida y trazable.</p>
+    </div>
+    <div class="seg">
+      <span class="role">Gerentes comerciales</span>
+      <h3>Visibilidad y control del pipeline.</h3>
+      <p class="pain">No sabes cuántos leads reales hay, en qué etapa están, ni por qué se caen los cierres.</p>
+      <p class="win"><b>Con Kunda Leads:</b> embudo, conversión y próximos pasos a la vista para decidir con datos, no con corazonadas.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 7 DIFERENCIADORES -->
+<section class="page" data-canvas-width="794" data-canvas-height="1123">
+  <div class="topbar"><span class="firma">•kunda<span class="dot">.</span></span><span class="pagenum">07 — DIFERENCIADORES</span></div>
+  <p class="eyebrow">Por qué Kunda Leads</p>
+  <h2>No es una lista. Es un sistema.</h2>
+  <p class="lead">Cualquiera te vende una base de contactos. Kunda Leads te entrega un proceso completo que trabaja por ti, mes a mes.</p>
+  <div class="feat" style="margin-top:11mm;">
+    <div class="f"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#0A2723" stroke-width="2"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/></svg></div><div><h4>Filtro de alto ticket</h4><p>El puntaje prioriza a quién sí puede pagarte, no a cualquiera.</p></div></div>
+    <div class="f"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#0A2723" stroke-width="2"><path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6z"/></svg></div><div><h4>Datos seguros</h4><p>Los contactos viven en tu CRM con permisos. Tu base, tu activo.</p></div></div>
+    <div class="f"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#0A2723" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div><div><h4>Seguimiento que no falla</h4><p>Te recuerda a quién contactar y registra cada toque.</p></div></div>
+    <div class="f"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#0A2723" stroke-width="2"><path d="M4 19V5M4 19h16M8 15l3-4 3 2 4-6"/></svg></div><div><h4>Métricas en vivo</h4><p>Tablero de embudo y conversión que tu equipo ve cuando quiere.</p></div></div>
+    <div class="f"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#0A2723" stroke-width="2"><path d="M12 3v18M5 8l7-5 7 5"/></svg></div><div><h4>Se repite y escala</h4><p>El mismo motor sirve para otra ciudad, otro rubro, otra campaña.</p></div></div>
+    <div class="f"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#0A2723" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg></div><div><h4>Humano en control</h4><p>Tú decides el mensaje y el cierre. La IA hace el trabajo pesado.</p></div></div>
+  </div>
+</section>
+
+<!-- 8 COMPARATIVA -->
+<section class="page" data-canvas-width="794" data-canvas-height="1123">
+  <div class="topbar"><span class="firma">•kunda<span class="dot">.</span></span><span class="pagenum">08 — COMPARATIVA</span></div>
+  <p class="eyebrow">Kunda Leads vs. las alternativas</p>
+  <h2>La misma meta, cuatro caminos distintos.</h2>
+  <p class="lead">Conseguir clientes de alto ticket se puede intentar de varias formas. Esto es lo que entrega cada una:</p>
+  <table class="ctable">
+    <thead>
+      <tr><th></th><th>A mano</th><th>Base comprada</th><th>Contratar un SDR</th><th class="k">Kunda Leads</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Listo en</td><td class="mid">Semanas</td><td class="yes">Días</td><td class="mid">Meses</td><td class="k">Días</td></tr>
+      <tr><td>Filtro de alto ticket</td><td class="no">✕</td><td class="no">✕</td><td class="mid">Variable</td><td class="k">✓</td></tr>
+      <tr><td>Datos de tu rubro/zona</td><td class="yes">✓</td><td class="no">Genéricos</td><td class="yes">✓</td><td class="k">✓</td></tr>
+      <tr><td>Seguimiento ordenado</td><td class="no">✕</td><td class="no">✕</td><td class="yes">✓</td><td class="k">✓</td></tr>
+      <tr><td>Métricas de conversión</td><td class="no">✕</td><td class="no">✕</td><td class="mid">Parcial</td><td class="k">✓</td></tr>
+      <tr><td>Costo fijo mensual</td><td class="mid">Tu tiempo</td><td class="yes">Bajo</td><td class="no">Alto (sueldo)</td><td class="k">Variable</td></tr>
+      <tr><td>Los datos son tuyos</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td><td class="k">✓</td></tr>
+    </tbody>
+  </table>
+  <div class="panel">
+    <div class="big">=</div>
+    <div><h3>Lo mejor de cada camino, sin sus contras</h3><p>Rápido como una base comprada, enfocado como un buen SDR, con el filtro de alto ticket y las métricas que ninguna otra opción te da —y sin un sueldo fijo de por medio.</p></div>
+  </div>
+</section>
+
+<!-- 9 LO QUE RECIBES -->
+<section class="page" data-canvas-width="794" data-canvas-height="1123">
+  <div class="topbar"><span class="firma">•kunda<span class="dot">.</span></span><span class="pagenum">09 — LO QUE RECIBES</span></div>
+  <p class="eyebrow">Lo que recibes</p>
+  <h2>Tu CRM, vivo y a la vista.</h2>
+  <p class="lead">Tu equipo ve todo en un tablero en tiempo real. Así se ve el de un cliente real:</p>
+  <div class="dashcard">
+    <div class="bar"><span class="t">Tablero — Cliente Oro Azul</span><span class="e">192 inversionistas · datos reales</span></div>
+    <div class="pad">
+      <div class="dn3">
+        <div class="dnt"><div class="l">Inversionistas</div><div class="v">192</div></div>
+        <div class="dnt"><div class="l">Score promedio</div><div class="v">66</div></div>
+        <div class="dnt"><div class="l">Rating promedio</div><div class="v">4.9</div></div>
+      </div>
+      <div class="donuts">
+        <div class="dcell">
+          <div class="ct">Por ciudad</div>
+          <div class="donut" style="background:conic-gradient(var(--bosque) 0 34.4%, var(--teal) 34.4% 67.7%, var(--coral) 67.7% 100%);"></div>
+          <div class="legend">
+            <div class="lg"><span class="d" style="background:var(--bosque)"></span>Lima · 34.4%</div>
+            <div class="lg"><span class="d" style="background:var(--teal)"></span>Piura · 33.3%</div>
+            <div class="lg"><span class="d" style="background:var(--coral)"></span>Arequipa · 32.3%</div>
+          </div>
+        </div>
+        <div class="dcell">
+          <div class="ct">Por profesión</div>
+          <div class="donut" style="background:conic-gradient(var(--teal) 0 50%, var(--bosque) 50% 69.8%, var(--menta) 69.8% 89.6%, var(--coral) 89.6% 100%);"></div>
+          <div class="legend">
+            <div class="lg"><span class="d" style="background:var(--teal)"></span>Odontología · 50%</div>
+            <div class="lg"><span class="d" style="background:var(--bosque)"></span>Derecho · 19.8%</div>
+            <div class="lg"><span class="d" style="background:var(--menta)"></span>Arquitectura · 19.8%</div>
+            <div class="lg"><span class="d" style="background:var(--coral)"></span>Medicina · 10.4%</div>
+          </div>
+        </div>
+        <div class="dcell">
+          <div class="ct">Por estado</div>
+          <div class="donut" style="background:conic-gradient(var(--teal) 0 100%);"></div>
+          <div class="legend">
+            <div class="lg"><span class="d" style="background:var(--teal)"></span>Nuevo · 100%</div>
+            <div class="lg" style="color:#aebfb8;"><span class="d" style="background:var(--arena)"></span>Contactado · —</div>
+            <div class="lg" style="color:#aebfb8;"><span class="d" style="background:var(--arena)"></span>Ganado · —</div>
+          </div>
+        </div>
+      </div>
+      <p class="cap">Datos reales del cliente Oro Azul (192 inversionistas de alto patrimonio), con la identidad gráfica de Kunda.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 10 ROI -->
+<section class="page" data-canvas-width="794" data-canvas-height="1123">
+  <div class="topbar"><span class="firma">•kunda<span class="dot">.</span></span><span class="pagenum">10 — LA CUENTA QUE IMPORTA</span></div>
+  <p class="eyebrow">La cuenta que importa</p>
+  <h2>Un cliente de alto ticket paga el sistema <span style="color:var(--teal)">muchas veces</span>.</h2>
+  <p class="lead">No necesitas más leads. Necesitas los correctos: con uno solo bien cerrado, el sistema ya se pagó. Un ejemplo ilustrativo:</p>
+  <div class="roi">
+    <div class="col"><div class="k">Tu ticket promedio (ejemplo)</div><div class="v">S/ 5,000</div><div class="d">lo que cobras por un cliente de alto ticket.</div></div>
+    <div class="col"><div class="k">Cierras 2 más al mes</div><div class="v">S/ 10,000</div><div class="d">ingreso adicional que hoy se te escapa.</div></div>
+    <div class="col win"><div class="k">El sistema ya se pagó</div><div class="v">1 cierre</div><div class="d">basta un solo cliente nuevo para cubrir la inversión.</div></div>
+  </div>
+  <div class="panel" style="margin-top:12mm;">
+    <div class="big">×</div>
+    <div><h3>El efecto se acumula</h3><p>Cada mes el sistema sigue trayendo y calificando. No pagas por una lista que se gasta: construyes un activo de clientes que crece y que es tuyo. <span style="color:#9fc0b7;">Cifras de ejemplo; tu caso se calcula según tu ticket real.</span></p></div>
+  </div>
+</section>
+
+<!-- 11 PLANES -->
+<section class="page" data-canvas-width="794" data-canvas-height="1123">
+  <div class="topbar"><span class="firma">•kunda<span class="dot">.</span></span><span class="pagenum">11 — PLANES</span></div>
+  <p class="eyebrow">Planes</p>
+  <h2>Elige cómo quieres crecer.</h2>
+  <p class="lead">Tres formas de empezar. Todas entregan leads calificados de alto ticket en tu CRM; cambia el volumen y el acompañamiento.</p>
+  <div class="cupos">● Cupos limitados — trabajamos pocos clientes por rubro y zona para cuidar tu exclusividad.</div>
+  <div class="planes">
+    <div class="plan">
+      <span class="pt">Para empezar</span>
+      <div class="pn">Inicial</div>
+      <div class="price">Desde S/ 1,490</div>
+      <div class="per">arranque · implementación + primer lote</div>
+      <ul>
+        <li>1 rubro / 1 ciudad</li>
+        <li>Lote de leads calificados</li>
+        <li>CRM montado y listo</li>
+        <li>Mensajes de WhatsApp</li>
+        <li>Tablero de conversión</li>
+      </ul>
+      <div class="pf">Ideal para validar tu primer flujo.</div>
+    </div>
+    <div class="plan dest">
+      <span class="pt">El más elegido</span>
+      <div class="pn">Crecimiento</div>
+      <div class="price">S/ 2,900</div>
+      <div class="per">por mes</div>
+      <ul>
+        <li>Varios rubros / ciudades</li>
+        <li>Recarga periódica de leads</li>
+        <li>Seguimiento y recordatorios</li>
+        <li>Métricas mensuales</li>
+        <li>Optimización del scoring</li>
+      </ul>
+      <div class="pf" style="color:#bcd6ce;">Para quien ya vende y quiere escalar.</div>
+    </div>
+    <div class="plan">
+      <span class="pt">Alto volumen</span>
+      <div class="pn">Élite</div>
+      <div class="price">Desde S/ 5,900</div>
+      <div class="per">por mes · o a medida</div>
+      <ul>
+        <li>Campañas a medida</li>
+        <li>Multi-equipo comercial</li>
+        <li>Integración y datos avanzados</li>
+        <li>Acompañamiento dedicado</li>
+        <li>Reportes ejecutivos</li>
+      </ul>
+      <div class="pf">Para empresas con equipo de ventas.</div>
+    </div>
+  </div>
+  <div class="panel" style="margin-top:9mm;">
+    <div class="big">$</div>
+    <div><h3>Hazte la cuenta</h3><p><b style="color:var(--menta)">Crecimiento cuesta S/ 2,900 al mes; con un solo cierre de alto ticket (ej. S/ 5,000) ya lo recuperaste —y de ahí en adelante, es ganancia.</b> Precios referenciales en soles; el plan final se ajusta a tu rubro, ciudad y volumen.</p></div>
+  </div>
+  <div class="garantia">
+    <span class="gk">Garantía de arranque</span>
+    <span class="gt">Te entregamos tu primer lote de leads calificados de tu rubro y zona. Si no encajan, ajustamos la campaña sin costo.</span>
+  </div>
+</section>
+
+<!-- 12 FAQ -->
+<section class="page" data-canvas-width="794" data-canvas-height="1123">
+  <div class="topbar"><span class="firma">•kunda<span class="dot">.</span></span><span class="pagenum">12 — PREGUNTAS FRECUENTES</span></div>
+  <p class="eyebrow">Antes de decidir</p>
+  <h2>Las dudas que todos tienen.</h2>
+  <div class="faq">
+    <div class="qa"><div class="q">¿De dónde salen los leads?</div><div class="a">De fuentes públicas de tu rubro y tu zona —directorios y mapas de negocios— no de listas compradas al azar. Por eso encajan con lo que vendes.</div></div>
+    <div class="qa"><div class="q">¿Los datos son míos?</div><div class="a">Sí. Viven en tu propio CRM, con tus permisos. Es tu activo: si mañana sigues solo, la base queda contigo.</div></div>
+    <div class="qa"><div class="q">¿Esto es spam?</div><div class="a">No. Tú decides el mensaje y lo envías con un clic por WhatsApp. La IA hace el trabajo de buscar y filtrar; el contacto siempre lo controla un humano.</div></div>
+    <div class="qa"><div class="q">¿Trabajan a mi competencia?</div><div class="a">Tu rubro y zona se trabajan para ti. La exclusividad por territorio se conversa según el plan.</div></div>
+    <div class="qa"><div class="q">¿Qué necesitan de mí para arrancar?</div><div class="a">Solo cuatro datos: a quién le vendes, en qué zona, qué ofreces y desde qué WhatsApp escribes. Del resto se encarga el sistema.</div></div>
+  </div>
+</section>
+
+<!-- 13 CIERRE -->
+<section class="page close" data-canvas-width="794" data-canvas-height="1123">
+  <div class="topbar"><span class="firma">•kunda<span class="dot">.</span></span><span class="pagenum" style="color:#5f7d74;">13 — HABLEMOS</span></div>
+  <p class="eyebrow" style="color:var(--menta);">El siguiente paso</p>
+  <h2>Deja de buscar clientes.<br>Que el sistema te los traiga.</h2>
+  <p class="lead">Agenda una conversación y arma tu primer flujo de clientes de alto ticket con Kunda Leads.</p>
+  <div class="offer">
+    <div class="k">Oferta de entrada</div>
+    <div class="t">Diagnóstico de prospección sin costo</div>
+    <div class="d">Analizamos tu rubro y tu zona, y te mostramos qué tan lleno puede quedar tu pipeline —antes de que decidas.</div>
+  </div>
+  <span class="cta">Quiero mi diagnóstico →</span>
+  <div class="founder">
+    <div class="av">JA</div>
+    <div>
+      <div class="nm">Jers Ancajima</div>
+      <div class="rl">Creador de Kunda Leads · Agencia Kunda</div>
+      <p>“Construí Kunda Leads porque vi a buenos negocios perder tiempo persiguiendo a quien no podía pagarles. Este sistema invierte la ecuación: trae a los correctos y los gestiona hasta el cierre.”</p>
+    </div>
+  </div>
+  <div class="contact">
+    <div><b>WhatsApp</b>969 957 672</div>
+    <div><b>Correo</b>jersancajima@gmail.com</div>
+    <div><b>Sistema</b>Kunda Leads · Agencia Kunda</div>
+  </div>
+</section>
+
+</body>
+</html>
