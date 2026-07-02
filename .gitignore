@@ -55,10 +55,12 @@ andrej-karpathy-skills/
 # graphify knowledge graph output
 graphify-out/
 
-# youtube-shorts: media generada y temporales (no versionar binarios pesados)
+# youtube-shorts: media generada y temporales (no versionar binarios pesados).
+# Globs acotados al subproyecto: reglas repo-wide (*.mp4) ya tragaron archivos
+# en silencio antes (caso *.json / tienda-jers/tsconfig.json).
 youtube-shorts/tmp/
 youtube-shorts/salida/
 youtube-shorts/assets/
-*.mp4
-*.mp3
-*.wav
+youtube-shorts/**/*.mp4
+youtube-shorts/**/*.mp3
+youtube-shorts/**/*.wav
