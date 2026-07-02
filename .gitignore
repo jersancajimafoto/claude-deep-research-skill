@@ -35,6 +35,8 @@ Thumbs.db
 !package-lock.json
 !**/package.json
 !**/package-lock.json
+# TypeScript config para proyectos Node (ej. tienda-jers/)
+!tsconfig.json
 
 # Node
 node_modules/
@@ -50,3 +52,11 @@ andrej-karpathy-skills/
 
 # graphify knowledge graph output
 graphify-out/
+
+# youtube-shorts: media generada y temporales (no versionar binarios pesados)
+youtube-shorts/tmp/
+youtube-shorts/salida/
+youtube-shorts/assets/
+*.mp4
+*.mp3
+*.wav
