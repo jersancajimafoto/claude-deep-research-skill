@@ -37,6 +37,8 @@ Thumbs.db
 !**/package-lock.json
 # TypeScript config para proyectos Node (ej. tienda-jers/)
 !tsconfig.json
+# Product JSON content files (tienda-jers store products)
+!tienda-jers/content/**/*.json
 
 # Node
 node_modules/

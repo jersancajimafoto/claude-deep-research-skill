@@ -1,0 +1,69 @@
+{
+  "slug": "guia-marketing-ia",
+  "tipo": "Ebook",
+  "titulo": "Marketing con IA de Cero a Cien",
+  "subtitulo": "Guía práctica de marketing estratégico + automatización con IA",
+  "descripcionCorta": "La guía en español para integrar IA en tu estrategia de marketing: de los fundamentos a flujos automatizados completos.",
+  "descripcionLarga": [
+    "La IA cambió el marketing. Pero la mayoría de negocios apenas usa el 10% de lo que puede hacer.",
+    "Esta guía te lleva del \"no sé por dónde empezar\" al \"acabo de automatizar mi prospección, contenido y reportes\". Paso a paso. Sin jerga. Con ejemplos reales de negocios en Latinoamérica.",
+    "No importa si no sabes programar. Cada concepto está explicado con analogías simples y flujos que puedes copiar."
+  ],
+  "autor": "Jers Ancajima",
+  "version": "1.0",
+  "fecha": "Julio 2026",
+  "icono": "/images/store/guia-icon.png",
+  "precio": { "usd": 29, "pen": 99 },
+  "stripePriceId": "",
+  "features": [
+    "Descarga digital instantánea",
+    "Pago seguro vía Stripe",
+    "Pago único — sin suscripción"
+  ],
+  "queObtienes": [
+    "Guía completa en español con ejemplos prácticos",
+    "Flujos de automatización listos para copiar",
+    "Plantillas de prompts para marketing",
+    "PDF listo para leer en cualquier dispositivo"
+  ],
+  "paraQuien": [
+    {
+      "perfil": "Emprendedores y PYMEs",
+      "texto": "Quieres usar IA en tu negocio sin contratar una agencia. Empieza por los fundamentos."
+    },
+    {
+      "perfil": "Marketers",
+      "texto": "Ya haces marketing y quieres multiplicar tu output con automatización."
+    },
+    {
+      "perfil": "Freelancers y agencias",
+      "texto": "Quieres ofrecer servicios de IA a tus clientes con procesos probados."
+    }
+  ],
+  "contenido": [
+    {
+      "seccion": "Fundamentos",
+      "capitulos": [
+        "1. Qué puede (y qué no puede) hacer la IA en marketing",
+        "2. Las herramientas que importan en 2026",
+        "3. Prompting para marketing"
+      ]
+    },
+    {
+      "seccion": "Estrategia",
+      "capitulos": [
+        "4. Investigación de mercado con IA",
+        "5. Contenido y redes sociales automatizados",
+        "6. Prospección y CRM inteligente"
+      ]
+    },
+    {
+      "seccion": "Automatización",
+      "capitulos": [
+        "7. Flujos completos end-to-end",
+        "8. Medición y reportes automáticos",
+        "9. Casos reales paso a paso"
+      ]
+    }
+  ]
+}

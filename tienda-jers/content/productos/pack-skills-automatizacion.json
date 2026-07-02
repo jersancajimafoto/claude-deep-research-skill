@@ -1,0 +1,51 @@
+{
+  "slug": "pack-skills-automatizacion",
+  "tipo": "Pack de templates",
+  "titulo": "Pack de Skills y Templates de Automatización",
+  "subtitulo": "Skills, prompts y flujos listos para usar con Claude y herramientas de IA",
+  "descripcionCorta": "Paquete de skills, plantillas y workflows probados: prospección, auditoría web, contenido y CRM — listos para copiar y adaptar.",
+  "descripcionLarga": [
+    "Cada skill de este pack nació de un proyecto real: prospección de leads, auditorías web, sistemas de contenido, CRM automatizado.",
+    "No son ejemplos de juguete. Son los flujos que uso con clientes reales, documentados para que los adaptes a tu negocio en minutos.",
+    "Incluye instrucciones de instalación y personalización para cada skill."
+  ],
+  "autor": "Jers Ancajima",
+  "version": "1.0",
+  "fecha": "Julio 2026",
+  "icono": "/images/store/pack-icon.png",
+  "precio": { "usd": 29, "pen": 99 },
+  "stripePriceId": "",
+  "features": [
+    "Descarga digital instantánea",
+    "Pago seguro vía Stripe",
+    "Pago único — sin suscripción"
+  ],
+  "queObtienes": [
+    "Skills listos para instalar en Claude Code",
+    "Plantillas de prompts por caso de uso",
+    "Workflows de prospección y auditoría documentados",
+    "Guía de instalación y personalización"
+  ],
+  "paraQuien": [
+    {
+      "perfil": "Usuarios de Claude",
+      "texto": "Ya usas Claude y quieres skills probados en vez de construir desde cero."
+    },
+    {
+      "perfil": "Consultores y agencias",
+      "texto": "Necesitas procesos replicables para entregar a clientes más rápido."
+    }
+  ],
+  "contenido": [
+    {
+      "seccion": "Incluido en el pack",
+      "capitulos": [
+        "1. Skill de prospección de leads",
+        "2. Skill de auditoría web",
+        "3. Sistema de contenido para redes",
+        "4. Plantillas de CRM y scoring",
+        "5. Guía de instalación"
+      ]
+    }
+  ]
+}
