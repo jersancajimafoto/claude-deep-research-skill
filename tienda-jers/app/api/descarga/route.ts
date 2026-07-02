@@ -19,6 +19,12 @@ export async function GET(request: Request) {
     if (session.payment_status !== "paid") {
       return NextResponse.json({ error: "Pago no confirmado" }, { status: 403 });
     }
+    if (session.metadata?.slug !== producto.slug) {
+      return NextResponse.json(
+        { error: "La compra no corresponde a este producto" },
+        { status: 403 }
+      );
+    }
   } catch {
     return NextResponse.json({ error: "Sesión inválida" }, { status: 403 });
   }

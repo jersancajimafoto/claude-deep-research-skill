@@ -31,7 +31,10 @@ describe("POST /api/checkout", () => {
   // en Vitest 4.1.9 reusar un mock con mockReset() tras mockResolvedValue()
   // y luego mockRejectedValue() dispara un unhandledRejection espurio pese a
   // que la promesa sí se captura en el try/catch de route.ts.
-  beforeEach(() => vi.clearAllMocks());
+  beforeEach(() => {
+    vi.clearAllMocks();
+    process.env.NEXT_PUBLIC_SITE_URL = "http://localhost:3000";
+  });
 
   it("crea sesión y devuelve url para producto con precio", async () => {
     createMock.mockResolvedValue({ url: "https://checkout.stripe.com/abc" });
@@ -43,6 +46,10 @@ describe("POST /api/checkout", () => {
       expect.objectContaining({
         line_items: [{ price: "price_123", quantity: 1 }],
         mode: "payment",
+        metadata: { slug: "con-precio" },
+        success_url:
+          "http://localhost:3000/tienda/con-precio/gracias?session_id={CHECKOUT_SESSION_ID}",
+        cancel_url: "http://localhost:3000/tienda/con-precio",
       })
     );
   });

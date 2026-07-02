@@ -19,7 +19,8 @@ export default async function GraciasPage({
   if (session_id) {
     try {
       const session = await stripe.checkout.sessions.retrieve(session_id);
-      pagado = session.payment_status === "paid";
+      pagado =
+        session.payment_status === "paid" && session.metadata?.slug === slug;
     } catch {
       pagado = false;
     }

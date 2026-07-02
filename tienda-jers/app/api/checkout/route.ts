@@ -25,6 +25,7 @@ export async function POST(request: Request) {
       line_items: [{ price: producto.stripePriceId, quantity: 1 }],
       success_url: `${base}/tienda/${producto.slug}/gracias?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${base}/tienda/${producto.slug}`,
+      metadata: { slug: producto.slug },
     });
     if (!session.url) {
       return NextResponse.json(
