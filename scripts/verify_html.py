@@ -6,8 +6,47 @@ Validates that HTML reports are properly generated with all sections from MD
 
 import argparse
 import re
+from html.parser import HTMLParser
 from pathlib import Path
 from typing import List, Tuple
+
+
+# Elements that never have a closing tag (HTML5 void elements)
+VOID_ELEMENTS = {
+    'area', 'base', 'br', 'col', 'embed', 'hr', 'img', 'input',
+    'link', 'meta', 'param', 'source', 'track', 'wbr'
+}
+
+
+class TagBalanceParser(HTMLParser):
+    """Track open/close tag balance to detect unclosed or stray tags"""
+
+    def __init__(self):
+        super().__init__(convert_charrefs=True)
+        self.stack = []  # list of (tag, line_number)
+        self.unclosed = []  # tags left open at EOF: (tag, line_number)
+        self.stray_closers = []  # closing tags with no matching opener: (tag, line_number)
+
+    def handle_starttag(self, tag, attrs):
+        if tag not in VOID_ELEMENTS:
+            self.stack.append((tag, self.getpos()[0]))
+
+    def handle_endtag(self, tag):
+        if tag in VOID_ELEMENTS:
+            return
+        # Find the most recent matching open tag
+        for i in range(len(self.stack) - 1, -1, -1):
+            if self.stack[i][0] == tag:
+                # Anything opened after it is implicitly unclosed
+                self.unclosed.extend(self.stack[i + 1:])
+                del self.stack[i:]
+                return
+        self.stray_closers.append((tag, self.getpos()[0]))
+
+    def close(self):
+        super().close()
+        self.unclosed.extend(self.stack)
+        self.stack = []
 
 
 class HTMLVerifier:
@@ -135,14 +174,20 @@ class HTMLVerifier:
             if element not in html:
                 self.errors.append(f"Missing {name} in HTML")
 
-        # Check for unclosed tags (basic check)
-        open_divs = html.count('<div')
-        close_divs = html.count('</div>')
+        # Check for unclosed tags
+        parser = TagBalanceParser()
+        try:
+            parser.feed(html)
+            parser.close()
+        except Exception as e:
+            self.warnings.append(f"Could not parse HTML for tag balance: {e}")
+            return
 
-        if abs(open_divs - close_divs) > 2:  # Allow small discrepancy
-            self.warnings.append(
-                f"Possible unclosed divs: {open_divs} opening tags, {close_divs} closing tags"
-            )
+        for tag, line in parser.unclosed:
+            self.warnings.append(f"Unclosed <{tag}> tag opened at line {line}")
+
+        for tag, line in parser.stray_closers:
+            self.warnings.append(f"Stray closing </{tag}> tag at line {line} with no matching opener")
 
     def _check_citations(self, html: str, md: str):
         """Verify citations are present"""
