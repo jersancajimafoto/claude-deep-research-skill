@@ -99,18 +99,11 @@ def _convert_content_section(markdown: str) -> str:
     # Close all open sections
     html = _close_sections(html)
 
-    # Wrap executive summary if present
+    # Mark executive summary section if present (styled via .executive-summary)
     html = html.replace(
-        '<h2 class="section-title">Executive Summary</h2>',
-        '<div class="executive-summary"><h2 class="section-title">Executive Summary</h2>'
+        '<div class="section"><h2 class="section-title">Executive Summary</h2>',
+        '<div class="section executive-summary"><h2 class="section-title">Executive Summary</h2>'
     )
-    if '<div class="executive-summary">' in html:
-        # Close executive summary at the next section
-        html = html.replace(
-            '</h2>\n<div class="section">',
-            '</h2></div>\n<div class="section">',
-            1
-        )
 
     return html
 
