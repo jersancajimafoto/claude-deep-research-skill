@@ -1,5 +1,7 @@
 # Deep Research Skill for Claude Code
 
+*Read this in other languages: [Español](README.es.md)*
+
 Enterprise-grade research engine for Claude Code. Produces citation-backed reports with source credibility scoring, multi-provider search, and automated validation.
 
 ## Installation
