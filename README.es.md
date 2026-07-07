@@ -13,6 +13,10 @@ git clone https://github.com/199-biotechnologies/claude-deep-research-skill.git 
 
 No se requieren dependencias adicionales para el uso básico.
 
+### Claude Code en la web / móvil (sesiones en la nube)
+
+Este repositorio también registra la habilidad como habilidad de proyecto mediante `.claude/skills/deep-research/` (enlaces simbólicos a la raíz del repositorio). Cualquier sesión de Claude Code en la nube abierta sobre este repositorio — incluidas las sesiones iniciadas desde la app móvil de Claude — carga la habilidad automáticamente, sin instalación. Basta abrir una sesión sobre este repositorio y pedir `deep research on ...`.
+
 ### Opcional: search-cli (búsqueda multiproveedores)
 
 Para búsqueda agregada en Brave, Serper, Exa, Jina y Firecrawl:
