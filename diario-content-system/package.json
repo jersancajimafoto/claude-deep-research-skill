@@ -1,0 +1,9 @@
+{
+  "name": "diario-content-system",
+  "private": true,
+  "type": "module",
+  "description": "Pipeline de reels de frases para El Diario de los casi (FB + IG)",
+  "dependencies": {
+    "puppeteer-core": "^23.0.0"
+  }
+}

@@ -1,0 +1,12 @@
+# Secretos y pesados / generados — no versionar
+.env
+node_modules/
+assets/
+logs/
+*.mp4
+para-subir/
+content/*.export.html
+
+# Re-incluir la FUENTE (el .gitignore raíz ignora *.json de forma global):
+# los JSON de contenido son frases/prompts/captions, sin secretos.
+!content/*.json
