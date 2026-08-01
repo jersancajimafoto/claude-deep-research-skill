@@ -81,3 +81,24 @@ youtube-shorts/assets/
 youtube-shorts/**/*.mp4
 youtube-shorts/**/*.mp3
 youtube-shorts/**/*.wav
+
+# Oro Azul — imágenes crudas de Firefly (pesadas, no versionar; sí van los recortes usados)
+marcas/oro-azul/piezas/hero-patrias-raw.png
+marcas/oro-azul/piezas/hero-patrias-v2.png
+marcas/oro-azul/piezas/*.DS_Store
+
+# Fotografías de clientes (Jers Ancajima) — derecho de imagen, no se versionan
+marcas/jers-ancajima/fotos/*
+!marcas/jers-ancajima/fotos/LEEME.md
+marcas/jers-ancajima/guia/fotos/
+marcas/jers-ancajima/render/
+
+# Candidatas de curaduría (fotos de clientes) — no versionar
+marcas/jers-ancajima/candidatas/
+
+# Álbumes por pareja (fotos de clientes) — no versionar
+marcas/jers-ancajima/albumes/
+marcas/jers-ancajima/contenido/carruseles/
+
+# DNA de marca (JSON de diseño, no secretos)
+!marcas/**/design-dna.json

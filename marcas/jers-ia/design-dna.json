@@ -1,0 +1,304 @@
+{
+  "source": "83 IG carousel screenshots, ref-01..ref-83, marcas/jers-ia/referencias/",
+  "primary_account": "@ai._kid (claura-ai.com) — the target brand system to steal structure from",
+  "note_on_corpus": "The 83 refs are NOT all from @ai._kid. Roughly 35-40% are @ai._kid (cream/terracotta/warm-black editorial system). The rest are adjacent AI-creator accounts mixed in for pattern-mining: @francisco.carosia (3D chunky mascot, same cream/terracotta palette), @ramiro.cubria (full dark-bg, voxel 3D character team), @juanbertorello.ia (paper-grain cream, GitHub-repo showcase cards), a brutalist blueprint/poster series (voxel mascot, orange+black+cream newsprint, corner registration crosses — handle not visible in crop), @soydiegoosorio (3D realistic avatar, orange starburst stickers), a '42 skills/7 crews' deck with pastel department colors (handle not fully visible), @rifqieh (light-grey bg, no cream/terracotta at all — excluded from core DNA), and @luzzidigital (cooler grey stucco bg — excluded from core DNA). This file documents the CORE system (@ai._kid + its closest cousins on the same cream/terracotta palette) and flags the outliers separately.",
+
+  "design_system": {
+    "color": {
+      "background_cream": {
+        "hex_approx": "#EFEAE0",
+        "notes": "warm parchment/off-white, very subtle grain/paper texture visible on close zoom. This is the dominant canvas color across ~90% of core-system slides."
+      },
+      "background_cream_alt_grid": {
+        "hex_approx": "#EDE8DC",
+        "notes": "same family, seen with a faint dot/grid texture in a few slides (juanbertorello variant)."
+      },
+      "terracotta_accent": {
+        "hex_approx": "#C97B58",
+        "notes": "the single signature accent color. Used for: italic serif accent words in headlines, CTA pill fills, diamond/dot bullet markers, stat numbers, thin dividers, small icons (paperclip/link glyph), progress-dot highlight."
+      },
+      "terracotta_deep": {
+        "hex_approx": "#B8654A",
+        "notes": "slightly deeper variant seen in some CTA buttons/pills — likely the same token at a different render or a hover/pressed state."
+      },
+      "warm_black": {
+        "hex_approx": "#1C1712",
+        "notes": "near-black with a warm brown undertone, never pure #000. Used for headline serif text (non-accent words), bold body emphasis, and as the fill of dark UI/terminal mockup cards embedded inside cream slides."
+      },
+      "mockup_dark_bg": {
+        "hex_approx": "#121212",
+        "notes": "the embedded 'app/terminal' card background — distinct from warm_black, cooler/flatter, used only inside the dashboard-mockup cards (macOS traffic-light dots, code, tables)."
+      },
+      "blush_secondary": {
+        "hex_approx": "#E7D6CB",
+        "notes": "a soft dusty-rose/blush used as the fill for kicker badges ('01/08 — AGENTE 1') and for one CTA highlight block. Reads as cream + terracotta mixed at low saturation."
+      },
+      "success_green": {
+        "hex_approx": "#3C8C52",
+        "notes": "used sparingly and only inside dark mockups — 'listo', '92%', checkmarks, positive deltas. Never used on the cream background itself."
+      },
+      "white": {
+        "hex_approx": "#FFFFFF",
+        "notes": "card backgrounds on the few slides with a light-grey canvas (secondary accounts), and mockup text/UI chrome."
+      },
+      "teal_check": "NOT PRESENT as a brand color. The only teal/green-blue pixel found in the whole set is the native WhatsApp header chrome inside one screenshotted phone-UI mockup (ref-20) — that is real-app furniture being depicted, not a brand choice. Confirmed: the @ai._kid / core system palette is cream + terracotta + warm-black only, no teal.",
+      "incidental_purple": "Purple/violet appears twice, both inside embedded DARK UI mockup graphics (a 'command center' network-sphere illustration, and a rainbow-colored folder-tag stack illustration) — i.e. as content inside a screenshot-style card, not as a background or accent applied to typography/CTAs. Treat as decorative-mockup-only, not a core token.",
+      "outlier_palettes_excluded": [
+        {"account": "@rifqieh", "bg": "#EEEEEE light grey", "note": "no cream/terracotta at all, bold navy/black condensed sans headlines — excluded from core DNA"},
+        {"account": "@luzzidigital", "bg": "cool grey stucco/concrete texture", "note": "terracotta accent stickers but cooler grey base, not warm cream — excluded from core DNA"},
+        {"account": "'42 skills / 7 crews' deck", "bg": "pastel per-department (dusty rose, mauve, sage green, powder blue, grey)", "note": "each 'department' card slide gets its own muted pastel bg + matching pixel-mascot silhouette color — a distinct sub-system, catalogued as its own archetype below but not part of the core two-tone palette"}
+      ]
+    },
+
+    "typography": {
+      "serif_display": {
+        "role": "big headline word(s), non-accent portion",
+        "candidates": ["Fraunces", "Canela Deck", "Freight Display Pro"],
+        "characteristics": "transitional serif, moderate-high contrast, soft ball terminals, warm/humanist feel rather than cold Didone. Set in warm_black."
+      },
+      "serif_display_italic": {
+        "role": "the accent word/phrase inside a headline (always terracotta), plus small italic footer notes ('desliza →', 'Automatizá tu marketing con IA') and italic stat numbers",
+        "candidates": ["Fraunces Italic", "Newsreader Italic"],
+        "characteristics": "same family as serif_display, swashy/calligraphic italic with visible ink-trap flourish on some letterforms."
+      },
+      "sans_grotesk_body": {
+        "role": "paragraph body copy, mockup UI text, card labels",
+        "candidates": ["Inter", "General Sans", "Neue Montreal"],
+        "characteristics": "clean humanist grotesk, medium x-height, regular + bold weights used for in-line emphasis."
+      },
+      "monospace": {
+        "role": "kicker/eyebrow tags ('01/08 — AGENTE 1 · ICP FINDER', 'EL BUILD'), terminal/code mockup content, small numeric captions, tag chips",
+        "candidates": ["JetBrains Mono", "IBM Plex Mono", "Space Mono"],
+        "characteristics": "used almost always upper-case with slight letter-spacing for eyebrows; regular case for terminal content."
+      },
+      "secondary_bold_grotesk_display": {
+        "role": "ONLY seen in adjacent/outlier accounts (rifqieh, brutalist poster series, juanbertorello '+50 skills'), not core ai._kid",
+        "candidates": ["Archivo Black", "Neue Haas Grotesk Display Bold", "Anton"],
+        "characteristics": "extra-bold condensed sans for shouty single-word or short-phrase headlines; flag as optional secondary voice, not primary."
+      },
+      "type_scale_relationship": {
+        "headline_serif": "~64-76px equiv @1080w canvas, line-height ~1.05-1.15, tight tracking",
+        "subhead_italic_serif": "~28-34px, line-height ~1.2",
+        "body_sans": "~22-26px, line-height ~1.4-1.5, bold inline spans for the 'so what' sentence",
+        "mono_kicker": "~13-15px, uppercase, tracking +4-8%",
+        "footer_handle_sans_bold": "~16-17px",
+        "footer_note_italic_serif": "~16-18px",
+        "stat_number_italic_serif": "~34-42px",
+        "stat_caption_mono": "~11-12px uppercase tracked"
+      }
+    },
+
+    "spacing_density": {
+      "canvas": "1080×1350 px (4:5 vertical, native IG carousel ratio)",
+      "outer_margin": "~72-84px side margins (~7% of width) — generous, never edge-to-edge except decorative corner marks",
+      "vertical_rhythm": "content blocks separated by 40-64px; header-zone to headline gap ~48-64px; headline to body ~24-32px; body to mockup card ~48-56px",
+      "card_internal_padding": "24-32px",
+      "list_row_gap": "12-20px between bullet rows",
+      "density_read": "airy/editorial, not cramped — roughly 1 headline + 1 short body graf + 1 visual proof per slide, rarely more"
+    },
+
+    "shape": {
+      "border_radius_mockup_window": "14-18px",
+      "border_radius_content_card": "16-22px",
+      "border_radius_cta_pill": "fully rounded / pill (radius = 50% of height)",
+      "border_radius_tag_chip": "8-14px",
+      "border_radius_kicker_badge": "6-8px (slightly rounded rectangle, not a full pill)",
+      "signature_shape_note": "the fully-rounded terracotta CTA pill ('Comentá AGENTES', 'Comentá CRM') is the single most repeated shape — always centered, always terracotta fill, always white bold sans/serif label inside."
+    },
+
+    "layout_grid": {
+      "canvas_ratio": "4:5 (1080x1350)",
+      "zone_structure": [
+        "header zone: top-center or top-left small mono/serif site label with a link glyph (🔗 claura-ai.com), sometimes paired top-right with a small pill badge ('nadie lo cuenta') or slide-index ('01/08')",
+        "kicker zone (on detail slides): small badge + mono eyebrow line directly under header, above headline",
+        "hero/body zone: headline block (serif + italic terracotta accent) + short body paragraph, optionally a mascot illustration to the right",
+        "proof zone: an embedded dark-mode UI/terminal/dashboard mockup card, OR an icon grid, OR a stat row — this is the 'evidence' beat of the slide",
+        "stat-caption row: 2-3 short italic terracotta numbers with mono uppercase captions underneath, evenly spaced in columns",
+        "footer zone: handle bottom-left (plain bold sans, '@ai._kid'), short italic serif hook/CTA bottom-right ('siguiente →', 'te espero en comments ↓'), pagination dots centered at very bottom"
+      ],
+      "carousel_chrome_note": "left/right circular nav arrows visible mid-frame are Instagram's own UI chrome from the screenshot capture, not part of the authored design — do not replicate them as a design element, only the dot pagination is authored."
+    }
+  },
+
+  "design_style": {
+    "mood": "confident, editorial, quietly premium — reads like a boutique newsletter or fashion-adjacent tech brand rather than a typical 'AI bro' dashboard aesthetic. Warm and human despite the technical subject matter.",
+    "personality": "a mix of magazine-editorial (serif italics, generous whitespace) and terminal/builder credibility (embedded dark UI mockups, monospace kickers). The pairing of a delicate italic serif with raw terminal screenshots is the brand's central tension/signature.",
+    "composition_strategy": "one idea per slide, strict hierarchy: kicker → headline (with exactly one italicized terracotta accent phrase) → one supporting sentence → one piece of visual proof (mockup/stat/icon-grid). Rarely more than 3 content beats per slide.",
+    "whitespace_usage": "heavy, deliberate negative space above/below the headline block; the cream canvas is treated as a feature, not a gap to fill. Dark mockup cards are the only 'dense' element and are visually contained/framed to contrast against the airy cream field.",
+    "contrast_approach": "primarily a light-on-light system (cream bg, warm-black text, single terracotta accent) punctuated by isolated dark-mode 'islands' (the mockup cards) that act as evidence/proof-of-work — the dark card is always a rectangle with soft shadow floating on the cream field, never the full-bleed background of a core ai._kid slide.",
+    "accent_discipline": "terracotta is used exactly once per slide as a semantic highlight (the word that matters most), never decoratively scattered — this restraint is a key part of why the system reads premium rather than 'colorful template'."
+  },
+
+  "slide_archetypes": [
+    {
+      "id": "A",
+      "name": "Cover / Hook slide",
+      "frequency": "high — first slide of nearly every ai._kid carousel",
+      "layout": "centered, generous top/bottom whitespace",
+      "background": "cream",
+      "elements": [
+        "top-center small mono/serif site label with link glyph, e.g. '🔗 claura-ai.com'",
+        "big 2-3 line serif headline in warm-black with exactly one italic terracotta phrase",
+        "optional italic serif subhead line below (smaller, warm-black or grey)",
+        "optional dark stat pill/bar (e.g. '0 EMPLEADOS | +50 POSTS/SEMANA')",
+        "footer: handle bottom-left, short italic terracotta CTA bottom-right ('los 7 →', 'deslizá →')",
+        "pagination dots bottom-center"
+      ],
+      "color_usage": "cream + warm-black + terracotta only",
+      "decorative_elements": "none beyond the type itself; occasionally a small pixel mascot or a paperclip glyph"
+    },
+    {
+      "id": "B",
+      "name": "Numbered agent/step detail slide (cream + embedded dark mockup)",
+      "frequency": "very high — the workhorse slide of the whole carousel format",
+      "layout": "top kicker badge, left-aligned headline+body, optional mascot illustration top-right, large dark mockup card spanning full width below",
+      "background": "cream",
+      "elements": [
+        "blush-fill kicker badge + mono eyebrow ('01/08 — AGENTE 1 · ICP FINDER' or '01.' + serif word + terracotta dot)",
+        "serif headline, 1-2 lines, italic terracotta accent phrase",
+        "sans body paragraph, one clause bolded for emphasis",
+        "small pixel-mascot sticker with a hand-drawn-style arrow + tiny italic caption ('acá no adivinás')",
+        "large rounded dark(#121212) 'app window' card with macOS traffic-light dots, showing a fake product UI: chat log, kanban, table, dashboard, or code terminal — this is the 'proof' beat",
+        "row of 2-3 stat callouts below the card: italic terracotta big number + mono uppercase caption",
+        "footer: handle + italic 'siguiente →'"
+      ],
+      "color_usage": "cream + warm-black + terracotta + the dark mockup's own near-black/white/green micro-palette",
+      "decorative_elements": "pixel mascot, hand-drawn arrow, traffic-light dots on mockup window"
+    },
+    {
+      "id": "C",
+      "name": "Icon-grid slide",
+      "frequency": "medium",
+      "layout": "centered headline block over a 2-row x 4-col (or similar) grid of icons with mono labels",
+      "background": "cream",
+      "elements": [
+        "top site label",
+        "serif headline + italic terracotta accent, short italic subhead",
+        "grid of orange 8-bit pixel-art mascot icons, each doing a different 'job' (binoculars = research, crown = strategy, money bag = landing, magnet = ads), mono label under each",
+        "terracotta pill tag beneath the grid summarizing the takeaway ('Todo conectado. Un solo sistema.')",
+        "footer: handle + italic 'deslizá →'"
+      ],
+      "color_usage": "cream + warm-black + terracotta (mascots are mono-orange with black outline/features)",
+      "decorative_elements": "the pixel mascot set itself is the decoration"
+    },
+    {
+      "id": "D",
+      "name": "CTA / engagement slide",
+      "frequency": "high — always the last slide of the carousel",
+      "layout": "centered, minimal",
+      "background": "cream",
+      "elements": [
+        "top site label",
+        "big serif question headline with italic terracotta accent word ('¿Lo querés para tu marca?')",
+        "either: a blush rounded rectangle containing a bold instruction ('Comentá AGENTES'), or a fully-rounded terracotta CTA pill button with white label",
+        "one small supporting sans sentence below",
+        "footer: handle + italic 'te espero en comments ↓'"
+      ],
+      "color_usage": "cream + warm-black + terracotta",
+      "decorative_elements": "occasionally a small gift-box pixel mascot centered above the headline"
+    },
+    {
+      "id": "E",
+      "name": "Icon-equation / flow slide",
+      "frequency": "low-medium",
+      "layout": "centered, very sparse — headline + a horizontal row of icon-glyphs joined by '+' / '=' / '→'",
+      "background": "cream",
+      "elements": [
+        "big serif statement headline (sometimes with italic terracotta clause, e.g. 'Contesto cero.')",
+        "row of small square icon tiles (WhatsApp green, Claude terracotta asterisk mark, a scale/rules icon, a database icon) joined by plus/equals/arrow glyphs and a bold result label ('CRM automático')",
+        "footer: handle + italic 'deslizá →'"
+      ],
+      "color_usage": "cream + warm-black + terracotta + each icon's own native brand color (WhatsApp green, etc. — these are the only non-palette colors allowed, and only as tiny icon glyphs)",
+      "decorative_elements": "none — this archetype relies entirely on typographic/iconographic restraint"
+    },
+    {
+      "id": "F",
+      "name": "Blueprint / technical build slide (corner-crosses)",
+      "frequency": "low (seen in a closely related sub-series, same palette)",
+      "layout": "full-bleed cream with 4 corner + registration marks, black mono kicker pill top-left, bold sans headline with terracotta bold word, bullet or diagram body, dark screenshot card",
+      "background": "cream, sometimes with a subtle rotated/shadowed card treatment (paper stack look)",
+      "elements": [
+        "corner + crosshair marks at all 4 corners (technical/blueprint framing device)",
+        "solid black mono kicker pill ('EL BUILD', 'PASO 1 · EL CEREBRO', 'TU TURNO')",
+        "bold grotesk sans headline, lowercase, terracotta bold word ('armá tu OS.')",
+        "diagonal drop-shadow rotated screenshot/dashboard card",
+        "footer: 'DESLIZA →' in tracked mono caps"
+      ],
+      "color_usage": "cream + warm-black + terracotta, occasional violet/purple ONLY inside an embedded dark-UI graphic",
+      "decorative_elements": "corner crosshairs, rotated/shadowed card stacking, small floating '+' marks"
+    },
+    {
+      "id": "G",
+      "name": "Full-dark statement/team slide (outlier accounts, NOT ai._kid's default)",
+      "frequency": "medium, but concentrated in @ramiro.cubria and @francisco.carosia refs, not @ai._kid",
+      "layout": "full-bleed near-black background, bold sans headline top, orange accent word, checkmark bullet list, 3D character illustration bottom-right",
+      "background": "warm/true black full-bleed (distinct from ai._kid's cream-with-dark-card approach)",
+      "elements": [
+        "bold grotesk headline, white + orange accent word",
+        "checkmark (✓) bullet list in orange check + white text",
+        "3D voxel or chunky-render character portrait bottom-right",
+        "embedded dashboard/metrics screenshot card",
+        "handle + verified badge bottom-left"
+      ],
+      "color_usage": "black + white + orange/terracotta — same accent hue as core system but inverted to dark canvas",
+      "decorative_elements": "3D character renders, floating pixel-mascot fragments as background texture",
+      "flag": "include only as an optional 'dark variant' mode for jers-ia, not the default — the true @ai._kid pattern keeps the canvas cream and isolates dark UI to a contained card."
+    },
+    {
+      "id": "H",
+      "name": "GitHub-repo showcase slide (outlier account @juanbertorello.ia)",
+      "frequency": "low, single sub-series",
+      "layout": "textured cream/paper bg, terracotta bookmark-ribbon icon top-left, huge translucent number watermark behind headline, bold condensed headline, GitHub UI screenshot, pill tag row",
+      "background": "cream with visible paper grain",
+      "elements": [
+        "terracotta ribbon/bookmark icon top-left as a 'plugin N' marker",
+        "giant pale-terracotta numeral watermark behind the text block",
+        "bold black condensed sans headline (2 lines)",
+        "monospace repo path + star-count line",
+        "real GitHub UI screenshot card",
+        "'Por qué importa:' bold lead-in sentence",
+        "2 rounded pill tags at bottom, italic closing caption"
+      ],
+      "color_usage": "cream + warm-black + terracotta, GitHub's own UI chrome colors inside the screenshot",
+      "decorative_elements": "watermark numeral, bookmark ribbon"
+    }
+  ],
+
+  "signature_motifs": [
+    {
+      "motif": "Orange 8-bit pixel-art mascot (the ai._kid character)",
+      "description": "a simple humanoid built from square pixels, solid orange/terracotta fill, two black square eyes, white sticker-style outline with a soft drop shadow (looks die-cut/stickered onto the page). Shown in dozens of poses/props: binoculars, crown, target+arrow, magnet, money bag, gift box, waving. This is the account's core brand character and the single most repeated custom asset.",
+      "do_not_confuse_with": "the realistic 3D chunky-render mascot with a snapback cap and headphones belongs to a DIFFERENT account (@francisco.carosia); the LEGO/voxel-brick mascot belongs to the brutalist poster series; a flatter disc-eyed pixel character belongs to @juanbertorello.ia. Keep jers-ia's own mascot distinct from all of these if a mascot is desired at all."
+    },
+    {
+      "motif": "Dot progress indicator",
+      "description": "standard Instagram carousel pagination dots, bottom-center, small and unobtrusive — authored content stops above this; it's platform chrome but consistently visually intentional in composition (nothing sits too close to it)."
+    },
+    {
+      "motif": "Corner + / crosshair registration marks",
+      "description": "seen in the 'blueprint' sub-series (archetype F) and in the brutalist poster series — small plus-sign or targeting-reticle marks in the four corners, borrowed from print/technical-drawing conventions, reinforcing an 'engineered' feel."
+    },
+    {
+      "motif": "Mono kicker / eyebrow tags",
+      "description": "small monospace uppercase labels, either inside a soft blush rounded-rectangle badge ('01/08 — AGENTE 1 · ICP FINDER', ai._kid's own style) or inside a solid black pill ('EL BUILD', 'PASO 1 · EL CEREBRO', the blueprint sub-series style). Always sits directly above the headline."
+    },
+    {
+      "motif": "Handle bottom-left + italic serif hook bottom-right",
+      "description": "the closing footer pattern on virtually every slide: plain bold sans '@handle' on the bottom-left, and a short italic serif engagement hook on the bottom-right ('deslizá →', 'siguiente →', 'te espero en comments ↓'). This pairing is one of the most consistent structural signatures across the whole ai._kid set."
+    },
+    {
+      "motif": "Embedded dark 'proof' mockup card",
+      "description": "a rounded dark-mode window (macOS-style traffic-light dots) floating with soft shadow on the cream canvas, containing a fabricated but highly specific product UI (chat thread, kanban, CRM table, A/B test dashboard, content calendar). This is the credibility device of the whole system — it's what makes claims feel real/measured rather than hypey."
+    },
+    {
+      "motif": "Fully-rounded terracotta CTA pill",
+      "description": "a pill-shaped button, terracotta fill, white bold label, centered — 'Comentá AGENTES', 'Comentá CRM', 'Comentá PLUGINS'. The single most repeated interactive-looking element, always used to drive a comment-to-DM funnel."
+    },
+    {
+      "motif": "Exactly-one italic terracotta accent word/phrase per headline",
+      "description": "the disciplined restraint of highlighting only one phrase per slide in italic serif + terracotta — never more, never a different color. This is arguably the single highest-leverage rule to copy."
+    }
+  ],
+
+  "teal_check_explicit": "CONFIRMED: no teal appears anywhere in the @ai._kid core system or its closest cousins. The palette is strictly cream / terracotta / warm-black (+ incidental native-app icon colors like WhatsApp green used only as tiny glyphs, and a screenshot of WhatsApp's own teal-green header chrome in one mockup, which is depicted app UI, not an authored brand color). Purple appears twice, only inside embedded dark-mode mockup illustrations, never as a background or text-accent color."
+}
