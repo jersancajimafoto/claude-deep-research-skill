@@ -133,9 +133,18 @@ y con las referencias de diseño que aporte el usuario):
 | Neutro | Kraft | `#E3DACC` |
 | Realce sobre oscuro | Terracota clara | `#E8A87C` |
 
-Proporción: 60% crema/carbón · 25% arcilla · 15% teal. Unifica IG + tienda + Bóveda bajo un
-solo look, con familiaridad Claude y el teal como diferenciador. **No cerrado: se valida con
-maestro.** (La marca de fotografía `marcas/jers-ancajima/` es editorial y va aparte.)
+Proporción: 65% crema/carbón · 30% arcilla · **5% teal (mínimo — solo detalle de firma, no
+protagonista; decisión del usuario 2026-07-02)**. Unifica IG + tienda + Bóveda bajo un solo
+look, con familiaridad Claude. (La marca de fotografía `marcas/jers-ancajima/` es editorial y
+va aparte.)
+
+**Referencia de diseño validada:** @ai._kid / claura-ai.com — cuenta de contenido Claude/IA
+en español; look cálido-Claude (crema + terracota + negro cálido), tipografía serif editorial
++ grotesca + monoespaciada, y muñequitos **pixel-art naranjas 8-bit** como motivo de firma.
+Se roba la ESTRUCTURA y el sistema visual, NO la voz (ellos usan voseo argentino; Jers es
+tuteo peruano) ni los pixeles. El teal es justamente lo que NOS diferencia de @ai._kid.
+DNA completo extraído en `design-dna.json` / `design-dna.md`. **Paleta exacta se cierra al
+llegar el DNA + maestro.**
 
 ## 8. Supuestos — estado
 1. ✅ Pivote: marca personal reemplaza a Kunda como frente público.
