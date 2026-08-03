@@ -102,3 +102,6 @@ marcas/jers-ancajima/contenido/carruseles/
 
 # DNA de marca (JSON de diseño, no secretos)
 !marcas/**/design-dna.json
+
+# scratch de render de marca
+marcas/**/.*-b64.txt
