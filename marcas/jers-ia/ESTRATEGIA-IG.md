@@ -133,8 +133,10 @@ y con las referencias de diseño que aporte el usuario):
 | Neutro | Kraft | `#E3DACC` |
 | Realce sobre oscuro | Terracota clara | `#E8A87C` |
 
-Proporción: 65% crema/carbón · 30% arcilla · **5% teal (mínimo — solo detalle de firma, no
-protagonista; decisión del usuario 2026-07-02)**. Unifica IG + tienda + Bóveda bajo un solo
+Proporción: ~70% crema/carbón · 30% arcilla. **Teal ELIMINADO de los carruseles (decisión
+2026-07-02): el personaje pixel-art propio (la cara de Jers) ya es el diferenciador frente a
+@ai._kid, así que el teal ensuciaba el sistema cálido. El teal puede sobrevivir solo en la
+web/tienda como detalle, nunca en el contenido IG.** Unifica IG + tienda + Bóveda bajo un solo
 look, con familiaridad Claude. (La marca de fotografía `marcas/jers-ancajima/` es editorial y
 va aparte.)
 
