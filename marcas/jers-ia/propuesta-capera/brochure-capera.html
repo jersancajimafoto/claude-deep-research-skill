@@ -1,0 +1,433 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Cobertura Entrega de Lotes Etapa I — Loma Alta · Jers | IA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500;1,9..144,600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#EFEAE0; --terra:#C97B58; --terra-deep:#B8654A; --ink:#1C1712;
+    --dark:#141210; --blush:#E7D6CB; --sand:#E3DACC; --muted:#5c5249; --line:#ddd2c1;
+    --serif:'Fraunces',Georgia,serif; --sans:'Inter',system-ui,sans-serif; --mono:'JetBrains Mono',monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:var(--sans);color:var(--ink);background:#cfc8ba}
+  @page{size:A4;margin:0}
+  .page{width:210mm;height:297mm;background:var(--cream);position:relative;overflow:hidden;
+    padding:16mm 16mm 20mm;margin:0 auto 12px;
+    background-image:radial-gradient(rgba(28,23,18,.02) 1px,transparent 1px);background-size:4px 4px}
+  @media print{.page{margin:0;box-shadow:none;page-break-after:always}}
+  .page.bleed{padding-top:0}
+
+  .kick{font-family:var(--mono);font-size:9pt;letter-spacing:.16em;text-transform:uppercase;color:var(--terra);font-weight:700}
+  .brand{position:absolute;bottom:10mm;left:16mm;right:16mm;display:flex;justify-content:space-between;
+    font-family:var(--mono);font-size:7.5pt;letter-spacing:.1em;text-transform:uppercase;color:#8a7d70;
+    border-top:1px solid var(--sand);padding-top:3mm}
+  h1{font-family:var(--serif);font-weight:600;line-height:1.02;letter-spacing:-.01em}
+  h2{font-family:var(--serif);font-weight:600;font-size:18.5pt;line-height:1.1;margin-bottom:3.5mm}
+  h2 em{font-style:italic;color:var(--terra)}
+  p{font-size:10pt;line-height:1.5;color:#3a332c;margin-bottom:2.5mm}
+  p b{color:var(--ink)}
+
+  /* ---------- portada ---------- */
+  .hero{margin:0 -16mm 9mm;height:100mm;overflow:hidden;position:relative}
+  .hero img{width:100%;height:100%;object-fit:cover;display:block}
+  .hero::after{content:"";position:absolute;inset:0;
+    background:linear-gradient(180deg,rgba(28,23,18,.34) 0%,rgba(28,23,18,0) 34%,rgba(239,234,224,0) 68%,rgba(239,234,224,.92) 90%,var(--cream) 100%)}
+  .hero .tagimg{position:absolute;top:7mm;left:16mm;z-index:2;font-family:var(--mono);font-size:7.5pt;
+    letter-spacing:.14em;text-transform:uppercase;color:#fff;background:rgba(28,23,18,.42);
+    padding:2mm 4mm;border-radius:99px}
+  .cover h1{font-size:33pt}.cover h1 em{font-style:italic;color:var(--terra)}
+  .cover .sub{font-family:var(--serif);font-style:italic;font-size:13.5pt;color:var(--muted);margin-top:5mm;line-height:1.35}
+  .badge{display:inline-block;background:var(--blush);color:#7a4a34;font-family:var(--mono);font-weight:700;
+    font-size:8pt;letter-spacing:.12em;text-transform:uppercase;padding:2.5mm 4.5mm;border-radius:3mm;margin-bottom:7mm}
+  .facts{display:flex;margin-top:10mm;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .facts div{flex:1;padding:4.5mm 0;border-right:1px solid var(--line)}
+  .facts div:last-child{border-right:none}
+  .facts .n{font-family:var(--serif);font-weight:700;font-size:16pt;color:var(--terra);line-height:1}
+  .facts .l{font-family:var(--mono);font-size:7pt;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:2mm}
+
+  /* ---------- meta de portada ---------- */
+  .meta{display:grid;grid-template-columns:1fr 1fr 1fr;gap:5mm;margin-top:7mm;
+    border-bottom:1px solid var(--line);padding-bottom:6mm}
+  .meta .ml{font-family:var(--mono);font-size:7pt;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--terra);font-weight:700;display:block}
+  .meta b{display:block;font-family:var(--serif);font-weight:600;font-size:11pt;margin-top:1.8mm;line-height:1.15}
+  .meta .mv{display:block;font-size:8.5pt;color:var(--muted);line-height:1.35;margin-top:1mm}
+  .research{margin-top:5mm;font-size:8.5pt;color:var(--muted);border-left:2px solid var(--terra);
+    padding-left:4mm;line-height:1.45}
+
+  /* ---------- después del evento ---------- */
+  .after{display:grid;grid-template-columns:1fr 1fr 1fr;gap:3mm;margin-top:3mm}
+  .af{border:1px solid var(--sand);border-radius:3mm;background:#fff;padding:3.5mm}
+  .af .t{font-family:var(--mono);font-size:7.5pt;letter-spacing:.1em;text-transform:uppercase;color:var(--terra);font-weight:700}
+  .af b{display:block;font-size:9.5pt;margin-top:1.2mm;line-height:1.2}
+  .af span{display:block;font-size:8pt;color:var(--muted);line-height:1.3;margin-top:.8mm}
+
+  /* ---------- cita ---------- */
+  .pull{background:var(--dark);border-radius:3.5mm;padding:6mm 7mm;margin:5mm 0;box-shadow:0 3mm 9mm rgba(0,0,0,.14)}
+  .pull p{font-family:var(--serif);font-size:12.5pt;line-height:1.3;color:#f1e7dd;margin:0}
+  .pull em{font-style:italic;color:var(--terra)}
+  .pull.onphoto{padding:0;overflow:hidden;position:relative;min-height:42mm;display:flex;align-items:flex-end}
+  .pull.onphoto img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .pull.onphoto::after{content:"";position:absolute;inset:0;
+    background:linear-gradient(180deg,rgba(20,18,16,.15) 0%,rgba(20,18,16,.62) 45%,rgba(20,18,16,.93) 100%)}
+  .pull.onphoto p{position:relative;z-index:2;padding:5mm 6mm;font-size:11.5pt}
+
+  /* ---------- foto con pie ---------- */
+  .shot{border-radius:3mm;overflow:hidden;position:relative;border:1px solid var(--line)}
+  .shot img{width:100%;display:block}
+  .cap{font-family:var(--mono);font-size:7pt;letter-spacing:.08em;text-transform:uppercase;color:#8a7d70;margin-top:2mm}
+
+  /* ---------- entregables ---------- */
+  .dl{display:flex;gap:3.5mm;padding:2.1mm 0;border-top:1px solid var(--line)}
+  .dl.first{border-top:none}
+  .dl .no{font-family:var(--serif);font-weight:700;font-size:12pt;color:var(--terra);width:7mm;flex:none;line-height:1.1}
+  .dl b{font-size:10.5pt;font-family:var(--serif);font-weight:600;display:block}
+  .dl .fmt{font-family:var(--mono);font-size:7pt;letter-spacing:.1em;text-transform:uppercase;color:var(--terra);display:block;margin-bottom:.8mm}
+  .dl p{font-size:9.5pt;margin:1mm 0 0;line-height:1.4}
+
+  /* ---------- equipo ---------- */
+  .crew{display:grid;grid-template-columns:1fr 1fr 1fr;gap:3mm;margin-top:3mm}
+  .cw{border:1px solid var(--sand);border-radius:3mm;padding:3.5mm;background:#faf7f0;text-align:center}
+  .cw svg{width:7mm;height:7mm;stroke:var(--terra);stroke-width:1.5;fill:none;stroke-linecap:round;stroke-linejoin:round;margin-bottom:1.5mm}
+  .cw b{display:block;font-size:9.5pt}
+  .cw span{font-size:8pt;color:var(--muted);line-height:1.3;display:block;margin-top:.8mm}
+
+  /* ---------- timeline ---------- */
+  .tlrow{display:flex;gap:4mm;align-items:flex-start;padding-bottom:3.5mm;position:relative}
+  .tlrow::before{content:"";position:absolute;left:5mm;top:10.5mm;bottom:0;width:1px;background:var(--line)}
+  .tlrow:last-child{padding-bottom:0}.tlrow:last-child::before{display:none}
+  .tlt{width:10mm;height:10mm;border-radius:50%;background:var(--terra);color:#fff;flex:none;display:flex;
+    align-items:center;justify-content:center;font-family:var(--mono);font-size:7.5pt;font-weight:700;z-index:1}
+  .tlrow.alt .tlt{background:#fff;border:1.5px solid var(--terra);color:var(--terra)}
+  .tlb b{font-size:10.5pt}
+  .tlb p{margin:.8mm 0 0;font-size:9.5pt}
+  .tlb .who{font-family:var(--mono);font-size:7.5pt;letter-spacing:.08em;text-transform:uppercase;color:var(--terra);margin-top:1mm;display:block}
+
+  /* ---------- planes ---------- */
+  .plans{display:grid;grid-template-columns:1fr 1.14fr 1fr;gap:3mm;margin-top:2.5mm;align-items:start}
+  .pl{border:1px solid var(--sand);border-radius:3.5mm;background:#fff;padding:4.5mm 4mm;position:relative}
+  .pl.best{background:var(--dark);border-color:var(--dark);box-shadow:0 4mm 12mm rgba(0,0,0,.18);padding:6mm 4.5mm}
+  .pl .nm{font-family:var(--mono);font-size:8pt;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--muted)}
+  .pl.best .nm{color:var(--terra)}
+  .pl .price{font-family:var(--serif);font-weight:700;font-size:20pt;line-height:1;margin:2.5mm 0 1mm}
+  .pl.best .price{color:#fff;font-size:24pt}
+  .pl .igv{font-size:7.5pt;color:var(--muted);margin-bottom:3mm}
+  .pl.best .igv{color:#9d9086}
+  .pl ul{list-style:none;margin-top:2.5mm}
+  .pl li{font-size:8.5pt;line-height:1.3;padding:.95mm 0 .95mm 4.5mm;position:relative;border-top:1px solid #f0ebe0;color:#3a332c}
+  .pl.best li{border-top:1px solid #2a251f;color:#ddd2c8}
+  .pl li::before{content:"";position:absolute;left:0;top:2.6mm;width:2mm;height:2mm;border-radius:50%;background:var(--terra)}
+  .pl li.off{color:#b3a89c}.pl li.off::before{background:#ddd2c1}
+  .pl.best li.hi{color:#fff;font-weight:600}
+  .pl li b{color:inherit;font-weight:700}
+  .tagbest{position:absolute;top:-2.8mm;left:4.5mm;background:var(--terra);color:#fff;font-family:var(--mono);
+    font-size:7pt;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:1.4mm 3.2mm;border-radius:99px}
+
+  /* ---------- protocolo compacto ---------- */
+  .chips{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:2.5mm;margin-top:3mm}
+  .chip{background:#fff;border:1px solid var(--sand);border-radius:2.5mm;padding:2.3mm}
+  .chip b{display:block;font-size:8.5pt;line-height:1.25}
+  .chip span{display:block;font-size:7.5pt;color:var(--muted);line-height:1.3;margin-top:.8mm}
+
+  /* ---------- cierre ---------- */
+  .cta{background:var(--blush);border-radius:3.5mm;padding:4mm;margin-top:3mm;display:flex;gap:5mm;align-items:stretch}
+  .ctamain{flex:1}
+  .bank{width:63mm;flex:none;background:#fff;border:1px solid var(--sand);border-radius:3mm;
+    padding:4.5mm;display:flex;flex-direction:column;justify-content:center}
+  .bank .bl{font-family:var(--mono);font-size:7pt;letter-spacing:.14em;text-transform:uppercase;color:var(--terra);font-weight:700}
+  .bank b{display:block;font-family:var(--serif);font-weight:600;font-size:10.5pt;margin-top:1.5mm}
+  .bank .acct{font-family:var(--mono);font-size:11.5pt;font-weight:700;letter-spacing:.04em;
+    color:var(--ink);margin:2mm 0 1.5mm;padding:2mm 0;border-top:1px solid var(--sand);border-bottom:1px solid var(--sand)}
+  .bank span{font-size:8pt;color:var(--muted);line-height:1.35;display:block}
+  .cta h3{font-family:var(--serif);font-weight:600;font-size:13.5pt;line-height:1.15;margin-bottom:1.5mm}
+  .cta h3 em{font-style:italic;color:var(--terra-deep)}
+  .cta p{font-size:9pt;margin:0;color:#5a4a3e}
+  .wa{display:inline-flex;align-items:center;gap:2.5mm;background:var(--terra);color:#fff;font-weight:700;
+    font-size:11pt;padding:3mm 6.5mm;border-radius:999px;margin-top:3mm;letter-spacing:.02em}
+  .wa svg{width:4.5mm;height:4.5mm;fill:#fff;flex:none}
+</style>
+</head>
+<body>
+
+<!-- ═══════════ 1 · PORTADA ═══════════ -->
+<div class="page bleed cover">
+  <div class="hero">
+    <span class="tagimg">Loma Alta Condominio Club · Los Ejidos</span>
+    <img src="fotos/x-hero.jpg" alt="Proyecto Loma Alta">
+  </div>
+
+  <span class="badge">Propuesta audiovisual · para CAPERA Inmobiliaria</span>
+  <h1>Un lote se entrega<br><em>una sola vez</em>.</h1>
+  <div class="sub">Cobertura de la Entrega de Lotes — Etapa I.</div>
+  <p style="margin-top:7mm;max-width:132mm;color:var(--muted)">
+    Fotografía, video y drone el día en que las familias de la Etapa I dejan de comprar
+    una promesa y reciben un terreno con su nombre.
+  </p>
+
+  <div class="facts">
+    <div><div class="n">26 SET</div><div class="l">Sábado · 2026 · Piura</div></div>
+    <div><div class="n">3 h</div><div class="l">de cobertura continua</div></div>
+    <div><div class="n">3</div><div class="l">cámaras · 3 profesionales</div></div>
+  </div>
+
+  <div class="meta">
+    <div><span class="ml">Dirigida a</span><b>Sr. Francisco Elera</b>
+      <span class="mv">Gerente General<br>CAPERA Grupo Inmobiliario</span></div>
+    <div><span class="ml">Preparada por</span><b>Jers Ancajima</b>
+      <span class="mv">Fotografía, video y drone<br>Piura · 969 957 672</span></div>
+    <div><span class="ml">Vigencia</span><b>Hasta el 31.08.2026</b>
+      <span class="mv">Emitida el 21 de agosto<br>de 2026</span></div>
+  </div>
+
+  <p class="research">Preparada después de revisar el proyecto: 181 lotes de 140 a 390 m²,
+    más de 7,000 m² de áreas verdes y Club House, con la Etapa I ya vendida.</p>
+
+  <div class="brand"><span>Jers | IA + Automatización · 969 957 672</span><span>Propuesta · 1 / 4</span></div>
+</div>
+
+
+<!-- ═══════════ 2 · POR QUÉ + ENTREGABLES ═══════════ -->
+<div class="page">
+  <div class="kick">El contexto</div>
+  <h2 style="margin-top:2.5mm">Loma Alta se vende con <em>confianza</em>.<br>La confianza no se argumenta: se muestra.</h2>
+
+  <p>Nadie compra un lote de seis cifras con la cabeza. Lo compra cuando ve que alguien igual a él
+     ya dio el paso. <b>Su mejor vendedor es el vecino que ya compró.</b></p>
+  <p>El 26 de setiembre esos vecinos están todos en un mismo lugar y más convencidos que nunca.
+     Esa convicción <b>dura lo que dura el evento</b>: grabarla cuesta tres horas, no grabarla
+     cuesta las etapas que faltan por vender.</p>
+  <p>Vamos con plan de rodaje, tres cámaras y rincón de testimonios aparte. CAPERA sale de ese
+     sábado con <b>material que vende</b>, no con un álbum de recuerdos.</p>
+
+  <div class="pull onphoto">
+    <img src="fotos/x-calle.jpg" alt="Loma Alta Condominio Club">
+    <p>Lo que se graba ese día no es un evento. Es el <em>catálogo de prueba social</em>
+       con el que se vende la siguiente etapa.</p>
+  </div>
+
+  <div class="kick" style="margin-top:4.5mm">Lo que reciben</div>
+  <h2 style="margin-top:2.5mm;font-size:16pt">Un evento, <em>cinco</em> piezas que trabajan por separado.</h2>
+
+  <div class="dl first">
+    <div class="no">01</div>
+    <div><span class="fmt">Fotografía</span><b>Galería del evento</b>
+      <p>Fotos editadas y con color corregido, en galería web descargable.</p></div>
+  </div>
+  <div class="dl">
+    <div class="no">02</div>
+    <div><span class="fmt">Video 16:9 · con animación</span><b>Resumen institucional</b>
+      <p>Para reunión, caseta de ventas y web. Titulares animados, logo de Loma Alta y música con licencia.</p></div>
+  </div>
+  <div class="dl">
+    <div class="no">03</div>
+    <div><span class="fmt">Video 9:16 · vertical</span><b>Reel del evento</b>
+      <p>Versión corta para Instagram, TikTok y Facebook, con textos legibles sin sonido.</p></div>
+  </div>
+  <div class="dl">
+    <div class="no">04</div>
+    <div><span class="fmt">Video 16:9 + 9:16</span><b>Testimonios de clientes</b>
+      <p>Compradores reales contando por qué eligieron Loma Alta. Cada uno en horizontal para web
+         y presentaciones, y en vertical para redes y pauta.</p></div>
+  </div>
+  <div class="dl">
+    <div class="no">05</div>
+    <div><span class="fmt">Bonus</span><b>Teaser en 48 horas</b>
+      <p>Un adelanto entregado dos días después del evento, mientras los asistentes todavía comentan.</p></div>
+  </div>
+
+  <p style="margin-top:4mm;font-size:9pt;color:var(--muted)">
+    Todo el material queda <b>en poder de CAPERA</b>, con uso comercial para redes, web, caseta de
+    ventas y publicidad pagada. Sin marca de agua.</p>
+
+  <div class="brand"><span>Entrega Etapa I · Loma Alta</span><span>Propuesta · 2 / 4</span></div>
+</div>
+
+
+<!-- ═══════════ 3 · EL OPERATIVO ═══════════ -->
+<div class="page">
+  <div class="kick">El operativo</div>
+  <h2 style="margin-top:2.5mm">Tres horas, tres cámaras,<br>ningún momento <em>improvisado</em>.</h2>
+
+  <p>Un equipo de tres personas no es lujo: es la única forma de cubrir ceremonia, tomas aéreas
+     y entrevistas al mismo tiempo sin sacrificar ninguna.</p>
+
+  <div class="crew">
+    <div class="cw">
+      <svg viewBox="0 0 24 24"><path d="M3 8h3l2-2h8l2 2h3v11H3z"/><circle cx="12" cy="13" r="3.4"/></svg>
+      <b>Fotógrafo</b><span>Ceremonia, familias y detalles</span>
+    </div>
+    <div class="cw">
+      <svg viewBox="0 0 24 24"><rect x="3" y="7" width="12" height="10" rx="2"/><path d="M15 11l6-3v8l-6-3z"/></svg>
+      <b>Videógrafo</b><span>Video principal y testimonios</span>
+    </div>
+    <div class="cw">
+      <svg viewBox="0 0 24 24"><path d="M5 5l4 4M19 5l-4 4M5 19l4-4M19 19l-4-4"/><rect x="9" y="9" width="6" height="6" rx="1.5"/><circle cx="5" cy="5" r="2"/><circle cx="19" cy="5" r="2"/><circle cx="5" cy="19" r="2"/><circle cx="19" cy="19" r="2"/></svg>
+      <b>Piloto de drone</b><span>Aéreas del proyecto y 2.ª cámara</span>
+    </div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:1fr 58mm;gap:6mm;margin-top:7mm;align-items:start">
+    <div>
+      <div class="kick" style="margin-bottom:3mm">Plan de rodaje</div>
+      <div class="tlrow">
+        <div class="tlt">0:00</div>
+        <div class="tlb"><b>Llegada y aéreas de apertura</b>
+          <p>Vuelo sobre la Etapa I y el Club House mientras llegan los invitados.</p>
+          <span class="who">Drone + fotógrafo</span></div>
+      </div>
+      <div class="tlrow alt">
+        <div class="tlt">0:40</div>
+        <div class="tlb"><b>Ceremonia y entrega</b>
+          <p>Palabras de la gerencia, entrega de documentos y el momento familia–lote.</p>
+          <span class="who">Los 3 en posición</span></div>
+      </div>
+      <div class="tlrow">
+        <div class="tlt">1:30</div>
+        <div class="tlb"><b>Rincón de testimonios</b>
+          <p>Punto fijo aparte, con luz y micrófono inalámbrico de solapa. Los compradores pasan uno por uno
+             mientras el evento sigue. Sin esto, los testimonios salen con ruido de fondo.</p>
+          <span class="who">Videógrafo + piloto en 2.ª cámara</span></div>
+      </div>
+      <div class="tlrow alt">
+        <div class="tlt">2:30</div>
+        <div class="tlb"><b>Recorrido y cierre</b>
+          <p>Lotes y áreas comunes, retratos de la gerencia y últimas aéreas con luz cálida.</p>
+          <span class="who">Los 3</span></div>
+      </div>
+    </div>
+
+    <div>
+      <div class="shot"><img src="fotos/x-masterplan.jpg" alt="Club House de Loma Alta"></div>
+      <div class="cap">El Club House desde el aire</div>
+      <div class="shot" style="margin-top:4mm"><img src="fotos/x-vias.jpg" alt="Vías internas de Loma Alta"></div>
+      <div class="cap">Vías internas y ciclovía</div>
+    </div>
+  </div>
+
+  <div class="kick" style="margin-top:7mm">Después del evento</div>
+  <div class="after">
+    <div class="af"><div class="t">48 horas</div><b>Teaser publicable</b>
+      <span>Un adelanto corto, mientras los asistentes todavía comentan.</span></div>
+    <div class="af"><div class="t">7 días hábiles</div><b>Entrega completa</b>
+      <span>Fotos y videos finales en galería web descargable, sin marca de agua.</span></div>
+    <div class="af"><div class="t">90 días</div><b>Respaldo garantizado</b>
+      <span>Conservamos el material original en doble disco después de la entrega.</span></div>
+  </div>
+
+  <div class="pull" style="margin-top:5mm">
+    <p>De todo lo que se graba ese día, el testimonio es lo <em>único</em> que no se puede
+       repetir después. Por eso tiene su propio bloque, y no se deja para el final.</p>
+  </div>
+
+  <div class="brand"><span>Entrega Etapa I · Loma Alta</span><span>Propuesta · 3 / 4</span></div>
+</div>
+
+
+<!-- ═══════════ 4 · PLANES Y CIERRE ═══════════ -->
+<div class="page">
+  <div class="kick">Inversión</div>
+  <h2 style="margin-top:2.5mm">Tres formas de cubrir el <em>26 de setiembre</em>.</h2>
+
+  <div class="plans">
+    <div class="pl">
+      <div class="nm">Esencial</div>
+      <div class="price">S/ 3,200</div>
+      <div class="igv">+ IGV · 2 personas</div>
+      <ul>
+        <li>3 h de cobertura</li>
+        <li>60 fotos editadas</li>
+        <li>Drone: 20 min de aéreas</li>
+        <li>Resumen 16:9 de 90 s, sin animación</li>
+        <li>1 reel vertical de 45 s</li>
+        <li class="off">Sin testimonios</li>
+        <li class="off">Sin teaser previo</li>
+        <li>Entrega: 12 días hábiles</li>
+      </ul>
+    </div>
+
+    <div class="pl best">
+      <span class="tagbest">Recomendado</span>
+      <div class="nm">Institucional</div>
+      <div class="price">S/ 4,900</div>
+      <div class="igv">+ IGV · 3 personas · 3 cámaras</div>
+      <ul>
+        <li class="hi">3 h · fotógrafo + videógrafo + piloto de drone</li>
+        <li class="hi">80 fotos editadas + galería completa</li>
+        <li>Drone: cobertura aérea completa</li>
+        <li class="hi">Resumen 16:9 de 2–3 min con animación</li>
+        <li>Reel vertical de 45–60 s</li>
+        <li class="hi">3 testimonios en 16:9 y 9:16 — 6 piezas</li>
+        <li>Rincón de testimonios con luz y micrófono</li>
+        <li>Teaser en 48 h</li>
+        <li>Uso comercial · 12 meses</li>
+        <li class="hi">Entrega: 7 días hábiles</li>
+      </ul>
+    </div>
+
+    <div class="pl">
+      <div class="nm">Insignia</div>
+      <div class="price">S/ 6,900</div>
+      <div class="igv">+ IGV · 3 personas · 4 h</div>
+      <ul>
+        <li>Todo lo del plan Institucional, y además:</li>
+        <li>1 hora extra de cobertura</li>
+        <li>100 fotos + 10 verticales para historias</li>
+        <li><b>5 testimonios</b> en ambos formatos — 10 piezas</li>
+        <li>2.º reel: recorrido aéreo del proyecto</li>
+        <li>Versión subtitulada y sin música para pauta</li>
+        <li>Uso comercial · 24 meses</li>
+        <li>Entrega: 7 días hábiles</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="pull" style="margin-top:3mm;padding:4mm 6mm;font-size:11.5pt">
+    <p style="font-size:11.5pt">Un lote de Loma Alta supera las <em>seis cifras</em>. El plan
+       Institucional cuesta cerca del <em>4%</em> de un solo lote: una venta más y se pagó veinte veces.</p>
+  </div>
+
+  <div class="kick" style="margin-top:3.5mm">Cómo se trabaja</div>
+  <div class="chips">
+    <div class="chip"><b>Autorización de imagen</b>
+      <span>Cada testimonio firma su cesión de uso. Sin ese papel, el video no puede ir en publicidad.</span></div>
+    <div class="chip"><b>Verificación de espacio aéreo</b>
+      <span>El vuelo se revisa y coordina antes del evento, no ese mismo día.</span></div>
+    <div class="chip"><b>Visita previa al terreno</b>
+      <span>Reconocimiento previo para definir posiciones, luz y punto de entrevistas.</span></div>
+    <div class="chip"><b>Alcance cerrado por escrito</b>
+      <span>Cantidad exacta de fotos, videos y testimonios en el contrato.</span></div>
+  </div>
+
+  <p style="margin-top:3mm;font-size:8.5pt;color:var(--muted)">
+    50% para reservar la fecha y 50% contra entrega. <b>8% de descuento</b> con pago 100% adelantado.
+    Cada video incluye <b>una ronda de ajustes</b>. Precios en soles, no incluyen IGV; válida hasta el
+    31 de agosto de 2026. No incluye impresión, pantalla LED, transmisión en vivo ni contratación de talento.</p>
+
+  <div class="cta">
+    <div class="ctamain">
+      <h3>Confirmemos la fecha antes de que <em>se cruce</em>.</h3>
+      <p>El 26 de setiembre es sábado y es temporada alta de eventos en Piura.
+         La fecha queda reservada con la aceptación del plan y el 50% inicial.</p>
+      <span class="wa">
+        <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5.1-1.3A10 10 0 1 0 12 2zm5.4 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-1.7-.1-.4-.1-.9-.3-1.6-.6-2.8-1.2-4.6-4-4.7-4.2-.1-.2-1.1-1.4-1.1-2.7s.7-1.9 1-2.2c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.3 0 .5l-.4.5c-.1.2-.3.3-.1.6.1.3.6 1.1 1.4 1.7 1 .8 1.7 1.1 2 1.2.2.1.4.1.5-.1l.7-.8c.2-.2.3-.2.5-.1l2 .9c.2.1.4.2.4.3.1.1.1.6-.1 1.1z"/></svg>
+        969 957 672
+      </span>
+    </div>
+
+    <div class="bank">
+      <div class="bl">Para la reserva</div>
+      <b>BCP · Cuenta en soles</b>
+      <div class="acct">47501805074064</div>
+      <span>Titular: Jers Ancajima.<br>Envíe la constancia al mismo WhatsApp y confirmamos la fecha el mismo día.</span>
+    </div>
+  </div>
+
+  <div class="brand"><span>Jers Ancajima · 969 957 672</span><span>Propuesta · 4 / 4</span></div>
+</div>
+
+</body>
+</html>
