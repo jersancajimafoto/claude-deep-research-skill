@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Afluencia — Manual de Operación y Capacitación</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,600;1,9..144,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{--teal:#C97B58;--teal-deep:#2A2119;--bosque:#1C1712;--coral:#B8654A;--crema:#EFEAE0;--menta:#E7D6CB;--arena:#E0D7CB;--tinta:#1C1712;--gris:#6B5D52;}
+  @page{ size:A4; margin:0; }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Inter',sans-serif;color:var(--tinta);line-height:1.55;font-size:10.3pt;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  h1,h2,h3,h4,.dsp{font-family:'Fraunces',sans-serif;letter-spacing:-.01em;line-height:1.15}
+  .firma{font-family:'Fraunces';font-weight:700}.firma .d{color:var(--teal)}
+  strong,b{font-weight:600}
+  .page{padding:42px 50px;page-break-after:always;background:var(--crema);min-height:297mm;position:relative}
+  .page:last-child{page-break-after:auto}
+  .cover{background:var(--bosque);color:var(--crema);display:flex;flex-direction:column;justify-content:space-between;padding:64px 56px}
+  .cover .firma{font-size:1.4rem}.cover .d{color:var(--menta)}
+  .cover h1{font-size:2.9rem;font-weight:700;margin-top:8px;max-width:16ch}.cover h1 em{color:var(--teal);font-style:italic}
+  .cover .tag{display:inline-block;margin-top:20px;font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:var(--menta);border:1px solid rgba(231,214,203,.4);padding:6px 14px;border-radius:100px}
+  .cover .meta{color:#D6C8BB;font-size:.95rem}.cover .meta b{color:#fff}
+  .eyebrow{font-family:'JetBrains Mono',monospace;color:var(--teal);font-weight:600;font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;margin-bottom:6px}
+  h2{font-size:1.5rem;font-weight:600;margin-bottom:6px;color:var(--teal-deep)}h2 .nro{color:var(--coral)}
+  h3{font-size:1.02rem;font-weight:600;margin:15px 0 5px;color:var(--teal-deep)}
+  h4{font-size:.94rem;font-weight:600;margin:10px 0 4px}
+  p{margin-bottom:8px;color:#3A302A}.lead{color:var(--gris);font-size:1.04rem;margin-bottom:12px}
+  ul,ol{margin:6px 0 11px 20px}li{margin-bottom:4px;color:#3A302A}.muted{color:var(--gris);font-size:.84rem}
+  table{width:100%;border-collapse:collapse;margin:9px 0 13px;font-size:9.1pt}
+  th{background:var(--teal-deep);color:var(--crema);text-align:left;padding:7px 9px;font-family:'Fraunces';font-weight:600;font-size:8.5pt}
+  td{padding:7px 9px;border-bottom:1px solid var(--arena);vertical-align:top;color:#3A302A}tr:nth-child(even) td{background:#F7F3EC}
+  .card{background:#fff;border:1px solid var(--arena);border-radius:13px;padding:14px 16px;margin:9px 0}
+  .card.teal{background:var(--teal-deep);color:var(--crema);border:none}.card.teal h3,.card.teal h4{color:#fff}.card.teal p,.card.teal li{color:#E3D9CE}
+  .card.coral{border-left:4px solid var(--coral)}.card.menta{border-left:4px solid var(--menta)}.card h3,.card h4{margin-top:0}
+  .pill{display:inline-block;font-size:.66rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:3px 9px;border-radius:100px;background:var(--menta);color:var(--bosque)}
+  .pill.coral{background:var(--coral);color:#fff}.pill.teal{background:var(--teal);color:#fff}
+  .flujo{display:flex;flex-wrap:wrap;gap:6px;margin:11px 0;align-items:center}
+  .flujo .step{background:#fff;border:1px solid var(--arena);border-radius:9px;padding:7px 10px;font-size:8.4pt;font-weight:600;color:var(--teal-deep)}
+  .flujo .ar{color:var(--coral);font-weight:700}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .kpi{display:flex;gap:12px;flex-wrap:wrap;margin:10px 0}.kpi .k{background:#fff;border:1px solid var(--arena);border-radius:12px;padding:11px 15px;flex:1;min-width:108px}
+  .kpi .n{font-family:'Fraunces';font-weight:700;font-size:1.4rem;color:var(--coral)}.kpi .t{font-size:.74rem;color:var(--gris)}
+  .precio-tag{font-family:'Fraunces';font-weight:700;color:var(--teal);font-size:1.15rem}
+  .check li{list-style:none;position:relative;padding-left:21px}.check li::before{content:"✓";position:absolute;left:0;color:var(--teal);font-weight:700}
+  .ficha{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:10px 0}
+  .ficha .f{background:#fff;border:1px solid var(--arena);border-radius:11px;padding:11px 13px}
+  .ficha .f .lbl{font-size:.66rem;text-transform:uppercase;letter-spacing:.06em;color:var(--teal);font-weight:600;margin-bottom:3px}
+  .ficha .f .val{font-size:.92rem;color:#3A302A}
+  .q{background:#fff;border-left:4px solid var(--teal);border-radius:0 10px 10px 0;padding:13px 16px;margin:9px 0;font-size:1.0rem;color:#3A302A;font-style:italic}
+  .foot{position:absolute;bottom:18px;left:50px;right:50px;display:flex;justify-content:space-between;font-size:.7rem;color:#9C8B7D;border-top:1px solid var(--arena);padding-top:8px}
+</style>
+</head>
+<body>
+
+<!-- PORTADA -->
+<div class="page cover">
+  <div><span class="firma">JERS <span class="d">|</span> IA</span></div>
+  <div>
+    <span class="tag">Servicio premium · Documento interno · v2.2</span>
+    <h1>Afluencia<br><em>Manual de operación</em> y capacitación</h1>
+    <p style="color:#E3D9CE;margin-top:18px;max-width:44ch">Todo para ofrecer, ejecutar, cobrar y escalar el servicio. Con los dos modos del sistema, el detalle comercial de cada plan, cómo explicarlo al cliente y un caso real aplicado.</p>
+  </div>
+  <div class="meta"><b>Jerson Ancajima</b> · Marketing Digital &nbsp;|&nbsp; linkedin.com/in/jersonancajima<br>Junio 2026 · v2.2</div>
+</div>
+
+<!-- 01 QUÉ ES + PITCH -->
+<div class="page">
+  <p class="eyebrow">Sección 1</p>
+  <h2><span class="nro">01.</span> Qué es Afluencia</h2>
+  <p class="lead">Un servicio que genera, filtra con IA y entrega una base de clientes potenciales lista para contactar — sin que el cliente aporte ninguna lista.</p>
+  <div class="card coral"><h4>El diferencial que vendes</h4><p style="margin:0">Otros piden que la empresa <b>ya tenga</b> una lista. Afluencia la <b>construye desde cero</b>. Por eso le sirve al 78% de negocios que no tiene sistema de prospección.</p></div>
+  <h3>Si el cliente pregunta "¿cómo funciona?" — qué responder</h3>
+  <div class="q">"Afluencia te arma una lista de clientes potenciales reales de tu rubro y tu ciudad, ya filtrada con inteligencia artificial y lista para que los contactes por WhatsApp. No necesitas darnos ninguna lista: nosotros la generamos desde cero, te decimos a quién priorizar y te dejamos el mensaje listo. Tú solo envías y cierras."</div>
+  <p class="muted">Versión de 10 segundos: <b>"Te lleno tu CRM de clientes potenciales reales y listos para contactar, sin que me des ninguna lista."</b></p>
+  <div class="card menta"><h4>Aprendizaje clave (casos reales)</h4><p style="margin:0">El sistema sirve para <b>dos cosas</b>: ayudar a un negocio a <b>vender sus servicios</b>, y ayudar a una empresa a <b>captar personas/inversionistas</b>. Mismo motor; cambian canal, scoring y mensaje (Sección 3).</p></div>
+  <div class="foot"><span>JERS | IA · Afluencia</span><span>01 — Qué es</span></div>
+</div>
+
+<!-- 02 CÓMO FUNCIONA -->
+<div class="page">
+  <p class="eyebrow">Sección 2</p>
+  <h2><span class="nro">02.</span> Cómo funciona el sistema</h2>
+  <p class="lead">Una línea de producción de 7 etapas. Cada una deja su resultado guardado: se puede pausar y retomar.</p>
+  <div class="flujo">
+    <span class="step">1 · Nicho (ICP)</span><span class="ar">→</span><span class="step">2 · Prospectar (Maps)</span><span class="ar">→</span><span class="step">3 · Limpiar + sin duplicados</span><span class="ar">→</span><span class="step">4 · Puntuar IA</span><span class="ar">→</span><span class="step">5 · Oferta</span><span class="ar">→</span><span class="step">6 · Mensajes</span><span class="ar">→</span><span class="step">7 · Seguimiento</span>
+  </div>
+  <table>
+    <tr><th>Etapa</th><th>Qué hace</th></tr>
+    <tr><td><b>1. Nicho (ICP)</b></td><td>Define el perfil: decisor + sector + ciudad + tamaño + señales.</td></tr>
+    <tr><td><b>2. Prospección</b></td><td>Busca empresas/profesionales reales en Google Maps con datos de contacto.</td></tr>
+    <tr><td><b>3. Limpieza</b></td><td>Quita duplicados y clasifica el tipo de contacto.</td></tr>
+    <tr><td><b>4. Scoring IA</b></td><td>Puntúa 0–100 según el tipo de oferta (Sección 6).</td></tr>
+    <tr><td><b>5. Oferta</b></td><td>Decide qué le encaja a cada lead.</td></tr>
+    <tr><td><b>6. Mensajes</b></td><td>Redacta el WhatsApp personalizado + link listo.</td></tr>
+    <tr><td><b>7. Seguimiento</b></td><td>Recontacto a 48–72 h y reporte.</td></tr>
+  </table>
+  <div class="card menta"><p style="margin:0"><b>CRM en Airtable:</b> Leads, Campañas, Actividad. Una base por cliente, datos aislados.</p></div>
+  <div class="foot"><span>JERS | IA · Afluencia</span><span>02 — Cómo funciona</span></div>
+</div>
+
+<!-- 03 DOS MODOS -->
+<div class="page">
+  <p class="eyebrow">Sección 3 · Aprendizaje central</p>
+  <h2><span class="nro">03.</span> A quién le vendes: los dos modos</h2>
+  <p class="lead">Antes de prospectar, define qué tipo de comprador busca tu cliente. De eso depende todo lo demás.</p>
+  <table>
+    <tr><th></th><th>Modo A — Vender a negocios</th><th>Modo B — Vender a personas</th></tr>
+    <tr><td><b>Ejemplo</b></td><td>Contadores Piura → venderles una web</td><td>Oro Azul → captar inversionistas</td></tr>
+    <tr><td><b>Comprador</b></td><td>El negocio (empresa)</td><td>La persona con capital</td></tr>
+    <tr><td><b>Canal</b></td><td>Teléfono de la empresa sirve</td><td><b>Solo celular</b> (contacto directo)</td></tr>
+    <tr><td><b>Scoring</b></td><td>Dolor (sin web = bueno)</td><td>Capital (con trayectoria = bueno)</td></tr>
+    <tr><td><b>Mensaje</b></td><td>Resuelve su problema</td><td>Oportunidad + confianza (firma, web)</td></tr>
+    <tr><td><b>Entregable</b></td><td>Lista + mensajes</td><td>Lista + mensajes + diferenciadores + objeciones</td></tr>
+  </table>
+  <div class="card coral"><h4>La regla práctica</h4><p style="margin:0">Si tu cliente le vende a <b>otros negocios</b>, prospectas negocios y priorizas por dolor. Si le vende a <b>personas con plata</b> (inversión, alto ticket), prospectas perfiles con capital, <b>filtras solo celulares</b> y priorizas por prestigio.</p></div>
+  <div class="foot"><span>JERS | IA · Afluencia</span><span>03 — Dos modos</span></div>
+</div>
+
+<!-- 04 HERRAMIENTAS -->
+<div class="page">
+  <p class="eyebrow">Sección 4</p>
+  <h2><span class="nro">04.</span> Herramientas y costos (tu inversión)</h2>
+  <p class="lead">Arrancas casi sin invertir. Casi todo corre en planes gratuitos al empezar.</p>
+  <table>
+    <tr><th>Herramienta</th><th>Para qué</th><th>Costo para ti</th></tr>
+    <tr><td><b>Claude</b> (Pro)</td><td>El cerebro. Operas todo desde acá.</td><td>~S/ 75/mes — ya lo pagas</td></tr>
+    <tr><td><b>Google Places API</b></td><td>Genera la base desde Google Maps.</td><td>Capa gratuita amplia. Piloto = S/ 0</td></tr>
+    <tr><td><b>Airtable</b></td><td>El CRM.</td><td>Free al empezar; Team ~S/ 75/mes si escalas</td></tr>
+    <tr><td><b>WhatsApp</b></td><td>Canal de envío (1 clic).</td><td>S/ 0</td></tr>
+  </table>
+  <div class="card teal"><h4>Tu inversión real</h4><p style="margin:0">Prácticamente <b>solo tu Claude Pro (~S/ 75/mes)</b>. Por eso casi todo lo que cobras es margen.</p></div>
+  <div class="foot"><span>JERS | IA · Afluencia</span><span>04 — Herramientas y costos</span></div>
+</div>
+
+<!-- 05 SEGMENTACIÓN -->
+<div class="page">
+  <p class="eyebrow">Sección 5 · Capacitación</p>
+  <h2><span class="nro">05.</span> Cómo segmentar (lo más importante)</h2>
+  <p class="lead">El 90% del resultado se define acá. Un buen perfil da leads de calidad; uno vago da basura.</p>
+  <div class="card coral"><h4>Regla de oro</h4><p style="margin:0">Si tu nicho puede ser "cualquier empresa", tienes un problema de foco. <b>Sector/perfil + ciudad</b>, siempre.</p></div>
+  <h3>Modo A — segmentar por dolor</h3>
+  <table><tr><th>Situación</th><th>Oferta</th></tr><tr><td>Sin web / web abandonada</td><td><span class="pill teal">Auditoría Web</span></td></tr><tr><td>Activo en redes, sin web</td><td><span class="pill" style="background:#8b6fc4;color:#fff">Automatización IA</span></td></tr></table>
+  <h3>Modo B — segmentar por perfil de capital</h3>
+  <ul class="check">
+    <li><b>Mix de profesiones</b> de alto ingreso: médicos, odontólogos, abogados, arquitectos, ingenieros, mayoristas, gerentes.</li>
+    <li><b>Filtra solo celulares</b> — en un profesional independiente ese número es el contacto directo.</li>
+    <li><b>Calidad por reseñas:</b> prioriza 4–5★.</li>
+    <li>Marca quién es el titular (Directo) vs marca/clínica (Recepción).</li>
+  </ul>
+  <div class="card menta"><p style="margin:0"><b>Dato honesto:</b> el celular + nombre del titular <b>maximizan</b> la probabilidad de llegar a la persona; la confirmación final la da el saludo del primer mensaje.</p></div>
+  <div class="foot"><span>JERS | IA · Afluencia</span><span>05 — Segmentación</span></div>
+</div>
+
+<!-- 06 SCORING -->
+<div class="page">
+  <p class="eyebrow">Sección 6 · Capacitación</p>
+  <h2><span class="nro">06.</span> El scoring se adapta a la oferta</h2>
+  <p class="lead">No hay un solo scoring. Lo que es "buen lead" depende de qué vendes.</p>
+  <div class="grid2">
+    <div class="card"><h4>Modo A — Scoring de dolor</h4><ul><li>Sin web propia = <b>+ puntos</b></li><li>Pocas reseñas = dolor</li><li>Encaje sector + ciudad</li><li>Contactabilidad</li></ul></div>
+    <div class="card menta"><h4>Modo B — Scoring de capital</h4><ul><li>Trayectoria (reseñas) = <b>+ puntos</b></li><li>Web propia = formalidad</li><li>Reputación 4–5★</li><li>Celular = contacto directo</li></ul></div>
+  </div>
+  <div class="card coral"><p style="margin:0"><b>Cuidado:</b> usar el scoring equivocado arruina la lista. Define el modo antes de puntuar.</p></div>
+  <p>Mapeo: Score ≥ 70 → alta · 45–69 → media · &lt; 45 → baja. Cada lead guarda <b>por qué</b> sacó su puntaje.</p>
+  <div class="foot"><span>JERS | IA · Afluencia</span><span>06 — Scoring</span></div>
+</div>
+
+<!-- 07 PLAN 1 FICHA COMERCIAL -->
+<div class="page">
+  <p class="eyebrow">Sección 7 · Detalle comercial</p>
+  <h2><span class="nro">07.</span> Plan 1 — Pack Leads <span class="precio-tag" style="margin-left:8px">S/ 300–500</span></h2>
+  <p class="lead">Entrega puntual: ~50–80 leads cualificados en su CRM + mensajes listos. <b>Es una sola sesión de servicio, no es mensual.</b></p>
+  <div class="ficha">
+    <div class="f"><div class="lbl">Modalidad</div><div class="val"><b>Una sola entrega</b> (pago único). Una tanda de 50–80 leads de un perfil + ciudad.</div></div>
+    <div class="f"><div class="lbl">Reuniones fijas</div><div class="val"><b>2 reuniones:</b> (1) descubrimiento 20 min, (2) entrega y presentación del CRM.</div></div>
+    <div class="f"><div class="lbl">Método de pago</div><div class="val"><b>50% al iniciar / 50% al entregar</b>. Yape, Plin, transferencia o depósito. Boleta/factura si lo piden.</div></div>
+    <div class="f"><div class="lbl">Tiempo de entrega</div><div class="val"><b>24–48 horas</b> desde la reunión de descubrimiento.</div></div>
+  </div>
+  <h3>Por qué cuesta lo que cuesta</h3>
+  <ul class="check"><li>Te ahorra <b>6–12 horas/semana</b> de búsqueda manual.</li><li>Incluye datos verificados + filtrado con IA + mensajes listos, no una simple lista.</li><li>Cuesta menos que un solo día de un vendedor, y te queda el CRM para siempre.</li></ul>
+  <div class="card menta"><p style="margin:0"><b>Para quién:</b> el que quiere probar el sistema sin comprometerse a un mensual. Es tu puerta de entrada al Plan 2.</p></div>
+  <div class="foot"><span>JERS | IA · Afluencia</span><span>07 — Plan 1</span></div>
+</div>
+
+<!-- 08 PLAN 2 FICHA COMERCIAL -->
+<div class="page">
+  <p class="eyebrow">Sección 8 · Detalle comercial</p>
+  <h2><span class="nro">08.</span> Plan 2 — Motor de Leads <span class="pill coral" style="vertical-align:middle">El más rentable</span> <span class="precio-tag" style="margin-left:6px">S/ 500–900/mes</span></h2>
+  <p class="lead">Prospección continua: <b>manejo mensual con 4 sesiones (una tanda de leads por semana)</b> + seguimiento + reporte.</p>
+  <div class="ficha">
+    <div class="f"><div class="lbl">Modalidad</div><div class="val"><b>Mensual recurrente. 4 tandas/mes</b> (1 tanda semanal de <b>~20–30 leads cualificados</b> frescos al CRM).</div></div>
+    <div class="f"><div class="lbl">Leads entregados</div><div class="val"><b>20–30 por tanda · ~80–120 al mes.</b> Todos cualificados, priorizados y con su mensaje listo.</div></div>
+    <div class="f"><div class="lbl">Reuniones fijas</div><div class="val"><b>1 onboarding</b> al inicio + <b>1 reunión de reporte al mes</b> (o quincenal si lo prefiere).</div></div>
+    <div class="f"><div class="lbl">Método de pago</div><div class="val"><b>Mensual por adelantado, sin permanencia</b>. Se renueva mes a mes. Yape/Plin/transferencia.</div></div>
+  </div>
+  <h3>Por qué cuesta lo que cuesta</h3>
+  <ul class="check"><li>Flujo <b>constante</b> de clientes potenciales (no una sola vez).</li><li>Incluye seguimiento, reporte y mejora del mensaje mes a mes.</li><li>Más barato que contratar un prospector a sueldo (S/ 1,200+ al mes, sin garantías).</li></ul>
+  <div class="card menta"><p style="margin:0"><b>Tanda vs envío:</b> cada tanda son 20–30 leads <b>entregados al CRM</b>. El cliente los contacta a su ritmo (8–10/día por compliance), así una tanda alimenta toda la semana de prospección.</p></div>
+  <div class="card teal"><p style="margin:0"><b>Tu plan estrella:</b> ingreso recurrente y predecible. Costos casi cero → casi todo es margen. Sin permanencia; la calidad lo retiene.</p></div>
+  <div class="foot"><span>JERS | IA · Afluencia</span><span>08 — Plan 2</span></div>
+</div>
+
+<!-- 09 PLAN 3 FICHA COMERCIAL -->
+<div class="page">
+  <p class="eyebrow">Sección 9 · Detalle comercial</p>
+  <h2><span class="nro">09.</span> Plan 3 — Setup + Capacitación <span class="precio-tag" style="margin-left:8px">S/ 1,200–2,000</span></h2>
+  <p class="lead">Le montas su sistema y lo capacitas para operarlo solo. <b>Es un proyecto puntual, no mensual.</b></p>
+  <div class="ficha">
+    <div class="f"><div class="lbl">Modalidad</div><div class="val"><b>Proyecto único.</b> Setup del sistema + capacitación. Luego el cliente opera solo.</div></div>
+    <div class="f"><div class="lbl">Sesiones / reuniones</div><div class="val"><b>1 descubrimiento + 2–3 sesiones de capacitación</b> en vivo + 1 cierre/entrega. Acompañamiento inicial incluido.</div></div>
+    <div class="f"><div class="lbl">Método de pago</div><div class="val"><b>50% al iniciar / 50% al entregar</b> (tras la capacitación). Contrato simple recomendado.</div></div>
+    <div class="f"><div class="lbl">Entregables</div><div class="val">Su CRM montado + plantillas de su rubro + guía operativa a su medida.</div></div>
+  </div>
+  <h3>Por qué cuesta lo que cuesta</h3>
+  <ul class="check"><li>Se llevan la <b>capacidad completa</b>: pagan una vez y operan para siempre.</li><li>Incluye montaje, plantillas, capacitación y acompañamiento.</li><li>Tras esto, el cliente asume solo sus costos operativos (su Places + Airtable).</li></ul>
+  <div class="card coral"><p style="margin:0"><b>¿App independiente?</b> Para autonomía total sin Claude, es desarrollo a futuro — se hace cuando este plan tenga demanda y la pague ese contrato.</p></div>
+  <div class="foot"><span>JERS | IA · Afluencia</span><span>09 — Plan 3</span></div>
+</div>
+
+<!-- 10 RESUMEN COMERCIAL + PAGO -->
+<div class="page">
+  <p class="eyebrow">Sección 10</p>
+  <h2><span class="nro">10.</span> Resumen comercial de los planes</h2>
+  <table>
+    <tr><th>Plan</th><th>Modalidad</th><th>Reuniones</th><th>Método de pago</th></tr>
+    <tr><td><b>Pack Leads</b><br>S/ 300–500</td><td>1 entrega única · <b>50–80 leads</b></td><td>2 (descubrimiento + entrega)</td><td>50% inicio / 50% entrega</td></tr>
+    <tr><td><b>Motor de Leads</b><br>S/ 500–900/mes</td><td>Mensual · 4 tandas · <b>20–30 c/u (~80–120/mes)</b></td><td>1 onboarding + 1 reporte/mes</td><td>Mensual adelantado, sin permanencia</td></tr>
+    <tr><td><b>Setup + Capacitación</b><br>S/ 1,200–2,000</td><td>Proyecto único</td><td>Descubrimiento + 2–3 capacitación + cierre</td><td>50% inicio / 50% entrega</td></tr>
+  </table>
+  <h3>Medios de pago (Perú)</h3>
+  <p>Yape, Plin, transferencia bancaria o depósito. Para montos altos: contrato simple + boleta o factura. <b>Siempre una parte por adelantado</b> antes de empezar a trabajar.</p>
+  <div class="card menta"><p style="margin:0"><b>Tip de cierre:</b> empieza ofreciendo el <b>Pack Leads</b> como prueba. Cuando vea los resultados, sube al <b>Motor de Leads</b> mensual — ahí está tu ingreso recurrente.</p></div>
+  <div class="foot"><span>JERS | IA · Afluencia</span><span>10 — Resumen comercial</span></div>
+</div>
+
+<!-- 10B NIVEL CITAS CALIFICADAS -->
+<div class="page">
+  <p class="eyebrow">Nivel premium · Add-on</p>
+  <h2><span class="nro">★</span> Citas Calificadas (no solo leads)</h2>
+  <p class="lead">El siguiente escalón del servicio: en vez de entregar una lista, entregamos <b>citas agendadas con gente que tiene dinero, decisión y un problema real</b>. Vale más y se cobra más.</p>
+  <div class="card coral"><h4>El pitch</h4><p style="margin:0">"No te entrego contactos, te entrego <b>citas con gente que tiene dinero, decisión y un problema real</b>." Ideal para clientes de alto ticket (inversión, productos premium).</p></div>
+
+  <h3>El marco DDP — cómo calificamos</h3>
+  <p>Antes de agendar, se pre-califica al interesado por WhatsApp con 3 preguntas:</p>
+  <table>
+    <tr><th>Criterio</th><th>Qué confirma</th><th>Cómo ya lo medimos</th></tr>
+    <tr><td><b>D — Dinero</b></td><td>Capacidad de pago</td><td>Trayectoria, web propia, reputación</td></tr>
+    <tr><td><b>D — Decisión</b></td><td>Que decide la compra</td><td>Badge Directo (titular)</td></tr>
+    <tr><td><b>P — Problema</b></td><td>Necesidad real</td><td>Señal de dolor + se confirma al conversar</td></tr>
+  </table>
+  <p class="muted">Calificado (3/3) → se agenda la cita. Parcial (2/3) → se nutre. No calificado → no se quema la agenda.</p>
+
+  <h3>Embudo high-ticket (para ofertas premium)</h3>
+  <div class="flujo">
+    <span class="step">Mensaje WhatsApp</span><span class="ar">→</span><span class="step">Video / brochure</span><span class="ar">→</span><span class="step">Pre-calificación DDP</span><span class="ar">→</span><span class="step">Cita agendada</span><span class="ar">→</span><span class="step">Cierre del cliente</span>
+  </div>
+
+  <div class="card teal"><h4>Cómo se cobra</h4><p style="margin:0">Add-on sobre el <b>Motor de Leads</b>: se suma al precio mensual por el trabajo extra de calificación y agendamiento. La cita calificada vale mucho más que un lead suelto, así que el cliente paga con gusto. El CRM mide el embudo completo (campos <b>cita</b> y <b>calificacion</b>).</p></div>
+  <div class="foot"><span>JERS | IA · Afluencia</span><span>★ — Citas Calificadas</span></div>
+</div>
+
+<!-- 11 HONESTIDAD -->
+<div class="page">
+  <p class="eyebrow">Sección 11 · Para dar confianza</p>
+  <h2><span class="nro">11.</span> La honestidad del servicio</h2>
+  <p class="lead">Lo que sí garantizas y lo que no. Decirlo claro es lo que hace que el cliente confíe y crea en el sistema.</p>
+  <div class="grid2">
+    <div class="card menta"><h4>✓ Qué SÍ garantizamos</h4><ul><li>Leads <b>reales y verificados</b>, de fuentes públicas.</li><li><b>Cualificados</b>: filtrados y priorizados con IA, con su porqué.</li><li><b>Entregados</b> en tu CRM, con su mensaje listo.</li><li>Contacto directo <b>maximizado</b> (celular + titular).</li><li>Trazabilidad: sabes a quién, cuándo y qué se envió.</li></ul></div>
+    <div class="card coral"><h4>✕ Qué NO prometemos</h4><ul><li>Que todos compren — el <b>cierre</b> depende de tu oferta y tu seguimiento.</li><li>Que el 100% de números sean del dueño — se confirma al contactar.</li><li>Una cantidad fija de ventas (eso sería mentir).</li></ul></div>
+  </div>
+  <div class="card teal"><h4>Por qué esto te da confianza</h4><p style="margin:0">Te cobramos por <b>trabajo entregado y medible</b> (leads cualificados en tu CRM), no por promesas vagas de ventas. Puedes <b>validar con un Pack piloto</b> antes de escalar: si no te convence, no sigues. Un servicio que es honesto con sus límites es un servicio en el que puedes creer.</p></div>
+  <div class="q">"No te vendo ventas garantizadas — eso nadie serio lo puede prometer. Te entrego clientes potenciales reales, cualificados y listos para contactar. Tú decides cuántos cierras."</div>
+  <div class="foot"><span>JERS | IA · Afluencia</span><span>11 — Honestidad</span></div>
+</div>
+
+<!-- 12 EL SISTEMA MEJORA CON EL USO -->
+<div class="page">
+  <p class="eyebrow">Sección 12 · Ventaja del tiempo</p>
+  <h2><span class="nro">12.</span> El sistema mejora con el uso</h2>
+  <p class="lead">Cada campaña que corres deja aprendizaje. Mientras más lo usas, mejor selecciona, mejor segmenta y mejor convierte.</p>
+  <table>
+    <tr><th>Con cada nueva búsqueda…</th><th>El sistema mejora en…</th></tr>
+    <tr><td>Ves qué perfil y ciudad responde mejor</td><td>Selección del lead (priorizas lo que sí funciona)</td></tr>
+    <tr><td>Mides qué mensaje genera más respuestas</td><td>El copy se afina con datos reales</td></tr>
+    <tr><td>Detectas qué señales predicen un buen cliente</td><td>La segmentación se vuelve más precisa</td></tr>
+    <tr><td>Guardas lo que funcionó por rubro</td><td>Plantillas reutilizables que aceleran cada campaña</td></tr>
+  </table>
+  <div class="card teal"><h4>Qué significa para el cliente</h4><p style="margin:0">El cliente del <b>Motor de Leads</b> (mensual) obtiene <b>mejores resultados mes a mes</b>: el primer mes se calibra, del segundo en adelante el sistema ya sabe qué nicho, qué mensaje y qué horario rinden más. <b>El tiempo juega a tu favor.</b></p></div>
+  <div class="q">"Mientras más usas Afluencia, más inteligente se vuelve: selecciona mejor, segmenta mejor y convierte mejor."</div>
+  <div class="foot"><span>JERS | IA · Afluencia</span><span>12 — Mejora con el uso</span></div>
+</div>
+
+<!-- 13 EL ENTREGABLE -->
+<div class="page">
+  <p class="eyebrow">Sección 13 · Estándar de entrega</p>
+  <h2><span class="nro">13.</span> Cómo se ve el entregable</h2>
+  <p class="lead">El reporte que recibe el cliente (PDF branded JERS | IA + acceso al CRM). Estructura probada con casos reales.</p>
+  <table>
+    <tr><th>Parte</th><th>Qué lleva</th></tr>
+    <tr><td><b>1. Portada + resumen</b></td><td>Qué se hizo, KPIs (leads, ciudades, % contacto directo).</td></tr>
+    <tr><td><b>2. Alcance del plan</b></td><td>Cuántos leads incluye el plan vs lo entregado.</td></tr>
+    <tr><td><b>3. Metodología</b></td><td>Cómo se generó (transparencia = confianza).</td></tr>
+    <tr><td><b>4. Listado de leads</b></td><td>Perfil, ciudad, celular, Trayectoria (★+reseñas), badge Directo/Recepción, link WhatsApp.</td></tr>
+    <tr><td><b>5. Mensaje sugerido</b></td><td>Con firma + web/redes del cliente para dar confianza.</td></tr>
+    <tr><td><b>6. Diferenciadores</b> (Modo B)</td><td>Por qué el cliente y no la competencia.</td></tr>
+    <tr><td><b>7. Objeciones</b> (alto ticket)</td><td>Dudas frecuentes + respuesta apoyada en los beneficios.</td></tr>
+    <tr><td><b>8. Instrucciones + próximos pasos</b></td><td>Horario, ritmo, seguimiento, cómo escalar.</td></tr>
+  </table>
+  <div class="card menta"><p style="margin:0"><b>Tip:</b> Modo A usa partes 1–5 y 8. Modo B (inversión/alto ticket) suma 6 y 7, que son las que cierran.</p></div>
+  <div class="foot"><span>JERS | IA · Afluencia</span><span>13 — El entregable</span></div>
+</div>
+
+<!-- 14 OPERACIÓN + MARGEN + TIEMPOS -->
+<div class="page">
+  <p class="eyebrow">Sección 14</p>
+  <h2><span class="nro">14.</span> Operación, margen de error y tiempos</h2>
+  <h3>¿Desde dónde operas?</h3>
+  <p>Desde <b>Claude</b> (que ya pagas). El cliente nunca necesita Claude. Planes 1 y 2: tú ejecutas, el cliente recibe. Plan 3: el cliente opera tras la capacitación.</p>
+  <h3>Margen de error (y cómo se controla)</h3>
+  <table>
+    <tr><th>Posible error</th><th>Control</th></tr>
+    <tr><td>Ruido de datos (fuera de zona, gremios)</td><td>El scoring los descarta</td></tr>
+    <tr><td>Número de recepción, no del titular</td><td>Filtro de celular + badge; se confirma en el saludo</td></tr>
+    <tr><td>Baneo de WhatsApp</td><td>Envío gradual, humano, con opt-out</td></tr>
+  </table>
+  <h3>Tiempos de resultado</h3>
+  <div class="kpi"><div class="k"><div class="n">&lt;24 h</div><div class="t">CRM lleno</div></div><div class="k"><div class="n">1–3 días</div><div class="t">primeras respuestas</div></div><div class="k"><div class="n">1–2 sem</div><div class="t">reuniones</div></div><div class="k"><div class="n">2–4 sem</div><div class="t">primeros cierres</div></div></div>
+  <div class="foot"><span>JERS | IA · Afluencia</span><span>14 — Operación</span></div>
+</div>
+
+<!-- 14B CRM VISIBLE PARA EL EQUIPO -->
+<div class="page">
+  <p class="eyebrow">Visibilidad · Trabajo en equipo</p>
+  <h2><span class="nro">▣</span> El CRM visible para tu equipo</h2>
+  <p class="lead">El sistema ya no es solo tuyo: tu equipo (y opcionalmente el cliente) puede ver y mover los leads desde un panel visual, sin tocar código ni entender la tecnología de fondo.</p>
+
+  <h3>Ruta actual — Airtable Interfaces (0 código, listo hoy)</h3>
+  <p>Sobre la misma base del CRM se publica un panel con 3 vistas. Se comparte por link o invitación; cada quien entra con su rol (editor o solo lectura).</p>
+  <table>
+    <tr><th>Vista</th><th>Para qué sirve</th></tr>
+    <tr><td><b>Pipeline (Kanban)</b></td><td>Arrastrar leads entre estados (nuevo → contactado → respondió → cita → cerrado). Coloreado por prioridad.</td></tr>
+    <tr><td><b>Dashboard</b></td><td>Métricas en vivo: total de leads, score promedio, distribución por estado / oferta / prioridad.</td></tr>
+    <tr><td><b>Leads priorizados</b></td><td>Lista ordenada por score, con teléfono, cita y calificación DDP. Filtros por oferta/prioridad/cita.</td></tr>
+  </table>
+  <div class="card menta"><p style="margin:0"><b>Ventaja:</b> cero mantenimiento y cero costo extra al inicio. El plan Free de Airtable incluye Interfaces (limita editores ~5). Ideal para un equipo chico que necesita ver el pipeline ya.</p></div>
+
+  <h3>Ruta futura — App propia en Vercel (white-label)</h3>
+  <p>Cuando se quiera que el <b>cliente</b> vea "su CRM JERS | IA" sin ver Airtable, se construye una app web (Next.js) conectada a los mismos datos y se publica en Vercel. Da UI 100% branded y login propio, a cambio de construir y mantener. Es la fase <b>producto</b>: se hace cuando un contrato la pague.</p>
+
+  <div class="card teal"><h4>Regla práctica</h4><p style="margin:0">Para operar y para que el equipo trabaje → <b>Airtable Interfaces</b> (ya). Para vender el CRM como producto white-label al cliente → <b>app en Vercel</b> (después).</p></div>
+  <div class="foot"><span>JERS | IA · Afluencia</span><span>▣ — CRM visible</span></div>
+</div>
+
+<!-- 15 CASO ORO AZUL -->
+<div class="page">
+  <p class="eyebrow">Sección 15 · Caso real</p>
+  <h2><span class="nro">15.</span> Caso aplicado: Oro Azul</h2>
+  <p class="lead">Cliente que vende lotes de inversión agrícola (arándanos, exporta con Dole). Caso Modo B puro.</p>
+  <table>
+    <tr><th>Decisión</th><th>Qué se hizo</th></tr>
+    <tr><td>Modo</td><td>B — vender a personas con capital</td></tr>
+    <tr><td>Perfil</td><td>Mix: médicos, odontólogos, abogados, arquitectos</td></tr>
+    <tr><td>Ciudades</td><td>Piura, Arequipa, Lima</td></tr>
+    <tr><td>Canal</td><td>Solo celular (contacto directo)</td></tr>
+    <tr><td>Calidad</td><td>Filtro 4–5★ → 196 leads</td></tr>
+    <tr><td>Entregable</td><td>Lista + mensaje con firma/web + diferenciadores + objeciones</td></tr>
+  </table>
+  <div class="card teal"><h4>Lo que enseñó</h4><ul style="margin-bottom:0"><li>El scoring de "dolor digital" NO sirve para inversión → scoring de capital.</li><li>El canal correcto era el celular personal, no el fijo de la empresa.</li><li>En alto ticket, diferenciadores y objeciones son lo que cierra.</li><li>La firma con web/redes sube la confianza del prospecto.</li></ul></div>
+  <div class="foot"><span>JERS | IA · Afluencia</span><span>15 — Caso Oro Azul</span></div>
+</div>
+
+<!-- 15B ANEXO BASE REAL -->
+<div class="page">
+  <p class="eyebrow">Anexo · Evidencia real</p>
+  <h2><span class="nro">▣</span> Base real generada — caso Oro Azul</h2>
+  <p class="lead">Prueba de que el sistema produce, no es teoría. Estos son los números reales de una corrida en modo capital: profesionales de alto ingreso con celular directo, en 3 ciudades. <b>Los datos de contacto crudos viven en el CRM, no en este documento (protección de datos).</b></p>
+
+  <div class="kpi"><div class="k"><div class="n">230</div><div class="t">leads con celular directo</div></div><div class="k"><div class="n">196</div><div class="t">tras filtro 4–5★</div></div><div class="k"><div class="n">4</div><div class="t">profesiones</div></div><div class="k"><div class="n">3</div><div class="t">ciudades</div></div></div>
+
+  <h3>Por profesión</h3>
+  <table>
+    <tr><th>Profesión</th><th>Con celular</th><th>4–5★ (entregables)</th></tr>
+    <tr><td>Odontología</td><td>100</td><td>96</td></tr>
+    <tr><td>Derecho (abogados)</td><td>49</td><td>40</td></tr>
+    <tr><td>Arquitectura</td><td>46</td><td>39</td></tr>
+    <tr><td>Medicina</td><td>35</td><td>21</td></tr>
+    <tr><td><b>Total</b></td><td><b>230</b></td><td><b>196</b></td></tr>
+  </table>
+
+  <h3>Por ciudad</h3>
+  <table>
+    <tr><th>Ciudad</th><th>Con celular</th><th>4–5★</th></tr>
+    <tr><td>Piura</td><td>84</td><td>67</td></tr>
+    <tr><td>Arequipa</td><td>77</td><td>63</td></tr>
+    <tr><td>Lima</td><td>69</td><td>66</td></tr>
+  </table>
+
+  <h3>Tipo de contacto (sobre los 196)</h3>
+  <div class="kpi"><div class="k"><div class="n">53</div><div class="t">Directo (titular)</div></div><div class="k"><div class="n">143</div><div class="t">Recepción (confirmar en saludo)</div></div></div>
+
+  <h3>Estructura de cada lead (fila de ejemplo — datos inventados)</h3>
+  <table>
+    <tr><th>Profesión</th><th>Ciudad</th><th>Celular</th><th>Trayectoria</th><th>Contacto</th></tr>
+    <tr><td>Odontología</td><td>Lima</td><td>9XX XXX XXX <span class="muted">‹REDACTADO›</span></td><td>★4.9 (120)</td><td>Directo</td></tr>
+  </table>
+  <p class="muted">La lista completa, con nombre y celular reales de cada profesional, se entrega <b>solo</b> en el CRM del cliente (acceso controlado). Nunca en PDF ni material que circule — es PII de terceros.</p>
+
+  <div class="card teal"><p style="margin:0"><b>Para qué sirve este anexo:</b> mostrarle a un prospecto que el sistema <b>ya generó una base real y filtrada</b> — sin exponer los contactos. La evidencia vende; los datos crudos se cuidan.</p></div>
+  <div class="foot"><span>JERS | IA · Afluencia</span><span>▣ — Base real Oro Azul</span></div>
+</div>
+
+<!-- 16 FAQ -->
+<div class="page">
+  <p class="eyebrow">Sección 16</p>
+  <h2><span class="nro">16.</span> Dudas frecuentes</h2>
+  <div class="card"><h4>¿Es legal?</h4><p style="margin:0">Sí. Datos públicos (Google), fin comercial B2B legítimo, con identificación y opt-out (Ley 29733).</p></div>
+  <div class="card"><h4>¿Cómo sé que el número es de la persona?</h4><p style="margin:0">No al 100%. Se maximiza con celular + nombre del titular. La confirmación final la da el saludo del mensaje.</p></div>
+  <div class="card"><h4>¿Puedo escalar a muchos clientes?</h4><p style="margin:0">Sí. Base aislada por cliente; el sistema se reaplica en horas. El límite es tu tiempo, no la tecnología.</p></div>
+  <div class="card menta"><h4>¿Qué me hace diferente?</h4><p style="margin:0">Genero la base desde cero y la adapto al tipo de comprador. Y el sistema mejora con cada uso.</p></div>
+  <div class="foot"><span>JERS | IA · Afluencia</span><span>16 — FAQ</span></div>
+</div>
+
+<!-- CIERRE -->
+<div class="page cover" style="justify-content:center;text-align:center">
+  <div>
+    <span class="firma" style="font-size:1.6rem">JERS <span class="d">|</span> IA</span>
+    <h1 style="font-size:2.2rem;margin-top:24px">Listo para vender<br><em>con conocimiento total.</em></h1>
+    <p style="color:#E3D9CE;margin-top:18px;max-width:42ch;margin-left:auto;margin-right:auto">Dos modos, planes con su detalle comercial, honestidad clara y un sistema que mejora con el uso.</p>
+    <p class="meta" style="margin-top:40px">Jerson Ancajima · Marketing Digital<br>La energía que hace crecer tu negocio.</p>
+  </div>
+</div>
+
+</body>
+</html>
