@@ -12,7 +12,7 @@
 <style>
   :root{
     --terra:#C97B58; --terra-deep:#B8654A; --oscuro:#2A2119; --negro:#1C1712;
-    --crema:#EFEAE0; --blush:#E7D6CB; --arena:#E0D7CB; --muted:#6B5D52; --verde:#3C8C52;
+    --crema:#EFEAE0; --blush:#E7D6CB; --arena:#E0D7CB; --muted:#6B5D52;
   }
   @page{ size:A4; margin:0; }
   *{ margin:0; padding:0; box-sizing:border-box; }
@@ -44,19 +44,19 @@
   .cover .top{ display:flex; justify-content:space-between; align-items:center; }
   .cover .para{ margin-top:auto; font-family:'JetBrains Mono',monospace; font-size:8.5pt; letter-spacing:.14em;
                 text-transform:uppercase; color:var(--terra); }
-  .cover h1{ font-size:44pt; font-weight:700; margin-top:5mm; letter-spacing:-.03em; }
-  .cover .sub{ font-size:13pt; color:#D6C8BB; max-width:40ch; margin-top:7mm; line-height:1.4; }
+  .cover h1{ font-size:40pt; font-weight:700; margin-top:5mm; letter-spacing:-.03em; }
+  .cover .sub{ font-size:13pt; color:#D6C8BB; max-width:42ch; margin-top:7mm; line-height:1.4; }
   .cover .foot{ margin-top:auto; display:flex; justify-content:space-between; align-items:flex-end;
                 font-size:9.5pt; color:#B4A597; }
   .cover .foot b{ color:var(--crema); font-family:'Fraunces'; }
 
   /* bloques */
-  .kpis{ display:grid; grid-template-columns:repeat(3,1fr); gap:5mm; margin-top:10mm; }
+  .kpis{ display:grid; grid-template-columns:repeat(3,1fr); gap:5mm; margin-top:9mm; }
   .kpi{ background:#fff; border:1px solid var(--arena); border-radius:4mm; padding:6mm; }
   .kpi .n{ font-family:'Fraunces'; font-weight:700; font-size:19pt; color:var(--terra); line-height:1; letter-spacing:-.02em; }
   .kpi .t{ font-size:9pt; color:var(--muted); margin-top:2.5mm; }
 
-  .panel{ margin-top:9mm; background:var(--oscuro); color:var(--crema); border-radius:4mm; padding:7mm 8mm; }
+  .panel{ margin-top:8mm; background:var(--oscuro); color:var(--crema); border-radius:4mm; padding:7mm 8mm; }
   .panel h3{ font-size:12.5pt; margin-bottom:2mm; }
   .panel p{ font-size:9.8pt; color:#E3D9CE; }
   .panel em{ color:var(--blush); font-style:italic; }
@@ -79,35 +79,42 @@
   .ab p{ font-size:9.3pt; color:var(--muted); }
   .ab.b p{ color:#E3D9CE; }
 
-  .tl{ margin-top:8mm; display:flex; flex-direction:column; gap:0; }
+  .tl{ margin-top:8mm; }
   .tstep{ display:flex; gap:6mm; }
-  .tstep .yr{ flex:none; width:26mm; font-family:'Fraunces'; font-weight:700; font-size:12pt; color:var(--terra); padding-top:1mm; }
-  .tstep .bd{ flex:1; border-left:2px solid var(--arena); padding:0 0 7mm 7mm; position:relative; }
+  .tstep .yr{ flex:none; width:26mm; font-family:'Fraunces'; font-weight:700; font-size:11.5pt; color:var(--terra); padding-top:1mm; }
+  .tstep .bd{ flex:1; border-left:2px solid var(--arena); padding:0 0 6mm 7mm; position:relative; }
   .tstep:last-child .bd{ border-left-color:transparent; padding-bottom:0; }
   .tstep .bd::before{ content:""; position:absolute; left:-2.6mm; top:1.5mm; width:4.6mm; height:4.6mm;
                       border-radius:50%; background:var(--terra); border:2.5px solid var(--crema); }
   .tstep h4{ font-size:11.5pt; font-weight:600; }
   .tstep p{ font-size:9.4pt; color:var(--muted); margin-top:1mm; max-width:52ch; }
 
-  .planbox{ margin-top:9mm; background:#fff; border:2px solid var(--terra); border-radius:5mm; padding:7mm 8mm; }
-  .planbox .h{ font-family:'JetBrains Mono',monospace; font-size:7.5pt; letter-spacing:.12em; text-transform:uppercase; color:var(--terra); }
-  .planbox .pn{ font-family:'Fraunces'; font-weight:700; font-size:18pt; margin-top:1mm; letter-spacing:-.02em; }
-  .planbox .pr{ font-family:'Fraunces'; font-weight:700; font-size:15pt; color:var(--terra); margin-top:3mm; letter-spacing:-.02em; }
-  .planbox .per{ font-size:8.5pt; color:var(--muted); }
-  .planbox ul{ list-style:none; margin-top:5mm; display:grid; grid-template-columns:1fr 1fr; gap:2.5mm 6mm; }
-  .planbox li{ font-size:9.3pt; color:var(--muted); padding-left:5.5mm; position:relative; }
-  .planbox li::before{ content:"✓"; position:absolute; left:0; color:var(--terra); font-weight:700; }
+  /* licencia */
+  .lic{ margin-top:8mm; background:#fff; border:2px solid var(--terra); border-radius:5mm; overflow:hidden; }
+  .lic .hd{ background:var(--terra); color:#fff; padding:4mm 7mm; font-family:'JetBrains Mono',monospace;
+            font-size:7.5pt; letter-spacing:.14em; text-transform:uppercase; }
+  .lic .bd{ padding:6mm 7mm; }
+  .lic .pn{ font-family:'Fraunces'; font-weight:700; font-size:17pt; letter-spacing:-.02em; }
+  .lic .two{ display:grid; grid-template-columns:1fr 1fr; gap:5mm; margin-top:4mm; }
+  .lic .box{ background:var(--crema); border-radius:3mm; padding:5mm; }
+  .lic .box .l{ font-family:'JetBrains Mono',monospace; font-size:7pt; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); }
+  .lic .box .v{ font-family:'Fraunces'; font-weight:700; font-size:15pt; color:var(--terra); margin-top:2mm; letter-spacing:-.02em; }
+  .lic .box .d{ font-size:8.3pt; color:var(--muted); margin-top:1mm; }
+  .lic ul{ list-style:none; margin-top:5mm; display:grid; grid-template-columns:1fr 1fr; gap:2.5mm 6mm; }
+  .lic li{ font-size:9.2pt; color:var(--muted); padding-left:5.5mm; position:relative; }
+  .lic li::before{ content:"✓"; position:absolute; left:0; color:var(--terra); font-weight:700; }
 
   .gar{ margin-top:6mm; border:1.5px dashed var(--terra); border-radius:4mm; padding:5mm 6mm; display:flex; gap:5mm; align-items:center; }
   .gar .k{ font-family:'Fraunces'; font-weight:700; font-size:10.5pt; flex:none; }
   .gar .t{ font-size:9.3pt; color:var(--muted); }
+  .nota{ font-size:8.4pt; color:#9C8B7D; margin-top:6mm; }
 
   /* cierre */
   .close{ background:var(--negro); color:var(--crema); display:flex; flex-direction:column; }
   .close .firma{ color:var(--crema); }
-  .close h2{ color:#fff; font-size:27pt; max-width:20ch; }
+  .close h2{ color:#fff; font-size:26pt; max-width:20ch; }
   .close .lead{ color:#D6C8BB; }
-  .cta{ margin-top:8mm; display:inline-block; background:var(--terra); color:#fff; font-family:'Fraunces';
+  .cta{ margin-top:8mm; display:inline-block; align-self:flex-start; background:var(--terra); color:#fff; font-family:'Fraunces';
         font-weight:700; font-size:12pt; padding:5mm 11mm; border-radius:100px; }
   .sig{ margin-top:auto; border-top:1px solid rgba(239,234,224,.18); padding-top:7mm; }
   .sig .nm{ font-family:'Fraunces'; font-weight:700; font-size:12.5pt; color:#fff; }
@@ -128,8 +135,8 @@
       <span class="kick" style="color:#B4A597">Propuesta · Confidencial</span>
     </div>
     <div class="para">Preparado para Oro Azul · Agroinmobiliaria del Norte</div>
-    <h1>De 192 contactos<br>a un <em>motor</em><br>de inversionistas.</h1>
-    <p class="sub">La siguiente etapa de Afluencia: convertir la entrega puntual que ya recibieron en un sistema permanente que alimenta su fuerza de ventas cada mes.</p>
+    <h1>Las redes se<br>pueden perder.<br>Su base de<br>inversionistas <em>no</em>.</h1>
+    <p class="sub">Afluencia: el sistema de captación y CRM con inteligencia artificial que instala el activo comercial dentro de su empresa.</p>
     <div class="foot">
       <div><b>Jers Ancajima</b> · IA + Automatización<br>Setiembre 2026</div>
       <div>Afluencia · Clientes que llegan solos</div>
@@ -137,174 +144,195 @@
   </div>
 </section>
 
-<!-- 2 LO QUE YA LOGRAMOS -->
+<!-- 2 LO QUE ACABA DE PASAR -->
 <section class="page" data-canvas-width="794" data-canvas-height="1123">
-  <div class="topbar"><span class="firma">JERS <span class="d">|</span> IA</span><span class="pagenum">01 — PUNTO DE PARTIDA</span></div>
-  <p class="kick">Lo que ya construimos juntos</p>
-  <h2>Ustedes ya vieron funcionar el sistema.</h2>
-  <p class="lead">No partimos de cero ni de una promesa. Afluencia ya entregó a Oro Azul una base real de inversionistas de alto patrimonio, calificada y lista para contactar. Esto es lo que hoy vive en su CRM:</p>
+  <div class="topbar"><span class="firma">JERS <span class="d">|</span> IA</span><span class="pagenum">01 — EL DIAGNÓSTICO</span></div>
+  <p class="kick">Lo que acaba de pasar</p>
+  <h2>Perder las cuentas no fue<br>un error suyo. Fue un <em>riesgo estructural</em>.</h2>
+  <p class="lead">Un tercero bloqueó las cuentas de Facebook e Instagram de Oro Azul y hoy toca empezar de cero. Le pasa a empresas serias todos los días, y el motivo de fondo siempre es el mismo:</p>
+
+  <div class="panel">
+    <h3>La causa real</h3>
+    <p>La audiencia estaba construida sobre <em>terreno alquilado</em>. Seguidores, historial y conversaciones vivían dentro de plataformas que Oro Azul no controla — y que pueden cerrarse por una denuncia de un tercero, sin previo aviso y sin apelación efectiva.</p>
+  </div>
+
+  <div class="rows">
+    <div class="row"><div class="nn">!</div><div><h4>Lo que se perdió</h4><p>No fueron solo seguidores: se perdió el canal por donde llegaban las consultas de inversionistas y el historial que respaldaba la credibilidad del proyecto ante un comprador que evalúa poner capital.</p></div></div>
+    <div class="row"><div class="nn">→</div><div><h4>Lo que sigue en riesgo</h4><p>La cuenta nueva vuelve a ser terreno alquilado. Si se reconstruye la captación únicamente ahí, el mismo hecho puede repetirse y borrar otra vez el trabajo de meses.</p></div></div>
+    <div class="row"><div class="nn">✓</div><div><h4>La oportunidad del momento</h4><p>Empezar de cero también significa poder hacerlo bien: esta vez con un activo propio como base y las redes como complemento, no como único cimiento.</p></div></div>
+  </div>
+</section>
+
+<!-- 3 ALQUILADO VS PROPIO -->
+<section class="page" data-canvas-width="794" data-canvas-height="1123">
+  <div class="topbar"><span class="firma">JERS <span class="d">|</span> IA</span><span class="pagenum">02 — LA DECISIÓN</span></div>
+  <p class="kick">La decisión de fondo</p>
+  <h2>Audiencia alquilada<br>o base <em>propia</em>.</h2>
+  <p class="lead">Toda empresa que vende alto ticket termina eligiendo entre estos dos modelos. La diferencia no se nota en un mes bueno; se nota el día que algo falla:</p>
+
+  <div class="anb">
+    <div class="ab a">
+      <div class="h">Modelo alquilado</div>
+      <h4>Depende de la plataforma</h4>
+      <p>La captación vive en Meta. Si la cuenta cae, cae todo con ella. El alcance depende del algoritmo y del presupuesto de pauta: cuando se deja de pagar, se deja de existir. Nada de lo construido es transferible.</p>
+    </div>
+    <div class="ab b">
+      <div class="h">Modelo propio — Afluencia</div>
+      <h4>Depende de su base de datos</h4>
+      <p>Los inversionistas viven en un sistema de la empresa, con nombre, contacto e historial. Ninguna plataforma puede bloquearlo. No depende de pauta: el sistema sale a buscar y calificar cada mes.</p>
+    </div>
+  </div>
+
+  <div class="rows">
+    <div class="row"><div class="nn">=</div><div><h4>Para ser claros: no reemplaza las redes</h4><p>Las redes siguen siendo necesarias para que el proyecto se conozca y genere confianza. Lo que cambia es el cimiento: con Afluencia, si mañana una cuenta vuelve a caer, la lista de inversionistas y el pipeline de ventas <b>siguen intactos</b>.</p></div></div>
+  </div>
+
+  <div class="panel">
+    <h3>La pregunta para la gerencia</h3>
+    <p>¿Cuánto vale, en un proyecto que se vende por decisión de inversión y no por impulso, tener <em>una base de compradores potenciales que nadie pueda apagar</em>?</p>
+  </div>
+</section>
+
+<!-- 4 EL SISTEMA -->
+<section class="page" data-canvas-width="794" data-canvas-height="1123">
+  <div class="topbar"><span class="firma">JERS <span class="d">|</span> IA</span><span class="pagenum">03 — EL SISTEMA</span></div>
+  <p class="kick">Qué es Afluencia</p>
+  <h2>Un software de captación<br>con <em>inteligencia artificial</em>.</h2>
+  <p class="lead">No es una agencia ni una campaña. Es un sistema que se instala para Oro Azul y opera de forma continua: identifica inversionistas potenciales, los califica y los administra hasta el cierre.</p>
+
+  <div class="rows">
+    <div class="row"><div class="nn">1</div><div><h4>Motor de captación</h4><p>Rastrea fuentes públicas y construye la base de profesionales con capital de las plazas objetivo. Sin comprar listas y sin que Oro Azul aporte ningún dato.</p></div></div>
+    <div class="row"><div class="nn">2</div><div><h4>Calificación con IA</h4><p>Cada persona recibe un puntaje del 1 al 100 según trayectoria, reputación, formalidad y posibilidad de contacto directo. El sistema ordena la fila: primero quien sí puede invertir.</p></div></div>
+    <div class="row"><div class="nn">3</div><div><h4>CRM propio de la empresa</h4><p>Los inversionistas entran a un tablero donde la gerencia ve estado, prioridad y próximo paso. La información deja de vivir en el teléfono de un vendedor y pasa a ser de la empresa.</p></div></div>
+    <div class="row"><div class="nn">4</div><div><h4>Seguimiento automatizado</h4><p>El sistema indica cada día a quién contactar y reprograma solo a quien no respondió. En una venta de ciclo largo, el seguimiento es donde se gana o se pierde.</p></div></div>
+    <div class="row"><div class="nn">5</div><div><h4>Métricas de conversión</h4><p>Embudo y tasas a la vista: cuántos entran, cuántos avanzan, cuántos compran. La gerencia decide con datos, no con percepción.</p></div></div>
+  </div>
+
+  <div class="panel">
+    <h3>El punto de propiedad</h3>
+    <p>La base de datos y el CRM quedan <em>a nombre de Oro Azul</em>. Es infraestructura de la empresa, no una cuenta prestada en una plataforma de terceros.</p>
+  </div>
+</section>
+
+<!-- 5 DEMOSTRACIÓN -->
+<section class="page" data-canvas-width="794" data-canvas-height="1123">
+  <div class="topbar"><span class="firma">JERS <span class="d">|</span> IA</span><span class="pagenum">04 — DEMOSTRACIÓN</span></div>
+  <p class="kick">Prueba con su propio caso</p>
+  <h2>Ya corrimos el sistema<br>con el perfil de <em>su inversionista</em>.</h2>
+  <p class="lead">Para que esta propuesta no sea una promesa, ejecutamos el motor apuntando al comprador de Oro Azul: profesionales con capital, con contacto directo, en las plazas donde está su mercado. Este es el resultado real de esa corrida:</p>
 
   <div class="kpis">
-    <div class="kpi"><div class="n">192</div><div class="t">inversionistas con celular directo, no centralitas ni recepciones</div></div>
-    <div class="kpi"><div class="n">4.9 ★</div><div class="t">reputación promedio — profesionales consolidados, con trayectoria</div></div>
-    <div class="kpi"><div class="n">66 / 100</div><div class="t">puntaje promedio de calificación asignado por el sistema</div></div>
+    <div class="kpi"><div class="n">192</div><div class="t">inversionistas potenciales identificados, con celular directo</div></div>
+    <div class="kpi"><div class="n">4.9 ★</div><div class="t">reputación promedio — profesionales consolidados</div></div>
+    <div class="kpi"><div class="n">66 / 100</div><div class="t">puntaje promedio de calificación asignado por la IA</div></div>
   </div>
 
   <div class="rows">
     <div class="row"><div class="nn">A</div><div><h4>Segmentados por profesión</h4><p>Odontología 50% · Derecho 19.8% · Arquitectura 19.8% · Medicina 10.4%. Perfiles con capacidad real de inversión, no público general.</p></div></div>
-    <div class="row"><div class="nn">B</div><div><h4>Distribuidos por plaza</h4><p>Lima 34.4% · Piura 33.3% · Arequipa 32.3%. Cobertura equilibrada entre la plaza local y las dos de mayor poder adquisitivo del país.</p></div></div>
-    <div class="row"><div class="nn">C</div><div><h4>Priorizados, no amontonados</h4><p>Cada contacto llegó con un puntaje que indica a quién llamar primero. Su equipo no pierde tiempo decidiendo por dónde empezar.</p></div></div>
+    <div class="row"><div class="nn">B</div><div><h4>Distribuidos por plaza</h4><p>Lima 34.4% · Piura 33.3% · Arequipa 32.3%. Cobertura entre la plaza local y las dos de mayor poder adquisitivo del país.</p></div></div>
   </div>
 
   <div class="panel">
-    <h3>El punto clave</h3>
-    <p>Esa entrega fue <em>una foto</em>. Valiosa, pero finita: cuando esos 192 contactos se agotan, el pipeline vuelve a depender de referidos y de publicidad. Lo que proponemos ahora es convertir esa foto en <em>una película</em>.</p>
+    <h3>Lo importante de este ejercicio</h3>
+    <p>Esos 192 salieron de <em>una sola corrida</em> del sistema. Con la licencia activa, esa operación se repite cada mes y la base no deja de crecer — mientras la cuenta de redes recién vuelve a empezar de cero.</p>
   </div>
 </section>
 
-<!-- 3 EL PROBLEMA QUE SIGUE ABIERTO -->
+<!-- 6 PROYECCIÓN -->
 <section class="page" data-canvas-width="794" data-canvas-height="1123">
-  <div class="topbar"><span class="firma">JERS <span class="d">|</span> IA</span><span class="pagenum">02 — EL PROBLEMA</span></div>
-  <p class="kick">Lo que sigue abierto</p>
-  <h2>Vender lotes de inversión<br>no admite <em>pipeline seco</em>.</h2>
-  <p class="lead">Oro Azul no vende un producto de impulso. Vende una decisión de inversión de alto ticket, con un ciclo largo y un comprador exigente. Ese modelo tiene una consecuencia directa:</p>
-
-  <div class="anb">
-    <div class="ab a">
-      <div class="h">Hoy — sin sistema continuo</div>
-      <h4>El flujo depende de personas</h4>
-      <p>La captación se apoya en referidos, en la red de contactos del equipo y en campañas puntuales. Cuando la lista se agota, el mes empieza otra vez desde cero. Nada de lo aprendido queda registrado.</p>
-    </div>
-    <div class="ab b">
-      <div class="h">Con Afluencia continuo</div>
-      <h4>El flujo depende de un motor</h4>
-      <p>Cada mes entran inversionistas nuevos, ya calificados, a un CRM que registra cada conversación. El equipo comercial abre la agenda y sabe exactamente a quién contactar hoy.</p>
-    </div>
-  </div>
-
-  <div class="rows">
-    <div class="row"><div class="nn">!</div><div><h4>El costo de no tener sistema</h4><p>Cada semana sin prospección nueva es inventario que no rota y un competidor que llega primero al mismo inversionista. En un producto de ciclo largo, el pipeline que no se alimenta hoy es la venta que falta dentro de tres meses.</p></div></div>
-  </div>
-
-  <div class="panel">
-    <h3>La pregunta de fondo</h3>
-    <p>No es <em>"¿conseguimos más contactos?"</em>. Es: <em>¿queremos que la captación de inversionistas siga siendo un esfuerzo manual, o que sea un activo de la empresa que trabaja solo y crece cada mes?</em></p>
-  </div>
-</section>
-
-<!-- 4 LA PROPUESTA / TECNOLOGÍA -->
-<section class="page" data-canvas-width="794" data-canvas-height="1123">
-  <div class="topbar"><span class="firma">JERS <span class="d">|</span> IA</span><span class="pagenum">03 — LA PROPUESTA</span></div>
-  <p class="kick">La propuesta</p>
-  <h2>Un motor de captación con <em>IA</em>, operando cada mes.</h2>
-  <p class="lead">Afluencia es un sistema propio de prospección y CRM automatizado. No es una agencia que promete leads: es tecnología que corre de forma continua y deja todo registrado y medible.</p>
-
-  <div class="rows">
-    <div class="row"><div class="nn">1</div><div><h4>Captación automatizada</h4><p>El sistema rastrea fuentes públicas y construye la base de profesionales con capital de las plazas objetivo. Sin comprar listas y sin que Oro Azul aporte ningún dato.</p></div></div>
-    <div class="row"><div class="nn">2</div><div><h4>Calificación con inteligencia artificial</h4><p>Cada persona recibe un puntaje del 1 al 100 según trayectoria, reputación, formalidad y posibilidad de contacto directo. El sistema ordena la fila: primero quien sí puede invertir.</p></div></div>
-    <div class="row"><div class="nn">3</div><div><h4>CRM vivo y trazable</h4><p>Los inversionistas entran a un tablero donde el equipo ve estado, prioridad y próximo paso. Cada llamada y cada mensaje quedan registrados: la información deja de vivir en la cabeza de un vendedor.</p></div></div>
-    <div class="row"><div class="nn">4</div><div><h4>Seguimiento que no se enfría</h4><p>El sistema indica cada día a quién contactar y reprograma automáticamente a quien no respondió. En un ciclo de venta largo, el seguimiento es donde se gana o se pierde.</p></div></div>
-    <div class="row"><div class="nn">5</div><div><h4>Medición real de conversión</h4><p>Embudo y tasas de cierre a la vista: cuántos entran, cuántos avanzan, cuántos compran. Decisiones con datos, no con percepción.</p></div></div>
-  </div>
-
-  <div class="panel">
-    <h3>Por qué esto es innovación y no más marketing</h3>
-    <p>El marketing tradicional compra atención y la pierde al apagar la pauta. Afluencia construye <em>un activo de datos propio</em> que queda en la empresa: mientras más se usa, mejor califica y más preciso se vuelve.</p>
-  </div>
-</section>
-
-<!-- 5 VISIÓN A FUTURO -->
-<section class="page" data-canvas-width="794" data-canvas-height="1123">
-  <div class="topbar"><span class="firma">JERS <span class="d">|</span> IA</span><span class="pagenum">04 — PROYECCIÓN</span></div>
+  <div class="topbar"><span class="firma">JERS <span class="d">|</span> IA</span><span class="pagenum">05 — PROYECCIÓN</span></div>
   <p class="kick">Los próximos años</p>
-  <h2>Lo que se construye <em>más allá</em> de la próxima venta.</h2>
-  <p class="lead">La decisión de hoy no compra contactos: instala infraestructura comercial. Esto es lo que Oro Azul acumula con el tiempo:</p>
+  <h2>Lo que se acumula <em>mientras</em><br>las redes se reconstruyen.</h2>
+  <p class="lead">La cuenta nueva tardará meses en recuperar alcance. El sistema, en cambio, produce desde el primer mes y lo que genera queda:</p>
 
   <div class="tl">
     <div class="tstep">
       <div class="yr">Mes 1–3</div>
       <div class="bd">
-        <h4>Pipeline permanente</h4>
-        <p>Entrada mensual de inversionistas calificados. El equipo deja de improvisar la búsqueda y se concentra en conversar y cerrar. Primeras métricas reales de conversión.</p>
+        <h4>Pipeline activo desde el arranque</h4>
+        <p>Entrada mensual de inversionistas calificados. El equipo comercial trabaja con una lista concreta mientras las redes recién empiezan a crecer otra vez.</p>
       </div>
     </div>
     <div class="tstep">
       <div class="yr">Mes 4–12</div>
       <div class="bd">
         <h4>El sistema aprende quién compra</h4>
-        <p>Con cada cierre y cada rechazo el scoring se afina: el sistema empieza a reconocer el perfil real del inversionista de Oro Azul —profesión, plaza, trayectoria— y prioriza a los parecidos. La calidad sube sin subir el costo.</p>
+        <p>Con cada cierre y cada rechazo el puntaje se afina: reconoce el perfil real del inversionista de Oro Azul —profesión, plaza, trayectoria— y prioriza a los parecidos. Mejor calidad sin mayor costo.</p>
       </div>
     </div>
     <div class="tstep">
       <div class="yr">Año 1–2</div>
       <div class="bd">
-        <h4>Base propia y escalable a nuevas etapas</h4>
-        <p>Oro Azul queda con una base propia de inversionistas de alto patrimonio, con historial de contacto. Ese mismo activo sirve para lanzar la siguiente etapa del proyecto o un proyecto nuevo, sin volver a empezar.</p>
+        <h4>Un activo transferible</h4>
+        <p>Oro Azul queda con una base propia de inversionistas de alto patrimonio con historial de contacto. Ese mismo activo sirve para lanzar la siguiente etapa del proyecto o uno nuevo, sin empezar de cero.</p>
       </div>
     </div>
     <div class="tstep">
       <div class="yr">Visión</div>
       <div class="bd">
-        <h4>Menos dependencia, más previsibilidad</h4>
-        <p>Un área comercial que no depende de la agenda personal de nadie ni del gasto en pauta. Captación previsible, medible y transferible: el conocimiento queda en la empresa, no en las personas.</p>
+        <h4>Captación a prueba de bloqueos</h4>
+        <p>Un área comercial que no depende del algoritmo, de la pauta ni de la agenda personal de nadie. Si una plataforma vuelve a fallar, la venta no se detiene.</p>
       </div>
     </div>
   </div>
-
-  <div class="panel">
-    <h3>El activo silencioso</h3>
-    <p>Una campaña termina y desaparece. Un sistema queda. Dentro de dos años la diferencia entre las dos decisiones no será la cantidad de contactos: será tener —o no— <em>una máquina de captación que ya sabe a quién venderle</em>.</p>
-  </div>
 </section>
 
-<!-- 6 INVERSIÓN -->
+<!-- 7 LICENCIA -->
 <section class="page" data-canvas-width="794" data-canvas-height="1123">
-  <div class="topbar"><span class="firma">JERS <span class="d">|</span> IA</span><span class="pagenum">05 — INVERSIÓN</span></div>
+  <div class="topbar"><span class="firma">JERS <span class="d">|</span> IA</span><span class="pagenum">06 — LICENCIA</span></div>
   <p class="kick">La inversión</p>
-  <h2>Lo que cuesta y cómo se paga sola.</h2>
-  <p class="lead">Para el modelo de Oro Azul —ciclo largo, ticket alto, varias plazas— el plan recomendado es el motor continuo:</p>
+  <h2>Licencia del sistema.</h2>
+  <p class="lead">Afluencia se entrega como software en operación: una implementación inicial y una licencia mensual que mantiene el motor corriendo.</p>
 
-  <div class="planbox">
-    <div class="h">Plan recomendado para Oro Azul</div>
-    <div class="pn">Crecimiento</div>
-    <div class="pr">S/ 2,900 <span class="per">/ mes</span></div>
-    <ul>
-      <li>Captación mensual continua</li>
-      <li>Varias plazas (Lima · Piura · Arequipa)</li>
-      <li>Calificación con IA y priorización</li>
-      <li>CRM y tablero para el equipo</li>
-      <li>Seguimiento y recordatorios diarios</li>
-      <li>Reporte mensual de conversión</li>
-      <li>Optimización continua del scoring</li>
-      <li>Mensajes listos para contactar</li>
-    </ul>
-  </div>
-
-  <div class="panel">
-    <h3>La cuenta que importa</h3>
-    <p>Frente al valor de un solo lote de inversión colocado, la inversión mensual del sistema se recupera con <em>un único inversionista que cierre</em>. Todo lo que venga después del primero es margen —y el motor no deja de traer.</p>
+  <div class="lic">
+    <div class="hd">Licencia recomendada para Oro Azul · Plan Crecimiento</div>
+    <div class="bd">
+      <div class="pn">Sistema Afluencia — multiplaza</div>
+      <div class="two">
+        <div class="box">
+          <div class="l">Implementación (única vez)</div>
+          <div class="v">S/ 1,490</div>
+          <div class="d">Instalación del sistema, CRM configurado a su proceso y primera base cargada.</div>
+        </div>
+        <div class="box">
+          <div class="l">Licencia mensual</div>
+          <div class="v">S/ 2,900</div>
+          <div class="d">Motor de captación operando, soporte y mejora continua del modelo.</div>
+        </div>
+      </div>
+      <ul>
+        <li>Captación mensual continua</li>
+        <li>Tres plazas (Lima · Piura · Arequipa)</li>
+        <li>Calificación con IA y priorización</li>
+        <li>CRM y tablero para la gerencia</li>
+        <li>Seguimiento y recordatorios diarios</li>
+        <li>Reporte mensual de conversión</li>
+        <li>Optimización continua del modelo</li>
+        <li>Base de datos propiedad de Oro Azul</li>
+      </ul>
+    </div>
   </div>
 
   <div class="gar">
     <span class="k">Garantía de arranque</span>
-    <span class="t">Si el primer lote mensual de inversionistas no encaja con el perfil que Oro Azul busca, ajustamos la campaña sin costo hasta que encaje.</span>
+    <span class="t">Si la primera base mensual no encaja con el perfil de inversionista que Oro Azul busca, ajustamos el modelo sin costo hasta que encaje.</span>
   </div>
 
-  <p style="font-size:8.5pt;color:#9C8B7D;margin-top:6mm;">Precio referencial en soles. Se ajusta según volumen y número de plazas. Compromiso mínimo sugerido: 3 meses, el tiempo que necesita un ciclo de venta de alto ticket para mostrar conversión real.</p>
+  <p class="nota">Precios referenciales en soles, sin IGV. Compromiso mínimo sugerido: 3 meses — el tiempo que necesita una venta de alto ticket para mostrar conversión real. La base de datos generada permanece con Oro Azul incluso si la licencia se descontinúa.</p>
 </section>
 
-<!-- 7 CIERRE -->
+<!-- 8 CIERRE -->
 <section class="page close" data-canvas-width="794" data-canvas-height="1123">
-  <div class="topbar"><span class="firma">JERS <span class="d">|</span> IA</span><span class="pagenum" style="color:#8A7A6C">06 — SIGUIENTE PASO</span></div>
+  <div class="topbar"><span class="firma">JERS <span class="d">|</span> IA</span><span class="pagenum" style="color:#8A7A6C">07 — SIGUIENTE PASO</span></div>
   <p class="kick">Siguiente paso</p>
-  <h2>Pasemos de la prueba<br>al <em>sistema</em>.</h2>
-  <p class="lead">Ya vieron lo que el sistema entrega en una sola tanda. La propuesta es simple: activarlo de forma continua y que la captación de inversionistas deje de ser una tarea y pase a ser infraestructura.</p>
-  <span class="cta">Activar el motor de captación →</span>
+  <h2>Reconstruyan las redes.<br>Y esta vez, sobre <em>terreno propio</em>.</h2>
+  <p class="lead">La cuenta nueva va a tomar su tiempo. Mientras tanto, el sistema puede estar entregando inversionistas calificados desde el primer mes — y construyendo el activo que la próxima caída no pueda tocar.</p>
+  <span class="cta">Activar el sistema →</span>
 
   <div class="sig">
     <div class="nm">Jers Ancajima</div>
     <div class="rl">IA + Automatización · Creador de Afluencia</div>
-    <p>“Construí Afluencia porque vi buenos proyectos perder tiempo persiguiendo a quien no podía invertir. El sistema invierte la ecuación: identifica a los correctos, los ordena por prioridad y los acompaña hasta el cierre.”</p>
+    <p>“Lo que le pasó a sus cuentas es la razón exacta por la que construí este sistema: ninguna empresa debería tener su captación en manos de una plataforma que no controla.”</p>
   </div>
 
   <div class="cont">
