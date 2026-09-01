@@ -12,7 +12,7 @@
 <style>
   :root{
     --terra:#C97B58; --terra2:#B8654A; --oscuro:#2A2119; --negro:#1C1712; --mock:#121212;
-    --crema:#EFEAE0; --blush:#E7D6CB; --arena:#E0D7CB; --muted:#6B5D52; --verde:#3C8C52;
+    --crema:#EFEAE0; --blush:#E7D6CB; --arena:#E0D7CB; --muted:#6B5D52; --verde:#3C8C52; --rojo:#A8452F;
   }
   @page{ size:A4; margin:0; }
   *{ margin:0; padding:0; box-sizing:border-box; }
@@ -28,8 +28,8 @@
   em{ font-style:italic; color:var(--terra); }
   .kick{ font-family:'JetBrains Mono',monospace; font-size:7.6pt; font-weight:600; letter-spacing:.16em;
          text-transform:uppercase; color:var(--terra); }
-  h2{ font-size:22pt; font-weight:600; margin-top:5mm; }
-  .lead{ font-size:11pt; color:var(--muted); max-width:60ch; margin-top:4mm; }
+  h2{ font-size:21.5pt; font-weight:600; margin-top:5mm; }
+  .lead{ font-size:10.8pt; color:var(--muted); max-width:62ch; margin-top:4mm; }
   .firma{ font-family:'Fraunces'; font-weight:700; font-size:11pt; color:var(--negro); }
   .firma .d{ color:var(--terra); }
   .topbar{ position:absolute; top:10mm; left:20mm; right:20mm; display:flex; justify-content:space-between; align-items:center; }
@@ -44,18 +44,29 @@
   .cover .top{ display:flex; justify-content:space-between; align-items:center; }
   .cover .para{ margin-top:auto; font-family:'JetBrains Mono',monospace; font-size:8.2pt; letter-spacing:.14em;
                 text-transform:uppercase; color:var(--terra); }
-  .cover h1{ font-size:38pt; font-weight:700; margin-top:5mm; letter-spacing:-.03em; }
-  .cover .sub{ font-size:12.5pt; color:#D6C8BB; max-width:44ch; margin-top:6mm; line-height:1.4; }
+  .cover h1{ font-size:36pt; font-weight:700; margin-top:5mm; letter-spacing:-.03em; }
+  .cover .sub{ font-size:12pt; color:#D6C8BB; max-width:46ch; margin-top:6mm; line-height:1.45; }
   .cover .foot{ margin-top:auto; display:flex; justify-content:space-between; align-items:flex-end;
                 font-size:9.2pt; color:#B4A597; }
   .cover .foot b{ color:var(--crema); font-family:'Fraunces'; }
 
-  /* DASHBOARD SYSTEM */
-  .stats{ display:grid; grid-template-columns:repeat(3,1fr); gap:4mm; margin-top:7mm; }
+  /* DASHBOARD */
+  .stats{ display:grid; grid-template-columns:repeat(3,1fr); gap:4mm; margin-top:6mm; }
+  .stats.f4{ grid-template-columns:repeat(4,1fr); }
   .st{ background:#fff; border:1px solid var(--arena); border-radius:3.5mm; padding:5mm; }
-  .st .l{ font-family:'JetBrains Mono',monospace; font-size:6.8pt; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); }
-  .st .v{ font-family:'Fraunces'; font-weight:700; font-size:19pt; color:var(--terra); line-height:1; margin-top:2.5mm; letter-spacing:-.02em; }
-  .st .d{ font-size:8.2pt; color:var(--muted); margin-top:2mm; }
+  .st .l{ font-family:'JetBrains Mono',monospace; font-size:6.6pt; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); }
+  .st .v{ font-family:'Fraunces'; font-weight:700; font-size:18pt; color:var(--terra); line-height:1; margin-top:2.5mm; letter-spacing:-.02em; }
+  .st .v.rj{ color:var(--rojo); }
+  .st .d{ font-size:8pt; color:var(--muted); margin-top:2mm; }
+
+  /* embudo horizontal */
+  .fun{ margin-top:6mm; background:#fff; border:1px solid var(--arena); border-radius:3.5mm; padding:6mm; }
+  .fn{ display:flex; align-items:center; gap:4mm; margin-bottom:3mm; }
+  .fn:last-child{ margin-bottom:0; }
+  .fn .lb{ width:42mm; font-size:8.8pt; color:var(--negro); font-weight:500; }
+  .fn .tr{ display:block; flex:1; height:7mm; background:#F4EFE7; border-radius:1.5mm; overflow:hidden; }
+  .fn .fi{ display:block; height:100%; border-radius:1.5mm; }
+  .fn .vv{ width:26mm; text-align:right; font-family:'Fraunces'; font-weight:700; font-size:11pt; }
 
   /* ventana mockup */
   .win{ margin-top:6mm; background:var(--mock); border-radius:4mm; overflow:hidden; box-shadow:0 4mm 12mm rgba(28,23,18,.18); }
@@ -75,70 +86,73 @@
   .bl .fi{ display:block; height:100%; border-radius:100px; }
   .bl .p{ font-family:'JetBrains Mono',monospace; font-size:6.6pt; color:#C5B9AF; width:12mm; text-align:right; }
 
-  /* tabla de datos */
-  .tbl{ width:100%; border-collapse:collapse; margin-top:5mm; font-size:8.4pt; background:#fff;
+  /* tabla */
+  .tbl{ width:100%; border-collapse:collapse; margin-top:4mm; font-size:8.2pt; background:#fff;
         border:1px solid var(--arena); border-radius:3mm; overflow:hidden; }
-  .tbl th{ background:var(--oscuro); color:var(--blush); font-family:'JetBrains Mono',monospace; font-size:6.6pt;
-           letter-spacing:.1em; text-transform:uppercase; text-align:left; padding:3.2mm 3.5mm; font-weight:600; }
-  .tbl td{ padding:3mm 3.5mm; border-bottom:1px solid #F0EBE3; color:#3A302A; }
+  .tbl th{ background:var(--oscuro); color:var(--blush); font-family:'JetBrains Mono',monospace; font-size:6.4pt;
+           letter-spacing:.1em; text-transform:uppercase; text-align:left; padding:3mm 3.2mm; font-weight:600; }
+  .tbl td{ padding:2.8mm 3.2mm; border-bottom:1px solid #F0EBE3; color:#3A302A; }
   .tbl tr:last-child td{ border-bottom:none; }
   .tbl .sc{ font-family:'Fraunces'; font-weight:700; color:var(--terra); }
-  .chip{ display:inline-block; font-family:'JetBrains Mono',monospace; font-size:6.2pt; font-weight:600;
-         padding:1mm 2.4mm; border-radius:100px; letter-spacing:.06em; text-transform:uppercase; }
+  .chip{ display:inline-block; font-family:'JetBrains Mono',monospace; font-size:6pt; font-weight:600;
+         padding:1mm 2.2mm; border-radius:100px; letter-spacing:.06em; text-transform:uppercase; }
   .chip.a{ background:rgba(60,140,82,.14); color:#2E6B3F; }
   .chip.m{ background:rgba(201,123,88,.16); color:var(--terra2); }
 
-  .panel{ margin-top:7mm; background:var(--oscuro); color:var(--crema); border-radius:3.5mm; padding:6mm 7mm; }
+  .panel{ margin-top:6mm; background:var(--oscuro); color:var(--crema); border-radius:3.5mm; padding:6mm 7mm; }
   .panel h3{ font-size:12pt; margin-bottom:2mm; }
-  .panel p{ font-size:9.5pt; color:#E3D9CE; }
+  .panel p{ font-size:9.4pt; color:#E3D9CE; }
   .panel em{ color:var(--blush); font-style:italic; }
 
-  .rows{ margin-top:6mm; display:flex; flex-direction:column; gap:3.5mm; }
+  .rows{ margin-top:5mm; display:flex; flex-direction:column; gap:3.5mm; }
   .row{ background:#fff; border:1px solid var(--arena); border-radius:3.5mm; padding:4.5mm 5.5mm; display:flex; gap:4.5mm; align-items:flex-start; }
   .row .nn{ flex:none; width:8mm; height:8mm; border-radius:2.2mm; background:var(--terra); color:#fff;
             font-family:'Fraunces'; font-weight:700; font-size:10pt; display:flex; align-items:center; justify-content:center; }
-  .row h4{ font-size:11pt; font-weight:600; }
-  .row p{ font-size:9.2pt; color:var(--muted); margin-top:1mm; }
+  .row h4{ font-size:10.8pt; font-weight:600; }
+  .row p{ font-size:9pt; color:var(--muted); margin-top:1mm; }
 
-  .anb{ margin-top:6mm; display:grid; grid-template-columns:1fr 1fr; gap:4mm; }
+  .anb{ margin-top:5mm; display:grid; grid-template-columns:1fr 1fr; gap:4mm; }
   .ab{ border-radius:3.5mm; padding:5.5mm; }
   .ab.a{ background:#fff; border:1px solid var(--arena); }
   .ab.b{ background:var(--oscuro); color:var(--crema); }
-  .ab .h{ font-family:'JetBrains Mono',monospace; font-size:6.8pt; letter-spacing:.12em; text-transform:uppercase;
+  .ab .h{ font-family:'JetBrains Mono',monospace; font-size:6.6pt; letter-spacing:.12em; text-transform:uppercase;
           color:var(--muted); margin-bottom:2.5mm; }
   .ab.b .h{ color:var(--terra); }
-  .ab h4{ font-size:11.5pt; font-weight:600; margin-bottom:2mm; }
-  .ab p{ font-size:9pt; color:var(--muted); }
-  .ab.b p{ color:#E3D9CE; }
+  .ab h4{ font-size:11pt; font-weight:600; margin-bottom:2mm; }
   .ab ul{ list-style:none; margin-top:3mm; }
-  .ab li{ font-size:8.8pt; color:var(--muted); padding-left:5mm; position:relative; margin-bottom:1.6mm; }
+  .ab li{ font-size:8.6pt; color:var(--muted); padding-left:5mm; position:relative; margin-bottom:1.6mm; }
   .ab.b li{ color:#E3D9CE; }
   .ab li::before{ content:"—"; position:absolute; left:0; color:var(--muted); }
   .ab.b li::before{ content:"✓"; color:var(--terra); font-weight:700; }
 
-  .tl{ margin-top:6mm; }
+  .tl{ margin-top:5mm; }
   .tstep{ display:flex; gap:5mm; }
-  .tstep .yr{ flex:none; width:24mm; font-family:'Fraunces'; font-weight:700; font-size:11pt; color:var(--terra); padding-top:1mm; }
-  .tstep .bd{ flex:1; border-left:2px solid var(--arena); padding:0 0 5.5mm 6mm; position:relative; }
+  .tstep .yr{ flex:none; width:24mm; font-family:'Fraunces'; font-weight:700; font-size:10.5pt; color:var(--terra); padding-top:1mm; }
+  .tstep .bd{ flex:1; border-left:2px solid var(--arena); padding:0 0 5mm 6mm; position:relative; }
   .tstep:last-child .bd{ border-left-color:transparent; padding-bottom:0; }
   .tstep .bd::before{ content:""; position:absolute; left:-2.5mm; top:1.4mm; width:4.4mm; height:4.4mm;
                       border-radius:50%; background:var(--terra); border:2.4px solid var(--crema); }
-  .tstep h4{ font-size:11pt; font-weight:600; }
-  .tstep p{ font-size:9pt; color:var(--muted); margin-top:1mm; max-width:54ch; }
+  .tstep h4{ font-size:10.8pt; font-weight:600; }
+  .tstep p{ font-size:8.8pt; color:var(--muted); margin-top:1mm; max-width:56ch; }
 
   /* piloto */
-  .pilot{ margin-top:6mm; background:#fff; border:2px solid var(--terra); border-radius:4mm; overflow:hidden; }
+  .pilot{ margin-top:5mm; background:#fff; border:2px solid var(--terra); border-radius:4mm; overflow:hidden; }
   .pilot .hd{ background:var(--terra); color:#fff; padding:3.5mm 6mm; font-family:'JetBrains Mono',monospace;
               font-size:7pt; letter-spacing:.14em; text-transform:uppercase; }
-  .pilot .bd{ padding:6mm; }
-  .pilot .tt{ font-family:'Fraunces'; font-weight:700; font-size:16pt; letter-spacing:-.02em; }
-  .pilot .ds{ font-size:9.4pt; color:var(--muted); margin-top:2mm; max-width:60ch; }
-  .steps{ display:grid; grid-template-columns:repeat(3,1fr); gap:4mm; margin-top:5mm; }
-  .stp{ background:var(--crema); border-radius:3mm; padding:4.5mm; }
-  .stp .n{ font-family:'JetBrains Mono',monospace; font-size:6.6pt; color:var(--terra); letter-spacing:.1em; font-weight:600; }
-  .stp h4{ font-size:10pt; font-weight:600; margin-top:1.5mm; }
-  .stp p{ font-size:8.4pt; color:var(--muted); margin-top:1mm; }
-  .nota{ font-size:8.2pt; color:#9C8B7D; margin-top:5mm; }
+  .pilot .bd{ padding:5.5mm 6mm; }
+  .pilot .tt{ font-family:'Fraunces'; font-weight:700; font-size:15pt; letter-spacing:-.02em; }
+  .pilot .ds{ font-size:9.2pt; color:var(--muted); margin-top:2mm; max-width:62ch; }
+  .alc{ display:grid; grid-template-columns:1fr 1fr; gap:3mm 6mm; margin-top:4.5mm; padding-top:4.5mm; border-top:1px solid var(--arena); }
+  .alc .it{ display:flex; gap:3mm; align-items:baseline; }
+  .alc .k{ font-family:'JetBrains Mono',monospace; font-size:6.4pt; letter-spacing:.08em; text-transform:uppercase;
+           color:var(--muted); width:26mm; flex:none; }
+  .alc .v{ font-size:9pt; color:var(--negro); font-weight:500; }
+  .steps{ display:grid; grid-template-columns:repeat(3,1fr); gap:3.5mm; margin-top:5mm; }
+  .stp{ background:var(--crema); border-radius:3mm; padding:4mm; }
+  .stp .n{ font-family:'JetBrains Mono',monospace; font-size:6.4pt; color:var(--terra); letter-spacing:.1em; font-weight:600; }
+  .stp h4{ font-size:9.6pt; font-weight:600; margin-top:1.5mm; }
+  .stp p{ font-size:8.2pt; color:var(--muted); margin-top:1mm; }
+  .nota{ font-size:8pt; color:#9C8B7D; margin-top:4mm; }
 
   /* cierre */
   .close{ background:var(--negro); color:var(--crema); display:flex; flex-direction:column; }
@@ -165,9 +179,9 @@
       <span class="firma">JERS <span class="d">|</span> IA</span>
       <span class="kick" style="color:#B4A597">Propuesta · Confidencial</span>
     </div>
-    <div class="para">Preparado para Oro Azul · Agroinmobiliaria del Norte</div>
-    <h1>Las redes se<br>pueden perder.<br>Su base de<br>inversionistas <em>no</em>.</h1>
-    <p class="sub">Afluencia: el software de captación con inteligencia artificial que instala una base propia de inversionistas dentro de su empresa — y potencia al equipo comercial que ya tienen.</p>
+    <div class="para">Preparado para la Gerencia General · Oro Azul</div>
+    <h1>El problema no es<br>cuántos leads llegan.<br>Es <em>de quién</em> son.</h1>
+    <p class="sub">Afluencia: software de captación con inteligencia artificial que entrega inversionistas con capital verificable a su fuerza comercial — y construye una base propia que ninguna plataforma puede bloquear.</p>
     <div class="foot">
       <div><b>Jers Ancajima</b> · IA + Automatización<br>Setiembre 2026</div>
       <div>Afluencia · Clientes que llegan solos</div>
@@ -175,109 +189,138 @@
   </div>
 </section>
 
-<!-- 2 DIAGNÓSTICO -->
+<!-- 2 SU EMBUDO REAL -->
 <section class="page" data-canvas-width="794" data-canvas-height="1123">
-  <div class="topbar"><span class="firma">JERS <span class="d">|</span> IA</span><span class="pagenum">01 — EL DIAGNÓSTICO</span></div>
-  <p class="kick">Lo que acaba de pasar</p>
-  <h2>Perder las cuentas no fue<br>un error suyo. Fue un <em>riesgo estructural</em>.</h2>
-  <p class="lead">Un tercero bloqueó las cuentas de Facebook e Instagram de Oro Azul y hoy toca empezar de cero. Le pasa a empresas serias todos los días, y el motivo de fondo siempre es el mismo:</p>
+  <div class="topbar"><span class="firma">JERS <span class="d">|</span> IA</span><span class="pagenum">01 — SU OPERACIÓN HOY</span></div>
+  <p class="kick">Punto de partida · Enero–Junio 2026</p>
+  <h2>Su equipo trabaja bien.<br>El <em>insumo</em> no acompaña.</h2>
+  <p class="lead">Estas son cifras de su propio reporte de gestión. En 24 semanas su área comercial trabajó una cartera grande, con disciplina de contacto — y aun así el embudo se cierra casi por completo antes de la colocación:</p>
 
-  <div class="panel">
-    <h3>La causa real</h3>
-    <p>La audiencia estaba construida sobre <em>terreno alquilado</em>. Seguidores, historial y conversaciones vivían dentro de plataformas que Oro Azul no controla — y que pueden cerrarse por la denuncia de un tercero, sin previo aviso y sin apelación efectiva.</p>
+  <div class="stats f4">
+    <div class="st"><div class="l">Leads trabajados</div><div class="v">5,626</div><div class="d">enero a junio 2026</div></div>
+    <div class="st"><div class="l">No contestaron</div><div class="v rj">59.9%</div><div class="d">3,372 tras 3 intentos</div></div>
+    <div class="st"><div class="l">Sin interés</div><div class="v rj">1,146</div><div class="d">de los que sí contestaron</div></div>
+    <div class="st"><div class="l">Lotes colocados</div><div class="v">8</div><div class="d">0.14% de conversión</div></div>
   </div>
 
-  <div class="rows">
-    <div class="row"><div class="nn">!</div><div><h4>Lo que se perdió</h4><p>No fueron solo seguidores: se perdió el canal por donde llegaban las consultas de inversionistas y el historial que respaldaba la credibilidad del proyecto ante quien evalúa poner capital.</p></div></div>
-    <div class="row"><div class="nn">→</div><div><h4>Lo que sigue en riesgo</h4><p>La cuenta nueva vuelve a ser terreno alquilado. Si la captación se reconstruye únicamente ahí, el mismo hecho puede repetirse y borrar otra vez el trabajo de meses.</p></div></div>
-    <div class="row"><div class="nn">✓</div><div><h4>La oportunidad del momento</h4><p>Empezar de cero también permite hacerlo bien: esta vez con un activo propio como base y las redes como complemento, no como único cimiento.</p></div></div>
+  <div class="fun">
+    <div class="fn"><span class="lb">Leads recibidos</span><span class="tr"><span class="fi" style="width:100%;background:var(--oscuro)"></span></span><span class="vv" style="color:var(--negro)">5,626</span></div>
+    <div class="fn"><span class="lb">Contestaron (41.8%)</span><span class="tr"><span class="fi" style="width:41.8%;background:var(--terra2)"></span></span><span class="vv" style="color:var(--terra2)">2,354</span></div>
+    <div class="fn"><span class="lb">Evaluando la inversión</span><span class="tr"><span class="fi" style="width:13.8%;background:var(--terra)"></span></span><span class="vv" style="color:var(--terra)">775</span></div>
+    <div class="fn"><span class="lb">Colocaron lote</span><span class="tr"><span class="fi" style="width:0.6%;background:var(--verde)"></span></span><span class="vv" style="color:var(--verde)">8</span></div>
+  </div>
+
+  <div class="panel">
+    <h3>La lectura correcta</h3>
+    <p>Sus asesoras contactan el 100% de la cartera asignada y el 85% dentro de las primeras 24 horas. Eso es una operación bien ejecutada. El cuello de botella está antes: <em>seis de cada diez personas que reciben ni siquiera contestan el teléfono</em>. No es un problema de gestión — es un problema de origen del lead.</p>
   </div>
 </section>
 
-<!-- 3 ALQUILADO VS PROPIO -->
+<!-- 3 EL DIAGNÓSTICO -->
 <section class="page" data-canvas-width="794" data-canvas-height="1123">
-  <div class="topbar"><span class="firma">JERS <span class="d">|</span> IA</span><span class="pagenum">02 — LA DECISIÓN</span></div>
+  <div class="topbar"><span class="firma">JERS <span class="d">|</span> IA</span><span class="pagenum">02 — EL DIAGNÓSTICO</span></div>
+  <p class="kick">Por qué ocurre — y qué acaba de agravarlo</p>
+  <h2>Un clic no es<br>un <em>inversionista</em>.</h2>
+  <p class="lead">La cartera se alimenta de formularios y mensajes de Meta. Ese origen entrega volumen, pero no filtra capacidad de compra: quien deja un dato tras ver un anuncio no necesariamente tiene el capital ni la intención de invertir en un lote.</p>
+
+  <div class="rows">
+    <div class="row"><div class="nn">1</div><div><h4>Volumen alto, capacidad de compra desconocida</h4><p>Un lead de campaña llega sin ninguna señal de patrimonio ni de perfil profesional. Su equipo lo descubre recién en la llamada — o no lo descubre nunca, porque no contesta.</p></div></div>
+    <div class="row"><div class="nn">2</div><div><h4>161 invirtieron en otro proyecto</h4><p>Su propio reporte lo registra. Era gente con capital real que llegó tarde o mal calificada, y terminó colocando su dinero en la competencia.</p></div></div>
+    <div class="row"><div class="nn">3</div><div><h4>El bloqueo de las cuentas</h4><p>Al perder Facebook e Instagram por la denuncia de un tercero, no se perdieron solo seguidores: se cortó <b>la única fuente que alimentaba a las cinco asesoras</b>. La cuenta nueva parte de cero.</p></div></div>
+  </div>
+
+  <div class="panel">
+    <h3>El riesgo estructural</h3>
+    <p>La captación estaba construida sobre <em>terreno alquilado</em>. Mientras la fuente sea una plataforma que Oro Azul no controla, el área comercial queda expuesta a que una decisión ajena la deje sin cartera de un día para otro. Ya ocurrió una vez.</p>
+  </div>
+</section>
+
+<!-- 4 ALQUILADO VS PROPIO -->
+<section class="page" data-canvas-width="794" data-canvas-height="1123">
+  <div class="topbar"><span class="firma">JERS <span class="d">|</span> IA</span><span class="pagenum">03 — LA DECISIÓN</span></div>
   <p class="kick">La decisión de fondo</p>
-  <h2>Audiencia alquilada<br>o base <em>propia</em>.</h2>
-  <p class="lead">Toda empresa que vende alto ticket termina eligiendo entre estos dos modelos. La diferencia no se nota en un mes bueno; se nota el día que algo falla:</p>
+  <h2>Cartera alquilada<br>o base <em>propia</em>.</h2>
+  <p class="lead">La diferencia entre los dos modelos no se nota en un mes bueno. Se nota el día que la fuente falla — como acaba de pasar:</p>
 
   <div class="anb">
     <div class="ab a">
-      <div class="h">Modelo alquilado</div>
-      <h4>Depende de la plataforma</h4>
+      <div class="h">Modelo actual — campañas</div>
+      <h4>La fuente es de un tercero</h4>
       <ul>
-        <li>Si la cuenta cae, cae todo con ella</li>
+        <li>Si la cuenta cae, la cartera se corta</li>
         <li>El alcance depende del algoritmo</li>
-        <li>Se deja de pagar, se deja de existir</li>
+        <li>Se deja de pagar, se deja de recibir</li>
+        <li>El lead llega sin señal de capital</li>
         <li>Nada de lo construido es transferible</li>
       </ul>
     </div>
     <div class="ab b">
       <div class="h">Modelo propio — Afluencia</div>
-      <h4>Depende de su base de datos</h4>
+      <h4>La fuente es su base de datos</h4>
       <ul>
         <li>Ninguna plataforma puede bloquearla</li>
         <li>No depende de pauta ni de algoritmo</li>
         <li>El sistema busca y califica cada mes</li>
+        <li>Cada contacto llega con perfil verificado</li>
         <li>La base es un activo de la empresa</li>
       </ul>
     </div>
   </div>
 
   <div class="rows">
-    <div class="row"><div class="nn">=</div><div><h4>Para ser claros: no reemplaza las redes</h4><p>Las redes siguen siendo necesarias para que el proyecto se conozca y genere confianza. Lo que cambia es el cimiento: con Afluencia, si mañana una cuenta vuelve a caer, la lista de inversionistas y el pipeline de ventas <b>siguen intactos</b>.</p></div></div>
+    <div class="row"><div class="nn">=</div><div><h4>No reemplaza sus campañas</h4><p>Las redes siguen siendo necesarias para que el proyecto se conozca y genere confianza. Lo que cambia es el cimiento: con Afluencia, si mañana una cuenta vuelve a caer, la cartera de inversionistas y el pipeline <b>siguen intactos</b>.</p></div></div>
   </div>
 
   <div class="panel">
     <h3>La pregunta para la gerencia</h3>
-    <p>¿Cuánto vale, en un proyecto que se vende por decisión de inversión y no por impulso, tener <em>una base de compradores potenciales que nadie pueda apagar</em>?</p>
+    <p>En un producto que se coloca por decisión de inversión y no por impulso, ¿cuánto vale tener <em>una cartera de compradores con capital verificable que nadie pueda apagar</em>?</p>
   </div>
 </section>
 
-<!-- 4 EL ÁREA COMERCIAL -->
+<!-- 5 EL EQUIPO -->
 <section class="page" data-canvas-width="794" data-canvas-height="1123">
-  <div class="topbar"><span class="firma">JERS <span class="d">|</span> IA</span><span class="pagenum">03 — SU EQUIPO</span></div>
+  <div class="topbar"><span class="firma">JERS <span class="d">|</span> IA</span><span class="pagenum">04 — SU FUERZA COMERCIAL</span></div>
   <p class="kick">Qué gana su área comercial</p>
-  <h2>No reemplaza vendedores.<br>Les quita el <em>trabajo muerto</em>.</h2>
-  <p class="lead">Un vendedor de alto ticket rinde cuando conversa y cierra, no cuando busca a quién llamar. Afluencia se hace cargo de la parte que no genera comisión:</p>
+  <h2>Las mismas cinco asesoras,<br>sobre una cartera <em>que contesta</em>.</h2>
+  <p class="lead">Hoy cada asesora recibe alrededor de 200 leads al mes y dedica gran parte de su jornada a insistir con números que no responden. Afluencia no cambia al equipo: cambia lo que el equipo recibe.</p>
 
   <div class="anb">
     <div class="ab a">
-      <div class="h">El día del vendedor — hoy</div>
-      <h4>Buscar antes de vender</h4>
+      <div class="h">La jornada hoy</div>
+      <h4>Insistir antes de vender</h4>
       <ul>
-        <li>Rastrear contactos por su cuenta</li>
-        <li>Decidir a quién llamar sin criterio claro</li>
-        <li>Anotar en cuaderno o en su celular</li>
-        <li>Olvidar el seguimiento del que no contestó</li>
-        <li>Reportar de memoria en la reunión</li>
+        <li>3 intentos por lead para saber si existe</li>
+        <li>6 de cada 10 nunca contestan</li>
+        <li>Perfil y capacidad se descubren en la llamada</li>
+        <li>Registro y cuadros armados en Excel a mano</li>
+        <li>El reporte gerencial se elabora aparte</li>
       </ul>
     </div>
     <div class="ab b">
-      <div class="h">El día del vendedor — con Afluencia</div>
-      <h4>Abrir la lista y vender</h4>
+      <div class="h">La jornada con Afluencia</div>
+      <h4>Conversar y colocar</h4>
       <ul>
-        <li>Recibe la lista del día ya priorizada</li>
-        <li>Sabe el puntaje de cada inversionista</li>
-        <li>Registra cada contacto en el CRM</li>
-        <li>El sistema le recuerda a quién retomar</li>
+        <li>Cartera con celular directo verificado</li>
+        <li>Cada contacto llega con puntaje de 1 a 100</li>
+        <li>Perfil profesional y trayectoria conocidos</li>
+        <li>Registro en CRM, sin armar Excel</li>
         <li>La gerencia ve el avance en vivo</li>
       </ul>
     </div>
   </div>
 
   <div class="rows">
-    <div class="row"><div class="nn">↑</div><div><h4>Más tiempo en la parte que factura</h4><p>Cada hora que un vendedor no gasta buscando es una hora disponible para conversar con un inversionista. El mismo equipo, sin contratar a nadie más, atiende más oportunidades por semana.</p></div></div>
-    <div class="row"><div class="nn">◇</div><div><h4>El conocimiento deja de irse con la persona</h4><p>Si un vendedor rota, su cartera y su historial de conversaciones quedan en el sistema. Hoy, cuando alguien se va, se lleva la información en su teléfono.</p></div></div>
+    <div class="row"><div class="nn">↑</div><div><h4>Más horas en la parte que factura</h4><p>Cada hora que una asesora no invierte persiguiendo números muertos es una hora disponible para conversar con alguien que sí puede comprar. El mismo equipo, sin contratar a nadie, atiende más oportunidades reales por semana.</p></div></div>
+    <div class="row"><div class="nn">◇</div><div><h4>El historial deja de irse con la persona</h4><p>Si una asesora rota, su cartera y sus conversaciones quedan en el sistema. Hoy esa información vive en cuadros individuales y en su teléfono.</p></div></div>
   </div>
 </section>
 
-<!-- 5 EL SISTEMA (mockup) -->
+<!-- 6 EL SISTEMA -->
 <section class="page" data-canvas-width="794" data-canvas-height="1123">
-  <div class="topbar"><span class="firma">JERS <span class="d">|</span> IA</span><span class="pagenum">04 — EL SISTEMA</span></div>
+  <div class="topbar"><span class="firma">JERS <span class="d">|</span> IA</span><span class="pagenum">05 — EL SISTEMA</span></div>
   <p class="kick">Cómo se ve por dentro</p>
   <h2>Un panel de control<br>para la <em>gerencia</em>.</h2>
-  <p class="lead">Así se ve el tablero que Oro Azul tendría: el estado del pipeline de inversionistas, en vivo, sin pedirle un reporte a nadie.</p>
+  <p class="lead">El estado del pipeline de inversionistas, en vivo, sin pedir un reporte ni esperar a que alguien arme el Excel del mes.</p>
 
   <div class="win">
     <div class="bar">
@@ -289,12 +332,12 @@
     <div class="bd">
       <div class="wrow">
         <div style="display:flex;flex-direction:column;gap:4mm">
-          <div class="wcard"><div class="l">Base total</div><div class="v tt">192</div></div>
+          <div class="wcard"><div class="l">Base calificada</div><div class="v tt">192</div></div>
           <div class="wcard"><div class="l">Puntaje promedio</div><div class="v">66</div></div>
-          <div class="wcard"><div class="l">Contacto directo</div><div class="v">100%</div></div>
+          <div class="wcard"><div class="l">Celular directo</div><div class="v">100%</div></div>
         </div>
         <div class="wcard">
-          <div class="l" style="margin-bottom:3.5mm">Distribución de la base por profesión</div>
+          <div class="l" style="margin-bottom:3.5mm">Distribución por profesión</div>
           <div class="bars">
             <div class="bl"><span class="n">Odontología</span><span class="tr"><span class="fi" style="width:100%;background:linear-gradient(90deg,#C97B58,#E7D6CB)"></span></span><span class="p">50.0%</span></div>
             <div class="bl"><span class="n">Derecho</span><span class="tr"><span class="fi" style="width:40%;background:#C97B58"></span></span><span class="p">19.8%</span></div>
@@ -314,19 +357,19 @@
 
   <div class="rows">
     <div class="row"><div class="nn">1</div><div><h4>Captación y calificación con IA</h4><p>El sistema construye la base desde fuentes públicas y asigna a cada persona un puntaje de 1 a 100 según trayectoria, reputación y posibilidad de contacto directo.</p></div></div>
-    <div class="row"><div class="nn">2</div><div><h4>Seguimiento que no se enfría</h4><p>Indica cada día a quién contactar y reprograma solo a quien no respondió. En una venta de ciclo largo, ahí se gana o se pierde.</p></div></div>
+    <div class="row"><div class="nn">2</div><div><h4>Seguimiento que no se enfría</h4><p>Indica cada día a quién retomar y reprograma solo a quien no respondió. En un ciclo de maduración largo, ahí se gana o se pierde la colocación.</p></div></div>
   </div>
 </section>
 
-<!-- 6 LA DATA ES REAL Y ES SUYA -->
+<!-- 7 LA DATA -->
 <section class="page" data-canvas-width="794" data-canvas-height="1123">
-  <div class="topbar"><span class="firma">JERS <span class="d">|</span> IA</span><span class="pagenum">05 — LA DATA</span></div>
+  <div class="topbar"><span class="firma">JERS <span class="d">|</span> IA</span><span class="pagenum">06 — LA DATA</span></div>
   <p class="kick">Prospectos reales, no promesas</p>
   <h2>Ya corrimos el sistema con<br>el perfil de <em>su inversionista</em>.</h2>
-  <p class="lead">Para que esta propuesta no sea una promesa, ejecutamos el motor apuntando al comprador de Oro Azul: profesionales con capital y contacto directo, en sus plazas. Resultado real de esa corrida:</p>
+  <p class="lead">Ejecutamos el motor apuntando al comprador de Oro Azul: profesionales con capital, contacto directo y trayectoria verificable, en sus plazas. Resultado real de esa corrida:</p>
 
   <div class="stats">
-    <div class="st"><div class="l">Identificados</div><div class="v">192</div><div class="d">personas con celular directo, no centralitas</div></div>
+    <div class="st"><div class="l">Identificados</div><div class="v">192</div><div class="d">con celular directo, no centralitas</div></div>
     <div class="st"><div class="l">Reputación media</div><div class="v">4.9 ★</div><div class="d">profesionales consolidados y verificables</div></div>
     <div class="st"><div class="l">Puntaje medio</div><div class="v">66 / 100</div><div class="d">calificación asignada por el modelo</div></div>
   </div>
@@ -343,93 +386,103 @@
       <tr><td>L. P. ███</td><td>Odontología</td><td>Piura</td><td>4.7 ★ · 22 reseñas</td><td class="sc">64</td><td><span class="chip m">Media</span></td></tr>
     </tbody>
   </table>
-  <p class="nota" style="margin-top:3mm">Muestra con datos enmascarados por protección de terceros. La base completa —nombre, celular y ficha— se entrega únicamente al cliente contratante.</p>
+  <p class="nota" style="margin-top:2.5mm">Muestra con datos enmascarados por protección de terceros. La base completa —nombre, celular y ficha— se entrega únicamente al cliente contratante.</p>
 
   <div class="panel">
     <h3>Exclusiva para Oro Azul</h3>
-    <p>Esta base no es una lista comprada ni se revende: se genera <em>para Oro Azul</em>, queda a su nombre y no se comparte con ningún otro cliente. Mientras el sistema esté activo, el rubro y las plazas trabajadas quedan reservados para ustedes.</p>
+    <p>No es una lista comprada ni se revende: se genera <em>para Oro Azul</em>, queda a su nombre y no se comparte con ningún otro cliente. Mientras el sistema esté activo, el rubro y las plazas trabajadas quedan reservados para ustedes.</p>
   </div>
 </section>
 
-<!-- 7 PROYECCIÓN -->
+<!-- 8 PROYECCIÓN -->
 <section class="page" data-canvas-width="794" data-canvas-height="1123">
-  <div class="topbar"><span class="firma">JERS <span class="d">|</span> IA</span><span class="pagenum">06 — PROYECCIÓN</span></div>
+  <div class="topbar"><span class="firma">JERS <span class="d">|</span> IA</span><span class="pagenum">07 — PROYECCIÓN</span></div>
   <p class="kick">Los próximos años</p>
-  <h2>Lo que se acumula <em>mientras</em><br>las redes se reconstruyen.</h2>
-  <p class="lead">La cuenta nueva tardará meses en recuperar alcance. El sistema, en cambio, produce desde el primer mes y lo que genera queda:</p>
+  <h2>Lo que se acumula <em>mientras</em><br>las cuentas se reconstruyen.</h2>
+  <p class="lead">La cuenta nueva tardará meses en recuperar alcance. El sistema, en cambio, produce desde el primer mes — y lo que produce queda en la empresa:</p>
 
   <div class="tl">
     <div class="tstep">
       <div class="yr">Mes 1–3</div>
       <div class="bd">
-        <h4>Pipeline activo desde el arranque</h4>
-        <p>Entrada mensual de inversionistas calificados. El equipo comercial trabaja con una lista concreta mientras las redes recién vuelven a crecer.</p>
+        <h4>Cartera activa desde el arranque</h4>
+        <p>Entrada mensual de inversionistas calificados para las cinco asesoras, mientras las campañas recién vuelven a levantar alcance.</p>
       </div>
     </div>
     <div class="tstep">
       <div class="yr">Mes 4–12</div>
       <div class="bd">
         <h4>El sistema aprende quién compra</h4>
-        <p>Con cada cierre y cada rechazo el puntaje se afina: reconoce el perfil real del inversionista de Oro Azul —profesión, plaza, trayectoria— y prioriza a los parecidos. Mejor calidad sin mayor costo.</p>
+        <p>Con cada colocación y cada rechazo el puntaje se afina: reconoce el perfil real del comprador de Oro Azul —profesión, plaza, trayectoria— y prioriza a los parecidos. Mejor calidad sin mayor costo.</p>
       </div>
     </div>
     <div class="tstep">
       <div class="yr">Año 1–2</div>
       <div class="bd">
         <h4>Un activo transferible</h4>
-        <p>Oro Azul queda con una base propia de inversionistas de alto patrimonio con historial de contacto. Ese mismo activo sirve para lanzar la siguiente etapa del proyecto o uno nuevo, sin empezar de cero.</p>
+        <p>Oro Azul queda con una base propia de inversionistas de alto patrimonio con historial de contacto. El mismo activo sirve para colocar la siguiente etapa del proyecto sin empezar de cero.</p>
       </div>
     </div>
     <div class="tstep">
       <div class="yr">Visión</div>
       <div class="bd">
         <h4>Captación a prueba de bloqueos</h4>
-        <p>Un área comercial que no depende del algoritmo, de la pauta ni de la agenda personal de nadie. Si una plataforma vuelve a fallar, la venta no se detiene.</p>
+        <p>Un área comercial que no depende del algoritmo, de la pauta ni de la cuenta de una plataforma. Si una fuente vuelve a caer, la colocación no se detiene.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- 8 PILOTO -->
+<!-- 9 PILOTO -->
 <section class="page" data-canvas-width="794" data-canvas-height="1123">
-  <div class="topbar"><span class="firma">JERS <span class="d">|</span> IA</span><span class="pagenum">07 — LA PRUEBA</span></div>
+  <div class="topbar"><span class="firma">JERS <span class="d">|</span> IA</span><span class="pagenum">08 — LA PRUEBA</span></div>
   <p class="kick">Antes de hablar de números</p>
-  <h2>Primero pruébenlo.<br>Después conversamos <em>la inversión</em>.</h2>
-  <p class="lead">No tiene sentido cotizar un sistema que no han visto funcionar con su propio mercado. La propuesta es al revés: que lo usen primero.</p>
+  <h2>Primero pruébenlo con<br>su propio <em>equipo</em>.</h2>
+  <p class="lead">No tiene sentido cotizar un sistema que no han visto rendir en su operación. La propuesta es al revés: que sus asesoras lo trabajen y que la decisión se tome comparando contra su propio histórico.</p>
 
   <div class="pilot">
-    <div class="hd">Piloto de implementación · Oro Azul</div>
+    <div class="hd">Piloto de validación · Oro Azul · Alcance cerrado</div>
     <div class="bd">
-      <div class="tt">Una tanda real, sin costo</div>
-      <p class="ds">Instalamos el sistema con el perfil de inversionista de Oro Azul y entregamos una primera tanda de prospectos reales en su propio CRM. Ustedes la trabajan y evalúan con hechos: si la calidad de los contactos justifica o no continuar.</p>
+      <div class="tt">50 inversionistas calificados, sin costo</div>
+      <p class="ds">Instalamos el sistema con el perfil de comprador de Oro Azul y entregamos una tanda de 50 contactos con celular directo, calificados y priorizados, cargados en su CRM. Sus asesoras los trabajan como trabajan cualquier cartera.</p>
+
+      <div class="alc">
+        <div class="it"><span class="k">Volumen</span><span class="v">50 inversionistas calificados, entrega única</span></div>
+        <div class="it"><span class="k">Plazas</span><span class="v">Hasta 3 (Lima · Piura · Arequipa)</span></div>
+        <div class="it"><span class="k">Plazo</span><span class="v">Entrega en 7 días hábiles</span></div>
+        <div class="it"><span class="k">Incluye</span><span class="v">CRM instalado + base cargada</span></div>
+        <div class="it"><span class="k">Costo</span><span class="v">Sin costo y sin compromiso de compra</span></div>
+        <div class="it"><span class="k">Disponibilidad</span><span class="v">Un piloto por rubro y zona</span></div>
+      </div>
+
       <div class="steps">
-        <div class="stp"><div class="n">PASO 01</div><h4>Definimos el perfil</h4><p>Una reunión corta: a quién quieren como inversionista y en qué plazas.</p></div>
-        <div class="stp"><div class="n">PASO 02</div><h4>Entregamos la tanda</h4><p>Prospectos reales, calificados y priorizados, cargados en el CRM de Oro Azul.</p></div>
-        <div class="stp"><div class="n">PASO 03</div><h4>Ustedes deciden</h4><p>Si los contactos sirven, activamos el sistema continuo. Si no, no hay compromiso.</p></div>
+        <div class="stp"><div class="n">PASO 01</div><h4>Definimos el perfil</h4><p>Reunión de 30 minutos con gerencia y jefatura comercial: a quién quieren como inversionista y en qué plazas.</p></div>
+        <div class="stp"><div class="n">PASO 02</div><h4>Entregamos y capacitamos</h4><p>Los 50 contactos en su CRM, más una sesión corta con las asesoras para que lo usen desde el primer día.</p></div>
+        <div class="stp"><div class="n">PASO 03</div><h4>Medimos juntos</h4><p>A los 15 días comparamos contactabilidad e interés contra su histórico. Ustedes deciden con el número al frente.</p></div>
       </div>
     </div>
   </div>
 
   <div class="panel">
-    <h3>Por qué lo hacemos así</h3>
-    <p>Porque en este rubro se promete mucho y se demuestra poco. Prefiero que la decisión de Oro Azul se tome mirando <em>contactos reales de su mercado</em>, no una presentación. Los planes y la inversión los conversamos cuando ya sepan qué están comprando.</p>
+    <h3>La única condición</h3>
+    <p>Que los 50 se trabajen de verdad y que compartamos el resultado de contactabilidad al cierre del piloto. No pido una orden de compra: pido <em>una medición honesta</em>. Si el número no supera lo que ya tienen, no hay nada que conversar.</p>
   </div>
 
-  <p class="nota">El piloto incluye la instalación del sistema y la primera tanda de prospectos. La base generada queda con Oro Azul, se contrate o no el servicio continuo.</p>
+  <p class="nota">La base entregada durante el piloto queda con Oro Azul, se contrate o no el servicio continuo. Los planes y la inversión mensual se presentan recién después de la medición.</p>
 </section>
 
-<!-- 9 CIERRE -->
+<!-- 10 CIERRE -->
 <section class="page close" data-canvas-width="794" data-canvas-height="1123">
-  <div class="topbar"><span class="firma">JERS <span class="d">|</span> IA</span><span class="pagenum" style="color:#8A7A6C">08 — SIGUIENTE PASO</span></div>
+  <div class="topbar"><span class="firma">JERS <span class="d">|</span> IA</span><span class="pagenum" style="color:#8A7A6C">09 — SIGUIENTE PASO</span></div>
   <p class="kick">Siguiente paso</p>
-  <h2>Reconstruyan las redes.<br>Y esta vez, sobre <em>terreno propio</em>.</h2>
-  <p class="lead">La cuenta nueva va a tomar su tiempo. Mientras tanto, el sistema puede estar entregando inversionistas reales desde la primera semana — y construyendo el activo que la próxima caída no pueda tocar.</p>
+  <h2>Reconstruyan las cuentas.<br>Y esta vez, sobre <em>terreno propio</em>.</h2>
+  <p class="lead">La cuenta nueva va a tomar su tiempo. Mientras tanto, sus cinco asesoras pueden estar trabajando una cartera que sí contesta — y Oro Azul construyendo el activo que la próxima caída no pueda tocar.</p>
   <span class="cta">Agendar el piloto →</span>
 
   <div class="sig">
     <div class="nm">Jers Ancajima</div>
     <div class="rl">IA + Automatización · Creador de Afluencia</div>
-    <p>“Lo que le pasó a sus cuentas es la razón exacta por la que construí este sistema: ninguna empresa debería tener su captación en manos de una plataforma que no controla.”</p>
+    <p>“Lo que le pasó a sus cuentas es la razón exacta por la que construí este sistema: ninguna empresa debería tener su fuerza comercial dependiendo de una plataforma que no controla.”</p>
   </div>
 
   <div class="cont">
