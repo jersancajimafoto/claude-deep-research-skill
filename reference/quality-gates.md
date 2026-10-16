@@ -23,7 +23,7 @@ python scripts/validate_report.py --report [path]
 
 **9 automated checks:**
 1. Executive summary length (200-400 words)
-2. Required sections present
+2. Required sections present (English or Spanish headings)
 3. Citations formatted [1], [2], [3]
 4. Bibliography matches citations
 5. No placeholder text (TBD, TODO)
@@ -36,19 +36,35 @@ python scripts/validate_report.py --report [path]
 - Attempt 2: Manual review + correction
 - After 2 failures: STOP, report issues, ask user
 
+### Claim-Support Verification
+
+```bash
+# 1. Extract atomic claims; each [N] is linked to its registered source
+#    through the report's bibliography URL/DOI
+python scripts/extract_claims.py extract --report [path] --dir [run dir]
+
+# 2. Check every claim against the evidence stored for its sources
+python scripts/verify_claim_support.py verify --dir [run dir] --strict
+```
+
+- `extract` reports `sources_linked` and `unresolved_citations`. An unresolved number means its bibliography entry's URL/DOI was never registered with `citation_manager.py register-source`: register it, then run `extract_claims.py link --report [path] --dir [run dir]`.
+- `--strict` exits non-zero while any factual claim is unsupported. Without it the command still prints `"delivery_ready": false` and a warning; only `--strict` is a delivery gate.
+- `needs_review` means the cited evidence shares too few words with the claim. Matching is lexical, so a claim written in a different language from its evidence quote scores low. When the report language differs from the source language, also store the key passage as a `paraphrase` evidence row in the report's language (same `source_id`), alongside the original `direct_quote`.
+
 ### Validation Loop Protocol
 
 **After generating ANY report, run this loop:**
 
 1. Run `python scripts/validate_report.py --report [path]`
 2. Run `python scripts/verify_citations.py --report [path]`
-3. If EITHER fails:
+3. Run the claim-support verification above with `--strict`
+4. If ANY fails:
    - Read error output carefully
-   - Fix the specific issues identified
-   - Re-run BOTH validators
-4. Maximum 3 retry cycles. If still failing after 3 cycles: STOP and report issues to user.
+   - Fix the specific issues identified (add citations, store missing evidence, or remove unsupported claims)
+   - Re-run ALL validators
+5. Maximum 3 retry cycles. If still failing after 3 cycles: STOP and report issues to user.
 
-**Do NOT skip validation.** Every report must pass both scripts before delivery.
+**Do NOT skip validation.** Every report must pass all three checks before delivery.
 
 ---
 

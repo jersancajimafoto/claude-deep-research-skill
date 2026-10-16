@@ -67,7 +67,13 @@ Mode Selection
 **Scripts:**
 - `python scripts/validate_report.py --report [path]`
 - `python scripts/verify_citations.py --report [path]`
+- `python scripts/extract_claims.py extract --report [path] --dir [run dir]` (links each [N] to its registered source)
+- `python scripts/verify_claim_support.py verify --dir [run dir] --strict` (delivery gate)
 - `python scripts/md_to_html.py [markdown_path]`
+
+**Report language:** Write the report in the user's language. Section headings may be in English or Spanish (e.g. "Executive Summary" / "Resumen ejecutivo", "Bibliography" / "Bibliografía"); the scripts recognise both.
+
+**Cloud sessions (claude.ai/code, Claude app):** `~/Documents` is not visible to the user and nothing can be auto-opened. Write the run folder inside the working directory or scratchpad, and send the report file to the user. Skip PDF if `weasyprint` is not installed, and use WebSearch when `search-cli` is unavailable.
 
 ---
 
@@ -83,14 +89,14 @@ Mode Selection
 - Bibliography (COMPLETE - every citation, no placeholders)
 - Methodology Appendix
 
-**Output files (all to `~/Documents/[Topic]_Research_[YYYYMMDD]/`):**
+**Output files (all to `~/Documents/[Topic]_Research_[YYYYMMDD]/` locally; see Cloud sessions above):**
 - Markdown (primary source of truth)
 - `sources.jsonl` — stable source registry with canonical IDs
 - `evidence.jsonl` — append-only evidence store with quotes and locators
 - `claims.jsonl` — atomic claim ledger with support status
 - `run_manifest.json` — query, mode, assumptions, provider config
-- HTML (McKinsey style, auto-opened)
-- PDF (professional print, auto-opened)
+- HTML (McKinsey style, auto-opened on a local machine)
+- PDF (professional print, auto-opened on a local machine; requires `weasyprint`)
 
 **Quality standards:**
 - 10+ sources, 3+ per major claim (cluster-independent, not just count)

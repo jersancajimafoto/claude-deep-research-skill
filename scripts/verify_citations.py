@@ -27,6 +27,8 @@ import json
 import time
 from datetime import datetime
 
+from report_sections import find_section
+
 class CitationVerifier:
     """Verify citations in research report"""
 
@@ -61,14 +63,11 @@ class CitationVerifier:
 
     def extract_bibliography(self) -> List[Dict]:
         """Extract bibliography entries from report"""
-        pattern = r'## Bibliography(.*?)(?=##|\Z)'
-        match = re.search(pattern, self.content, re.DOTALL | re.IGNORECASE)
+        bib_section = find_section(self.content, 'bibliography')
 
-        if not match:
+        if bib_section is None:
             self.errors.append("No Bibliography section found")
             return []
-
-        bib_section = match.group(1)
 
         # Parse entries: [N] Author (Year). "Title". Venue. URL
         entries = []
@@ -91,7 +90,8 @@ class CitationVerifier:
 
                 # Try to parse: Author (Year). "Title". Venue. URL
                 year_match = re.search(r'\((\d{4})\)', rest)
-                title_match = re.search(r'"([^"]+)"', rest)
+                title_match = (re.search(r'"([^"]+)"', rest)
+                               or re.search(r'\[([^\]]+)\]\(https?://', rest))
                 doi_match = re.search(r'doi\.org/(10\.\S+)', rest)
                 url_match = re.search(r'https?://[^\s\)]+', rest)
 

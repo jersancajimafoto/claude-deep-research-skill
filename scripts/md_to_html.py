@@ -8,6 +8,8 @@ import re
 from typing import Tuple
 from pathlib import Path
 
+from report_sections import split_section
+
 
 def convert_markdown_to_html(markdown_text: str) -> Tuple[str, str]:
     """
@@ -19,10 +21,10 @@ def convert_markdown_to_html(markdown_text: str) -> Tuple[str, str]:
     Returns:
         Tuple of (content_html, bibliography_html)
     """
-    # Split content and bibliography
-    parts = markdown_text.split('## Bibliography')
-    content_md = parts[0]
-    bibliography_md = parts[1] if len(parts) > 1 else ""
+    # Split out the bibliography; sections after it (e.g. a methodology
+    # appendix) stay in the main content
+    before, bibliography_md, after = split_section(markdown_text, 'bibliography')
+    content_md = before.rstrip() + ('\n\n' + after if after else '')
 
     # Convert content (everything except bibliography)
     content_html = _convert_content_section(content_md)
@@ -115,12 +117,21 @@ def _convert_bibliography_section(markdown: str) -> str:
 
     html = markdown
 
-    # Convert each [N] citation to a proper bibliography entry
-    # Look for patterns like [1] Title - URL
+    # Entries written with markdown links, as export-bibliography produces:
+    # [1] Author (Year). [Title](URL). Venue
     html = re.sub(
-        r'\[(\d+)\]\s*(.+?)\s*-\s*(https?://[^\s\)]+)',
+        r'^\[(\d+)\]\s*(.*?)\[([^\]]+)\]\((https?://[^\s\)]+)\)(.*)$',
+        r'<div class="bib-entry"><span class="bib-number">[\1]</span> \2<a href="\4" target="_blank">\3</a>\5</div>',
+        html,
+        flags=re.MULTILINE,
+    )
+
+    # Plain entries: [1] Title - URL
+    html = re.sub(
+        r'^\[(\d+)\]\s*(.+?)\s*-\s*(https?://[^\s\)]+)',
         r'<div class="bib-entry"><span class="bib-number">[\1]</span> <a href="\3" target="_blank">\2</a></div>',
-        html
+        html,
+        flags=re.MULTILINE,
     )
 
     # Convert any remaining **bold** sections
@@ -301,9 +312,9 @@ def main():
     """Test the converter with a sample markdown file"""
     import sys
 
-    if len(sys.argv) < 2:
+    if len(sys.argv) < 2 or sys.argv[1] in ('-h', '--help'):
         print("Usage: python md_to_html.py <markdown_file>")
-        sys.exit(1)
+        sys.exit(0 if len(sys.argv) >= 2 else 1)
 
     md_file = Path(sys.argv[1])
     if not md_file.exists():
