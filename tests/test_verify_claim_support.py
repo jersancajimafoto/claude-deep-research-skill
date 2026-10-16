@@ -227,6 +227,21 @@ class TestSupportScore(unittest.TestCase):
         self.assertIn(status, ('needs_review', 'unsupported'))
         self.assertLess(score, 0.35)
 
+    def test_citation_marker_is_not_a_number(self):
+        _, _, notes = self.score(
+            'Adoption grew sharply among enterprises [3].',
+            ['Adoption grew sharply among enterprises last year.'],
+        )
+        self.assertNotIn('number mismatch', notes)
+
+    def test_accented_words_are_tokens(self):
+        status, score, _ = self.score(
+            'La sesión continúa después de cerrar el portátil [2].',
+            ['La sesión continúa después de cerrar el portátil.'],
+        )
+        self.assertEqual(status, 'supported')
+        self.assertGreater(score, 0.8)
+
 
 if __name__ == '__main__':
     unittest.main()

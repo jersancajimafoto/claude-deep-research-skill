@@ -57,6 +57,9 @@ YEAR_RE = re.compile(r'\b(19|20)\d{2}\b')
 # Extract capitalized entities (naive NER)
 ENTITY_RE = re.compile(r'\b[A-Z][a-z]+(?:\s+[A-Z][a-z]+)*\b')
 
+# Inline citation markers: [2], [1, 3]
+CITATION_MARKER_RE = re.compile(r'\[\d+(?:\s*,\s*\d+)*\]')
+
 # Common stop entities to ignore
 STOP_ENTITIES = frozenset([
     'The', 'This', 'That', 'These', 'However', 'Furthermore',
@@ -65,8 +68,8 @@ STOP_ENTITIES = frozenset([
 
 
 def extract_tokens(text: str) -> set[str]:
-    """Extract significant lowercase tokens (>3 chars)."""
-    words = re.findall(r'\b[a-z]{4,}\b', text.lower())
+    """Extract significant lowercase tokens (>3 letters, accents included)."""
+    words = re.findall(r'\b[^\W\d_]{4,}\b', text.lower())
     return set(words)
 
 
@@ -95,6 +98,9 @@ def compute_support_score(claim_text: str, evidence_quotes: list[str]) -> tuple[
     """
     if not evidence_quotes:
         return ('unsupported', 0.0, 'no evidence linked')
+
+    # Citation markers like [2] or [1, 3] are not part of the claim's content
+    claim_text = CITATION_MARKER_RE.sub('', claim_text)
 
     claim_tokens = extract_tokens(claim_text)
     claim_numbers = extract_numbers(claim_text)
@@ -253,14 +259,35 @@ def cmd_verify(args: argparse.Namespace) -> None:
     if args.strict and factual_unsupported > 0:
         passed = False
 
+    unlinked = sum(
+        1 for c in updated_claims
+        if not c.get('cited_source_ids') and not c.get('evidence_ids')
+    )
+
     print(json.dumps({
         'status': 'pass' if passed else 'fail',
+        'delivery_ready': factual_unsupported == 0,
         'verified': verified,
         'support_status_counts': dict(status_counts),
         'factual_unsupported': factual_unsupported,
         'total_factual': total_factual,
         'unsupported_rate': round(factual_unsupported / max(total_factual, 1), 3),
+        'claims_without_sources': unlinked,
     }, indent=2))
+
+    if passed and factual_unsupported:
+        print(
+            f'WARNING: {factual_unsupported} factual claim(s) unsupported; '
+            'the report is not ready for delivery. Use --strict as the delivery gate.',
+            file=sys.stderr,
+        )
+    if verified and unlinked == verified:
+        print(
+            'WARNING: no claim is linked to a source. Run '
+            '`extract_claims.py link --report <report> --dir <run dir>` after '
+            'registering sources.',
+            file=sys.stderr,
+        )
 
     if not passed:
         sys.exit(1)

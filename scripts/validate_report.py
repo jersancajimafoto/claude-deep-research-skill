@@ -10,6 +10,8 @@ import sys
 from pathlib import Path
 from typing import List, Tuple, Dict
 
+from report_sections import SECTION_ALIASES, find_section, has_section
+
 
 class ReportValidator:
     """Validates research report quality"""
@@ -61,14 +63,13 @@ class ReportValidator:
 
     def _check_executive_summary(self) -> bool:
         """Check executive summary exists and is 200-400 words"""
-        pattern = r'## Executive Summary(.*?)(?=##|\Z)'
-        match = re.search(pattern, self.content, re.DOTALL | re.IGNORECASE)
+        summary = find_section(self.content, 'executive_summary')
 
-        if not match:
+        if summary is None:
             self.errors.append("Missing 'Executive Summary' section")
             return False
 
-        summary = match.group(1).strip()
+        summary = summary.strip()
         word_count = len(summary.split())
 
         if word_count > 400:
@@ -82,26 +83,26 @@ class ReportValidator:
     def _check_required_sections(self) -> bool:
         """Check all required sections are present"""
         required = [
-            "Executive Summary",
-            "Introduction",
-            "Main Analysis",
-            "Synthesis",
-            "Limitations",
-            "Recommendations",
-            "Bibliography",
-            "Methodology"
+            'executive_summary',
+            'introduction',
+            'main_analysis',
+            'synthesis',
+            'limitations',
+            'recommendations',
+            'bibliography',
+            'methodology',
         ]
 
         # Recommended sections (warnings if missing, not errors)
         recommended = [
-            "Counterevidence Register",
-            "Claims-Evidence Table"
+            'counterevidence',
+            'claims_evidence_table',
         ]
 
         missing = []
-        for section in required:
-            if not re.search(rf'##.*{section}', self.content, re.IGNORECASE):
-                missing.append(section)
+        for key in required:
+            if not has_section(self.content, key):
+                missing.append(SECTION_ALIASES[key][0])
 
         if missing:
             self.errors.append(f"Missing sections: {', '.join(missing)}")
@@ -109,9 +110,9 @@ class ReportValidator:
 
         # Check recommended sections (warnings only)
         missing_recommended = []
-        for section in recommended:
-            if not re.search(rf'##.*{section}', self.content, re.IGNORECASE):
-                missing_recommended.append(section)
+        for key in recommended:
+            if not has_section(self.content, key):
+                missing_recommended.append(SECTION_ALIASES[key][0])
 
         if missing_recommended:
             self.warnings.append(f"Missing recommended sections (for academic rigor): {', '.join(missing_recommended)}")
@@ -146,14 +147,11 @@ class ReportValidator:
 
     def _check_bibliography(self) -> bool:
         """Check bibliography exists, matches citations, and has no truncation placeholders"""
-        pattern = r'## Bibliography(.*?)(?=##|\Z)'
-        match = re.search(pattern, self.content, re.DOTALL | re.IGNORECASE)
+        bib_section = find_section(self.content, 'bibliography')
 
-        if not match:
+        if bib_section is None:
             self.errors.append("Missing 'Bibliography' section")
             return False
-
-        bib_section = match.group(1)
 
         # CRITICAL: Check for truncation placeholders (2025 CiteGuard enhancement)
         truncation_patterns = [
@@ -256,13 +254,10 @@ class ReportValidator:
 
     def _check_source_count(self) -> bool:
         """Check minimum source count"""
-        pattern = r'## Bibliography(.*?)(?=##|\Z)'
-        match = re.search(pattern, self.content, re.DOTALL | re.IGNORECASE)
+        bib_section = find_section(self.content, 'bibliography')
 
-        if not match:
+        if bib_section is None:
             return True  # Already caught in bibliography check
-
-        bib_section = match.group(1)
         bib_entries = re.findall(r'^\[(\d+)\]', bib_section, re.MULTILINE)
 
         source_count = len(set(bib_entries))

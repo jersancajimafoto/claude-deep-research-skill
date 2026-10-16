@@ -95,7 +95,7 @@ Use the returned year for all date-filtered queries and recency checks. Do NOT a
 
 **Step 2: Spawn parallel deep-dive agents**
 
-Use Task tool with general-purpose agents (3-5 agents) for:
+Use the Agent tool (formerly Task) with general-purpose agents (3-5 agents) for:
 - Academic paper analysis (PDFs, detailed extraction)
 - Documentation deep dives (technical specs, API docs)
 - Repository analysis (code examples, implementations)
@@ -115,6 +115,8 @@ python scripts/citation_manager.py register-source --json '{"raw_url": "...", "t
 # Then persist each evidence span from that source
 python scripts/evidence_store.py add --json '{"source_id": "...", "quote": "exact text", "evidence_type": "direct_quote", "locator": "page 5"}' --dir [folder]
 ```
+If the report will be written in a different language from the source, also persist the key passage as a `paraphrase` row in the report's language: claim-support matching is lexical and cannot match across languages.
+
 Evidence must not live only in model context — it must be persisted to `evidence.jsonl` before synthesis begins. This ensures continuation agents and claim-support verification can access the full evidence trail.
 
 **Example parallel execution (using search-cli via Bash):**
@@ -125,9 +127,9 @@ Evidence must not live only in model context — it must be persisted to `eviden
 - Bash: search "quantum computing commercial applications 2026" -m news --json -c 10
 - Bash: search "quantum computing vs classical comparison" --json -c 10
 - Bash: search "quantum error correction research" -m academic --json -c 10
-- Task(subagent_type="general-purpose", description="Analyze quantum computing papers", prompt="Deep dive into quantum computing academic papers from [CURRENT_YEAR], extract key findings and methodologies")
-- Task(subagent_type="general-purpose", description="Industry analysis", prompt="Analyze quantum computing industry reports and market data, identify commercial applications")
-- Task(subagent_type="general-purpose", description="Technical challenges", prompt="Extract technical limitations and challenges from quantum computing research")
+- Agent(subagent_type="general-purpose", description="Analyze quantum computing papers", prompt="Deep dive into quantum computing academic papers from [CURRENT_YEAR], extract key findings and methodologies")
+- Agent(subagent_type="general-purpose", description="Industry analysis", prompt="Analyze quantum computing industry reports and market data, identify commercial applications")
+- Agent(subagent_type="general-purpose", description="Technical challenges", prompt="Extract technical limitations and challenges from quantum computing research")
 ```
 
 **Example parallel execution (using Exa MCP - if available):**
@@ -137,7 +139,7 @@ Evidence must not live only in model context — it must be persisted to `eviden
 - mcp__Exa__exa_search(query="quantum computing limitations", type="keyword", num_results=10)
 - mcp__Exa__exa_search(query="quantum computing commercial", type="auto", num_results=10, start_published_date="[use current year from Step 0]")
 - mcp__Exa__exa_search(query="quantum error correction", type="neural", num_results=10, include_domains=["arxiv.org"])
-- Task(subagent_type="general-purpose", description="Academic analysis", prompt="Analyze quantum computing academic papers")
+- Agent(subagent_type="general-purpose", description="Academic analysis", prompt="Analyze quantum computing academic papers")
 ```
 
 **Step 3: Collect and organize results**
@@ -184,7 +186,7 @@ As results arrive:
 - Use Exa search (via WebSearch with type="neural") for semantic exploration
 - Use Grep/Read for local documentation
 - Execute code for computational analysis (when needed)
-- Use Task tool to spawn parallel retrieval agents (3-5 agents)
+- Use the Agent tool to spawn parallel retrieval agents (3-5 agents)
 
 **Output:** Organized information repository with source tracking, credibility scores, and coverage map
 
@@ -397,7 +399,7 @@ Rather than linear thinking, branch into multiple reasoning paths:
 
 ### Parallel Agent Deployment
 
-Use Task tool to spawn sub-agents for:
+Use the Agent tool to spawn sub-agents for:
 - Parallel source retrieval
 - Independent verification paths
 - Competing hypothesis evaluation
