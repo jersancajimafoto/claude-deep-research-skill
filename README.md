@@ -8,7 +8,7 @@ Enterprise-grade research engine for Claude Code. Produces citation-backed repor
 
 ```bash
 # Clone into Claude Code skills directory
-git clone https://github.com/199-biotechnologies/claude-deep-research-skill.git ~/.claude/skills/deep-research
+git clone https://github.com/jersancajimafoto/claude-deep-research-skill.git ~/.claude/skills/deep-research
 ```
 
 No additional dependencies required for basic usage.

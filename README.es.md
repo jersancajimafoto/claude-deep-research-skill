@@ -8,7 +8,7 @@ Motor de investigación de nivel empresarial para Claude Code. Produce reportes 
 
 ```bash
 # Clonar en el directorio de habilidades de Claude Code
-git clone https://github.com/199-biotechnologies/claude-deep-research-skill.git ~/.claude/skills/deep-research
+git clone https://github.com/jersancajimafoto/claude-deep-research-skill.git ~/.claude/skills/deep-research
 ```
 
 No se requieren dependencias adicionales para el uso básico.
